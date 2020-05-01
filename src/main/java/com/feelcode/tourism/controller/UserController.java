@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,19 +19,20 @@ import java.util.List;
 
 /**
  * @ClassName: UserController
- * @Auther: zhangyingqi
- * @Date: 2018/8/27 17:30
+ * @Auther: 朱利尔
+ * @Date: 2020/4/30 17:30
  * @Description:
  */
 @Controller
-@RequestMapping(value="/user")
+@RequestMapping(value="/s/user")
 public class UserController extends BaseController {
+
     @Autowired
     UserService userService;
 
     /**
      * @auther: zhangyingqi
-     * @date: 17:37 2018/8/27
+     * @date: 17:37 2020/4/30
      * @param: [request, user]
      * @return: org.springframework.ui.ModelMap
      * @Description: 用户保存&更新
@@ -54,8 +56,8 @@ public class UserController extends BaseController {
     }
 
     /**
-     * @auther: zhangyingqi
-     * @date: 17:47 2018/8/27
+     * @auther: 朱利尔
+     * @date: 17:47 2020/4/30
      * @param: [id]
      * @return: org.springframework.ui.ModelMap
      * @Description: 删除用户
@@ -78,18 +80,21 @@ public class UserController extends BaseController {
     }
 
     /**
-     * @auther: zhangyingqi
-     * @date: 17:47 2018/8/27
+     * @auther: 朱利尔
+     * @date: 17:47 2020/4/30
      * @param: [request]
      * @return: java.lang.String
      * @Description: 查询用户列表
      */
-    @RequestMapping(value="/list")
-    public String view(HttpServletRequest request){
+    @RequestMapping(value="/list", method = RequestMethod.POST)
+    @ResponseBody
+    @CrossOrigin
+    public ModelMap view(HttpServletRequest request){
         List<User> list = userService.findAll();
         request.setAttribute("list", list);
         logger.info("返回列表页面");
-        return "/demoPage/listPage";
+        //return "/demoPage/listPage";
+        return getModelMap(StateParameter.SUCCESS, list, "获取用户列表成功");
     }
 
 }

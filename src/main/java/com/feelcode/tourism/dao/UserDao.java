@@ -8,5 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public interface UserDao extends PagingAndSortingRepository<User, Long>,JpaSpecificationExecutor<User>,JpaRepository<User,Long> {
+
     User findById(String id);
+
 }
