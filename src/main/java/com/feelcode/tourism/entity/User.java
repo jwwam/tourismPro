@@ -18,9 +18,6 @@ import java.util.Date;
 @Data
 public class User extends BaseEntity{
 
-    @Column(name = "id", length = 36)
-    private String id;
-
     @Column(name = "user_name", length = 100)
     private String userName;
 
@@ -29,8 +26,5 @@ public class User extends BaseEntity{
 
     @Column(name = "age")
     private Long age;
-
-    @Column(name = "create_date")
-    private Date createDate;
 
 }
