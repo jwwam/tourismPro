@@ -2,9 +2,7 @@ package com.feelcode.tourism.entity;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -13,7 +11,7 @@ public class BaseEntity {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid")
-    protected String id;
+    private String id;
 
     @Column(name= "create_date") //创建时间
     Date createDate = new Date();
