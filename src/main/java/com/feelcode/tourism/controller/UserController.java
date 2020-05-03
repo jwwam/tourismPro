@@ -3,17 +3,16 @@ package com.feelcode.tourism.controller;
 import com.feelcode.tourism.base.controller.BaseController;
 import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.entity.User;
+import com.feelcode.tourism.entity.UserRequestPageDTO;
+import com.feelcode.tourism.entity.UserResponsePageDTO;
 import com.feelcode.tourism.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 
@@ -39,6 +38,7 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value="/add", method = RequestMethod.POST)
     @ResponseBody
+    @CrossOrigin
     public ModelMap add(User user){
         try {
             if(StringUtils.isEmpty(user.getId())){
@@ -62,11 +62,12 @@ public class UserController extends BaseController {
      * @return: org.springframework.ui.ModelMap
      * @Description: 删除用户
      */
-    @RequestMapping(value="/delete", method = RequestMethod.GET)
+    @RequestMapping(value="/deleteUser", method = RequestMethod.POST)
     @ResponseBody
-    public ModelMap delete(String id){
+    @CrossOrigin
+    public ModelMap deleteUser(User request){
         try {
-            User user = userService.findById(id);
+            User user = userService.findById(request.getId());
             if(user==null){
                 return getModelMap(StateParameter.FAULT, user, "找不到该用户");
             }
@@ -89,12 +90,15 @@ public class UserController extends BaseController {
     @RequestMapping(value="/list", method = RequestMethod.POST)
     @ResponseBody
     @CrossOrigin
-    public ModelMap view(HttpServletRequest request){
-        List<User> list = userService.findAll();
-        request.setAttribute("list", list);
-        logger.info("返回列表页面");
-        //return "/demoPage/listPage";
-        return getModelMap(StateParameter.SUCCESS, list, "获取用户列表成功");
+    public ModelMap view(UserRequestPageDTO request){
+        UserResponsePageDTO resList = new UserResponsePageDTO();
+        Long count = userService.findAllByCount();
+        Page<User> userPage = userService.findAllByPage(request);
+        resList.setRecordsTotal(count);
+        resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
+        resList.setUserList(userPage.getContent());
+        logger.info("返回用户列表");
+        return getModelMap(StateParameter.SUCCESS, resList, "获取用户列表成功");
     }
 
 }
