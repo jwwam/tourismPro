@@ -5,6 +5,6 @@ import lombok.Data;
 
 @Data
 public class CommonRequestPageDTO {
-    private Integer start;
-    private Integer length;
+    private Integer start = 0;
+    private Integer length = 10;
 }

@@ -1,9 +1,9 @@
 package com.feelcode.tourism.service.impl;
 
-import com.feelcode.tourism.dao.UserDao;
-import com.feelcode.tourism.entity.User;
-import com.feelcode.tourism.entity.UserRequestPageDTO;
-import com.feelcode.tourism.service.UserService;
+import com.feelcode.tourism.dao.SpotsDao;
+import com.feelcode.tourism.entity.Spots;
+import com.feelcode.tourism.entity.SpotsRequestPageDTO;
+import com.feelcode.tourism.service.SpotsService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -14,48 +14,47 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * @ClassName: UserServiceImpl
- * @Auther: zhangyingqi
- * @Date: 2018/8/27 17:26
+ * @Author: 朱利尔
  * @Description:
+ * @Date: Created in 22:17 2020/5/7
+ * @Modified By:
  */
-@Service(value = "userService")
-public class UserServiceImpl implements UserService{
+@Service(value = "spotsService")
+public class SpotsServiceImpl implements SpotsService {
 
     @Resource
-    UserDao userDao;
+    SpotsDao spotsDao;
 
     @Override
-    public User save(User user) {
-        return userDao.save(user);
+    public Spots save(Spots spots) {
+        return spotsDao.save(spots);
     }
 
     @Override
-    public User findById(String id) {
-        return userDao.findById(id);
+    public Spots findById(String id) {
+        return spotsDao.findById(id);
     }
 
     @Override
-    public void delete(User user) {
-        userDao.delete(user);
+    public void delete(Spots spots) {
+        spotsDao.delete(spots);
     }
 
     @Override
-    public List<User> findAll() {
-        return userDao.findAll();
+    public List<Spots> findAll() {
+        return spotsDao.findAll();
     }
 
     @Override
-    public Page<User> findAllByPage(UserRequestPageDTO request) {
+    public Page<Spots> findAllByPage(SpotsRequestPageDTO request) {
         // 排序方式，这里是以“recordNo”为标准进行降序
         Sort sort = new Sort(Sort.Direction.DESC, "createDate");  // 这里的"recordNo"是实体类的主键，记住一定要是实体类的属性，而不能是数据库的字段
         Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort); // （当前页， 每页记录数， 排序方式）
-        return userDao.findAll(pageable);
+        return spotsDao.findAll(pageable);
     }
 
     @Override
     public Long findAllByCount() {
-        return userDao.count();
+        return spotsDao.count();
     }
-
 }
