@@ -28,7 +28,7 @@ public class Line extends BaseEntity{
     @Column(name = "line_price")
     private String linePrice;
 
-    @Column(name = "line_description")
+    @Column(columnDefinition="text", name = "line_description")
     private String lineDescription;
 
     @Column(columnDefinition="text", name = "line_images")
