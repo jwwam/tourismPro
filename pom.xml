@@ -6,7 +6,7 @@
 	<groupId>com.springboot</groupId>
 	<artifactId>tourismPro</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 
 	<name>tourismPro</name>
 	<description>tourismPro project for Spring Boot</description>
@@ -115,6 +115,10 @@
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-site-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>

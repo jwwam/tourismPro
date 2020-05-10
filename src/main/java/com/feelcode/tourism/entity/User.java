@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -18,7 +19,7 @@ import java.util.Date;
 @Entity
 @Table(name = "tourism_user")
 @Data
-public class User extends BaseEntity{
+public class User extends BaseEntity implements Serializable {
 
     @Column(name = "user_name", length = 100)
     private String userName;
