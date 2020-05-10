@@ -1,12 +1,18 @@
 #tourismPro开发记录  
-
-#项目结构  
-SpringBoot2.0  
-Thymeleaf3.0  
-SpringDataJPA  
-MySql  
-Redis  
-lombok  
+此项目为tourism的重构版本，所有代码全部重写，当然也包括前端页面，预览如下：
+**前端首页：  
+![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200511000840.png)   
+**后台列表：  
+![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200511001624.png)   
+**后台数据添加：  
+![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200511001710.png)   
+ 
+#项目架构 
+采用前后端分离，Javascript+SpringBoot2.0  
+后端语言Java
+ORM使用SpringDataJPA  
+数据库使用MySql5.7+Mongodb3 
+缓存Redis
 
 #启动访问测试  
 保存数据(post):   
