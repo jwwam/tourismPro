@@ -11,6 +11,8 @@ public interface UserService {
 
     User findById(String id);
 
+    User findByUserNameAndPassword(String userName,String password);
+
     void delete(User user);
 
     List<User> findAll();

@@ -7,7 +7,7 @@ import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
 @MappedSuperclass
-public class BaseEntity {
+public class BaseEntity extends BaseSessionEntity{
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
     @GenericGenerator(name = "uuid", strategy = "uuid")

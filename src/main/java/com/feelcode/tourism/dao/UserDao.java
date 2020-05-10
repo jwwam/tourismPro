@@ -11,4 +11,6 @@ public interface UserDao extends PagingAndSortingRepository<User, Long>,JpaSpeci
 
     User findById(String id);
 
+    User findByUserNameAndPassword(String userName, String password);
+
 }

@@ -1,6 +1,7 @@
 package com.feelcode.tourism.entity;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import java.util.Date;
  * @Date: 2020/4/30 17:17
  * @Description:
  */
+@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "tourism_user")
 @Data

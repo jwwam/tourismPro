@@ -37,6 +37,31 @@ public class UserController extends BaseController {
      * @return: org.springframework.ui.ModelMap
      * @Description: 用户保存&更新
      */
+    @RequestMapping(value="/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ModelMap login(@RequestBody User user){
+        try {
+            if(StringUtils.isEmpty(user.getId())){
+                user.setId(getUuid());
+            }else{
+                user.setUpdateDate(new Date());
+            }
+            userService.save(user);
+            log.info("保存成功");
+            return getModelMap(StateParameter.SUCCESS, user, "保存成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getModelMap(StateParameter.FAULT, null, "保存失败");
+        }
+    }
+
+    /**
+     * @auther: zhangyingqi
+     * @date: 17:37 2020/4/30
+     * @param: [request, user]
+     * @return: org.springframework.ui.ModelMap
+     * @Description: 用户保存&更新
+     */
     @RequestMapping(value="/addUser", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ModelMap addUser(@RequestBody User user){
