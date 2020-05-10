@@ -1,4 +1,4 @@
-# tourismPro开发记录  
+# tourismPro旅游网站开发记录  
 ### 此项目为tourism的重构版本，所有代码全部重写，当然也包括前端页面.  
 
 页面预览如下：
@@ -27,5 +27,6 @@ http://localhost:8080/s/user/add?name=老王&age=25
 查询数据列表:   
 http://localhost:8080/s/user/list  
 
-#联系方式
-824247231
+# 联系方式
+* QQ：824247231
+* QQ群：696852484
