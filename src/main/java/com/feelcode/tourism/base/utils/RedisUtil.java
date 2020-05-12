@@ -27,9 +27,10 @@ public class RedisUtil{
 	 * @param time 时间(秒)
 	 * @return
 	 */
-	public boolean expire(String key,long time){
+	public boolean expire(String key,int indexdb,long time){
 		try {
 			if(time>0){
+				redisTemplate.indexdb.set(indexdb);
 				redisTemplate.expire(key, time, TimeUnit.SECONDS);
 			}
 			return true;
@@ -67,7 +68,8 @@ public class RedisUtil{
 	 * @param key 可以传一个值 或多个
 	 */
 	@SuppressWarnings("unchecked")
-	public void del(String ... key){
+	public void del(int indexdb, String ... key){
+		redisTemplate.indexdb.set(indexdb);
 		if(key!=null&&key.length>0){
 			if(key.length==1){
 				redisTemplate.delete(key[0]);
@@ -113,8 +115,9 @@ public class RedisUtil{
 	 * @param time 时间(秒) time要大于0 如果time小于等于0 将设置无限期
 	 * @return true成功 false 失败
 	 */
-	public boolean set(String key,Object value,long time){
+	public boolean set(String key,Object value,int indexdb,long time){
 		try {
+			redisTemplate.indexdb.set(indexdb);
 			if(time>0){
 				redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
 			}else{
@@ -196,11 +199,12 @@ public class RedisUtil{
 	 * @param time 时间(秒)
 	 * @return true成功 false失败
 	 */
-	public boolean hmset(String key, Map<String,Object> map, long time){
+	public boolean hmset(String key, Map<String,Object> map, int indexdb,long time){
 		try {
+			redisTemplate.indexdb.set(indexdb);
 			redisTemplate.opsForHash().putAll(key, map);
 			if(time>0){
-				expire(key, time);
+				expire(key, indexdb, time);
 			}
 			return true;
 		} catch (Exception e) {
@@ -234,11 +238,12 @@ public class RedisUtil{
 	 * @param time 时间(秒)  注意:如果已存在的hash表有时间,这里将会替换原有的时间
 	 * @return true 成功 false失败
 	 */
-	public boolean hset(String key,String item,Object value,long time) {
+	public boolean hset(String key,String item,Object value,int indexdb, long time) {
 		try {
+			redisTemplate.indexdb.set(indexdb);
 			redisTemplate.opsForHash().put(key, item, value);
 			if(time>0){
-				expire(key, time);
+				expire(key,indexdb, time);
 			}
 			return true;
 		} catch (Exception e) {
@@ -340,10 +345,11 @@ public class RedisUtil{
 	 * @param values 值 可以是多个
 	 * @return 成功个数
 	 */
-	public long sSetAndTime(String key,long time,Object...values) {
+	public long sSetAndTime(String key,int indexdb,long time,Object...values) {
 		try {
+			redisTemplate.indexdb.set(indexdb);
 			Long count = redisTemplate.opsForSet().add(key, values);
-			if(time>0) expire(key, time);
+			if(time>0) expire(key, indexdb, time);
 			return count;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -451,10 +457,11 @@ public class RedisUtil{
 	 * @param time 时间(秒)
 	 * @return
 	 */
-	public boolean lSet(String key, Object value, long time) {
+	public boolean lSet(String key, Object value,int indexdb, long time) {
 		try {
+			redisTemplate.indexdb.set(indexdb);
 			redisTemplate.opsForList().rightPush(key, value);
-			if (time > 0) expire(key, time);
+			if (time > 0) expire(key, indexdb, time);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -486,10 +493,11 @@ public class RedisUtil{
 	 * @param time 时间(秒)
 	 * @return
 	 */
-	public boolean lSet(String key, List<Object> value, long time) {
+	public boolean lSet(String key, List<Object> value, int indexdb, long time) {
 		try {
+			redisTemplate.indexdb.set(indexdb);
 			redisTemplate.opsForList().rightPushAll(key, value);
-			if (time > 0) expire(key, time);
+			if (time > 0) expire(key, indexdb, time);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

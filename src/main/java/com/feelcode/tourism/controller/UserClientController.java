@@ -73,7 +73,7 @@ public class UserClientController extends BaseController {
      */
     @RequestMapping(value="/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelMap login(@RequestBody User user,HttpServletRequest req){
+    public ModelMap login(@RequestBody User user){
         try {
             User us = userService.findByUserNameAndPassword(user.getUserName(),user.getPassword());
             if(us!=null){
@@ -81,7 +81,7 @@ public class UserClientController extends BaseController {
                 userSessionEntity.setUserName(us.getUserName());
                 us.setUserInfo(userSessionEntity);
                 String userJsonString = JSON.toJSONString(us);
-                redisUtil.set("user_session_"+us.getId(), userJsonString, RedisConstants.datebase1);
+                redisUtil.set("user_session_"+us.getId(), userJsonString, RedisConstants.datebase1,300);
                 return getModelMap(StateParameter.SUCCESS, us, "登录成功");
             }else {
                 return getModelMap(StateParameter.FAULT, null, "登录失败");
@@ -89,6 +89,30 @@ public class UserClientController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
             return getModelMap(StateParameter.FAULT, null, "登录失败");
+        }
+    }
+
+    /**
+     * @auther: zhangyingqi
+     * @date: 17:37 2020/4/30
+     * @param: [request, user]
+     * @return: org.springframework.ui.ModelMap
+     * @Description: 用户注销
+     */
+    @RequestMapping(value="/logout", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ModelMap logout(@RequestBody User user){
+        try {
+            User us = userService.findByUserName(user.getUserName());
+            if(us!=null){
+                redisUtil.del(RedisConstants.datebase1, "user_session_"+us.getId());
+                return getModelMap(StateParameter.SUCCESS, us, "注销成功");
+            }else {
+                return getModelMap(StateParameter.FAULT, null, "注销失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getModelMap(StateParameter.FAULT, null, "注销失败");
         }
     }
 
@@ -105,6 +129,7 @@ public class UserClientController extends BaseController {
         try {
             Object obj = redisUtil.get("user_session_"+user.getId(),RedisConstants.datebase1);
             if(obj!=null){
+                redisUtil.expire("user_session_"+user.getId(),RedisConstants.datebase1,300);
                 User us = JSON.parseObject(obj.toString(),User.class);
                 UserSessionEntity userSessionEntity = new UserSessionEntity();
                 userSessionEntity.setUserName(us.getUserName());
