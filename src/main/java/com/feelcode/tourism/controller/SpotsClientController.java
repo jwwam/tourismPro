@@ -98,4 +98,21 @@ public class SpotsClientController extends BaseController {
         return getModelMap(StateParameter.SUCCESS, resList, "获取景点列表成功");
     }
 
+
+    /**
+     * @auther: 朱利尔
+     * @Description: 景点详情
+     * @date: 22:23 2020/5/7
+     * @param: [request]
+     * @return: org.springframework.ui.ModelMap
+     */
+    @RequestMapping(value="/detail", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ModelMap detail(@RequestBody Spots request){
+        Spots spots = spotsService.findById(request.getId());
+        log.info("返回景点详情：{}", spots);
+        return getModelMap(StateParameter.SUCCESS, spots, "获取景点详情成功");
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.feelcode.tourism.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -30,9 +31,11 @@ public class Plane extends BaseEntity{
     private String planeEndAddress;
 
     @Column(name = "plane_start_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date planeStartTime;
 
     @Column(name = "plane_end_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date planeEndTime;
 
     @Column(columnDefinition="text", name = "plane_description")

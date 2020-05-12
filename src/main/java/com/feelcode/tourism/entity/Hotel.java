@@ -1,5 +1,6 @@
 package com.feelcode.tourism.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 import javax.persistence.Column;
@@ -31,9 +32,11 @@ public class Hotel extends BaseEntity{
     private String hotelPrice;
 
     @Column(name = "check_in_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date checkInTime;
 
     @Column(name = "check_out_time")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date checkOutTime;
 
     @Column(name = "bed_type")
