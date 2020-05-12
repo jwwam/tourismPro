@@ -12,6 +12,12 @@
 
 ![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200511001710.png)   
  
+ * 前台酒店推荐  
+ ![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200511010248.png)   
+  
+ * 前台旅游线路  
+ ![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200511020238.png)   
+
  
 # 项目架构 
 * 采用前后端分离，JS + SpringBoot2.0    
