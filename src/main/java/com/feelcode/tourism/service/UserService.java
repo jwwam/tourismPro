@@ -13,6 +13,8 @@ public interface UserService {
 
     User findByUserNameAndPassword(String userName,String password);
 
+    User findByUserName(String userName);
+
     void delete(User user);
 
     List<User> findAll();

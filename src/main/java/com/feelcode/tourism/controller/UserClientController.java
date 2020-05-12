@@ -12,10 +12,12 @@ import com.feelcode.tourism.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 
 /**
  * @Author: 朱利尔
@@ -39,7 +41,35 @@ public class UserClientController extends BaseController {
      * @date: 17:37 2020/4/30
      * @param: [request, user]
      * @return: org.springframework.ui.ModelMap
-     * @Description: 用户保存&更新
+     * @Description: 用户注册
+     */
+    @RequestMapping(value="/logon", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ModelMap logon(@RequestBody User user){
+        try {
+            User us = userService.findByUserName(user.getUserName());
+            if(us!=null){
+                return getModelMap(StateParameter.FAULT, null, "注册失败，用户已存在");
+            }else {
+                user.setId(getUuid());
+                user.setUserName(user.getUserName());
+                user.setPassword(user.getPassword());
+                userService.save(user);
+                log.info("注册成功");
+                return getModelMap(StateParameter.SUCCESS, us, "注册成功");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getModelMap(StateParameter.FAULT, null, "注册失败");
+        }
+    }
+
+    /**
+     * @auther: zhangyingqi
+     * @date: 17:37 2020/4/30
+     * @param: [request, user]
+     * @return: org.springframework.ui.ModelMap
+     * @Description: 用户登录
      */
     @RequestMapping(value="/login", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody

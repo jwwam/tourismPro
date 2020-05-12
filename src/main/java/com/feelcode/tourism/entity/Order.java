@@ -20,8 +20,8 @@ public class Order extends BaseEntity{
     @Column(name = "order_no", length = 100)
     private String orderNo;
 
-    @Column(name = "product_type", length = 100)
-    private String productType;
+    @Column(name = "product_type")
+    private Integer productType;
 
     @Column(name = "product_id", length = 100)
     private String productId;
