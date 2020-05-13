@@ -4,13 +4,20 @@ import com.feelcode.tourism.dao.SpotsDao;
 import com.feelcode.tourism.entity.Spots;
 import com.feelcode.tourism.entity.SpotsRequestPageDTO;
 import com.feelcode.tourism.service.SpotsService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -54,7 +61,39 @@ public class SpotsServiceImpl implements SpotsService {
     }
 
     @Override
+    public Page<Spots> findAllByKeys(String spotsName, Pageable pageable) {
+        return spotsDao.findAll(Specifications.where(getWhereClause(spotsName)),pageable);
+    }
+
+    @Override
     public Long findAllByCount() {
         return spotsDao.count();
     }
+
+    public Specification<Spots> getWhereClause(final String spotsName) {
+        return new Specification<Spots>() {
+            @Override
+            public Predicate toPredicate(Root<Spots> r, CriteriaQuery<?> q, CriteriaBuilder cb) {
+                Predicate predicate = cb.conjunction();
+                if(StringUtils.isNotEmpty(spotsName)){
+                    predicate.getExpressions().add(
+                            cb.like(r.<String>get("spotsName"), "%" + StringUtils.trim(spotsName) + "%")
+                    );
+                }
+                /*if(StringUtils.isNotEmpty(sPrice)&&StringUtils.isNotEmpty(ePrice)){
+                    predicate.getExpressions().add(
+                            cb.between(r.<String>get("price"), sPrice, ePrice)
+                    );
+                }
+                if(StringUtils.isNotEmpty(star)){
+                    predicate.getExpressions().add(
+                            cb.like(r.<String>get("star"),"%" + StringUtils.trim(star) + "%")
+                    );
+                }*/
+                return predicate;
+            }
+        };
+
+    }
+
 }

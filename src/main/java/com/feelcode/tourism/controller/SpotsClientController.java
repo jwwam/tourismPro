@@ -8,6 +8,9 @@ import com.feelcode.tourism.entity.SpotsResponsePageDTO;
 import com.feelcode.tourism.service.SpotsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -87,10 +90,18 @@ public class SpotsClientController extends BaseController {
      */
     @RequestMapping(value="/list", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelMap list(SpotsRequestPageDTO request){
+    public ModelMap list(@RequestBody SpotsRequestPageDTO request){
+        //C端分页暂时均未实现
         SpotsResponsePageDTO resList = new SpotsResponsePageDTO();
         Long count = spotsService.findAllByCount();
-        Page<Spots> spotsPage = spotsService.findAllByPage(request);
+        Page<Spots> spotsPage = null;
+        if(!StringUtils.isEmpty(request.getSpotsName())){
+            Sort sort = new Sort(Sort.Direction.DESC,"createDate");
+            Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
+            spotsPage = spotsService.findAllByKeys(request.getSpotsName(), pageable);
+        }else{
+            spotsPage = spotsService.findAllByPage(request);
+        }
         resList.setRecordsTotal(count);
         resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
         resList.setSpotsList(spotsPage.getContent());

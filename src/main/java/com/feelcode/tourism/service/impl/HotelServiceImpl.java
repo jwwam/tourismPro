@@ -3,14 +3,23 @@ package com.feelcode.tourism.service.impl;
 import com.feelcode.tourism.dao.HotelDao;
 import com.feelcode.tourism.entity.Hotel;
 import com.feelcode.tourism.entity.HotelRequestPageDTO;
+import com.feelcode.tourism.entity.Spots;
 import com.feelcode.tourism.service.HotelService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
+import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -54,7 +63,53 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
+    public Page<Hotel> findAllByKeys(HotelRequestPageDTO request,Pageable pageable) {
+        return hotelDao.findAll(Specifications.where(getWhereClause(request)),pageable);
+    }
+
+    @Override
     public Long findAllByCount() {
         return hotelDao.count();
     }
+
+    public Specification<Hotel> getWhereClause(final HotelRequestPageDTO keys) {
+        return new Specification<Hotel>() {
+            @Override
+            public Predicate toPredicate(Root<Hotel> r, CriteriaQuery<?> q, CriteriaBuilder cb) {
+                Predicate predicate = cb.conjunction();
+                if(StringUtils.isNotEmpty(keys.getHotelName())){
+                    predicate.getExpressions().add(
+                            cb.like(r.<String>get("hotelName"), "%" + StringUtils.trim(keys.getHotelName()) + "%")
+                    );
+                }
+                if(StringUtils.isNotEmpty(keys.getCheckInTime())){
+                    predicate.getExpressions().add(
+                            cb.greaterThanOrEqualTo(r.get("checkInTime").as(String.class), keys.getCheckInTime())
+                    );
+                }
+                if(StringUtils.isNotEmpty(keys.getCheckOutTime())){
+                    predicate.getExpressions().add(
+                            cb.greaterThanOrEqualTo(r.get("checkOutTime").as(String.class), keys.getCheckOutTime())
+                    );
+                }
+                if(StringUtils.isNotEmpty(keys.getHotelAddress())){
+                    predicate.getExpressions().add(
+                            cb.like(r.<String>get("hotelAddress"),"%" + StringUtils.trim(keys.getHotelAddress()) + "%")
+                    );
+                }
+                if(StringUtils.isNotEmpty(keys.getHotelPrice())){
+                    predicate.getExpressions().add(
+                            cb.like(r.<String>get("hotelPrice"),"%" + StringUtils.trim(keys.getHotelPrice()) + "%")
+                    );
+                }
+                if(StringUtils.isNotEmpty(keys.getBedType())){
+                    predicate.getExpressions().add(
+                            cb.like(r.<String>get("bedType"),"%" + StringUtils.trim(keys.getBedType()) + "%")
+                    );
+                }
+                return predicate;
+            }
+        };
+    }
+
 }

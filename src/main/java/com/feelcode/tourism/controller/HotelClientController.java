@@ -8,6 +8,9 @@ import com.feelcode.tourism.entity.HotelResponsePageDTO;
 import com.feelcode.tourism.service.HotelService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -88,10 +91,12 @@ public class HotelClientController extends BaseController {
      */
     @RequestMapping(value="/list", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelMap list(HotelRequestPageDTO request){
+    public ModelMap list(@RequestBody HotelRequestPageDTO request){
         HotelResponsePageDTO resList = new HotelResponsePageDTO();
         Long count = hotelService.findAllByCount();
-        Page<Hotel> hotelPage = hotelService.findAllByPage(request);
+        Sort sort = new Sort(Sort.Direction.DESC,"createDate");
+        Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
+        Page<Hotel> hotelPage = hotelService.findAllByKeys(request, pageable);
         resList.setRecordsTotal(count);
         resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
         resList.setHotelList(hotelPage.getContent());

@@ -10,4 +10,7 @@ import lombok.Data;
  */
 @Data
 public class SpotsRequestPageDTO extends CommonRequestPageDTO{
+
+    private String spotsName;
+
 }
