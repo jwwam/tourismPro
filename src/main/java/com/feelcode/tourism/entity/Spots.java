@@ -33,6 +33,9 @@ public class Spots extends BaseEntity{
     @Column(name = "spots_open_time")
     private String spotsOpenTime;
 
+    @Column(name= "spots_star")
+    private String spotsStar;
+
     @Column(name = "spots_description")
     private String spotsDescription;
 

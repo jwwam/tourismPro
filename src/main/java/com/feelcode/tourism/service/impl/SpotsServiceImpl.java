@@ -1,9 +1,13 @@
 package com.feelcode.tourism.service.impl;
 
+import com.feelcode.tourism.base.utils.CFUtils;
+import com.feelcode.tourism.dao.ScoreDao;
 import com.feelcode.tourism.dao.SpotsDao;
+import com.feelcode.tourism.entity.Score;
 import com.feelcode.tourism.entity.Spots;
 import com.feelcode.tourism.entity.SpotsRequestPageDTO;
 import com.feelcode.tourism.service.SpotsService;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,6 +22,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,10 +33,14 @@ import java.util.List;
  * @Modified By:
  */
 @Service(value = "spotsService")
+@Slf4j
 public class SpotsServiceImpl implements SpotsService {
 
     @Resource
     SpotsDao spotsDao;
+    @Resource
+    ScoreDao scoreDao;
+    private static final double pearsonCorrelation = 0.95;
 
     @Override
     public Spots save(Spots spots) {
@@ -50,6 +60,34 @@ public class SpotsServiceImpl implements SpotsService {
     @Override
     public List<Spots> findAll() {
         return spotsDao.findAll();
+    }
+
+    @Override
+    public List<Spots> findRecommendList(String id) {
+        List<Score> spotsScoreList = scoreDao.findBySpotsId(id);
+        double[] ownSpotsScoreList = new double[spotsScoreList.size()];
+        for (int i = 0; i < spotsScoreList.size(); i++) {
+            ownSpotsScoreList[i] = Double.parseDouble(spotsScoreList.get(i).getGrade());
+        }
+        List<Score> spotsCountInScoreList = scoreDao.findAllGroupBySpotsId();
+        HashMap<String,double[]> ss = new HashMap<String,double[]>();
+        for (int i = 0; i < spotsCountInScoreList.size(); i++) {
+            List<Score> bb = scoreDao.findBySpotsId(spotsCountInScoreList.get(i).getSpotsId());
+            double[] otherSpotsScoreList = new double[bb.size()];
+            for (int j = 0; j < bb.size(); j++) {
+                otherSpotsScoreList[j] = Double.parseDouble(bb.get(j).getGrade());
+            }
+            ss.put(spotsCountInScoreList.get(i).getSpotsId(),otherSpotsScoreList);
+        }
+        List<Spots> resSpotsList = new ArrayList<>();
+        ss.forEach((String k, double[] v)->{
+            double n = CFUtils.cosineSimilarity(ownSpotsScoreList,v);
+            log.info("景点id：{},线性相似度：{}",k,n);
+            if(n > pearsonCorrelation) {
+                resSpotsList.add(spotsDao.findById(k));
+            }
+        });
+        return resSpotsList;
     }
 
     @Override

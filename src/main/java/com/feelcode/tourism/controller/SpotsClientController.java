@@ -3,6 +3,7 @@ package com.feelcode.tourism.controller;
 import com.feelcode.tourism.base.controller.BaseController;
 import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.entity.Spots;
+import com.feelcode.tourism.entity.SpotsRecommendListResponsePageDTO;
 import com.feelcode.tourism.entity.SpotsRequestPageDTO;
 import com.feelcode.tourism.entity.SpotsResponsePageDTO;
 import com.feelcode.tourism.service.SpotsService;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: 朱利尔
@@ -107,6 +109,34 @@ public class SpotsClientController extends BaseController {
         resList.setSpotsList(spotsPage.getContent());
         log.info("返回景点列表：{}", resList);
         return getModelMap(StateParameter.SUCCESS, resList, "获取景点列表成功");
+    }
+
+    /**
+     * @auther: 朱利尔
+     * @Description: 景点推荐列表
+     * @date: 22:23 2020/5/7
+     * @param: [request]
+     * @return: org.springframework.ui.ModelMap
+     */
+    @RequestMapping(value="/recommendList", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ModelMap recommendList(@RequestBody SpotsRequestPageDTO request){
+        //C端分页暂时均未实现
+        SpotsRecommendListResponsePageDTO resList = new SpotsRecommendListResponsePageDTO();
+        Long count = spotsService.findAllByCount();
+        Sort sort = new Sort(Sort.Direction.DESC,"createDate");
+        Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
+        Page<Spots> spotsPage = spotsService.findAllByKeys(request.getSpotsName(), pageable);
+        if(spotsPage.getContent().size()!=0){
+            resList.setRecordsTotal(count);
+            resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
+            resList.setSpots(spotsPage.getContent().get(0));
+            List<Spots> spotsList = spotsService.findRecommendList(resList.getSpots().getId());
+            resList.setSpotsList(spotsList);
+            log.info("返回景点列表：{}", resList);
+            return getModelMap(StateParameter.SUCCESS, resList, "获取景点列表成功");
+        }
+        return getModelMap(StateParameter.FAULT, resList, "未找到您要查询的景点，请输入其他景点再次尝试。");
     }
 
 

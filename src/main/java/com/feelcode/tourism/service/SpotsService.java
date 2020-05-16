@@ -22,6 +22,8 @@ public interface SpotsService {
 
     List<Spots> findAll();
 
+    List<Spots> findRecommendList(String id);
+
     Page<Spots> findAllByPage(SpotsRequestPageDTO request);
 
     Page<Spots> findAllByKeys(String spotsName, Pageable pageable);
