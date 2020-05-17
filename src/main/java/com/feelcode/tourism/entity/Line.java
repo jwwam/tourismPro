@@ -33,4 +33,7 @@ public class Line extends BaseEntity{
 
     @Column(columnDefinition="text", name = "line_images")
     private String lineImages;
+
+    @Column(columnDefinition="text", name = "group_ids")
+    private String groupIds;
 }
