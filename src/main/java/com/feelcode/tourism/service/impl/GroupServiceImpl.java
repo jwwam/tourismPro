@@ -57,4 +57,9 @@ public class GroupServiceImpl implements GroupService {
     public Long findAllByCount() {
         return groupDao.count();
     }
+
+    @Override
+    public List<Group> findByIds(String ids) {
+        return groupDao.findByIdIn(ids.split(","));
+    }
 }

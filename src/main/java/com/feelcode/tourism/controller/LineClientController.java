@@ -2,10 +2,8 @@ package com.feelcode.tourism.controller;
 
 import com.feelcode.tourism.base.controller.BaseController;
 import com.feelcode.tourism.base.utils.StateParameter;
-import com.feelcode.tourism.entity.Line;
-import com.feelcode.tourism.entity.LineRequestPageDTO;
-import com.feelcode.tourism.entity.LineResponsePageDTO;
-import com.feelcode.tourism.entity.Spots;
+import com.feelcode.tourism.entity.*;
+import com.feelcode.tourism.service.GroupService;
 import com.feelcode.tourism.service.LineService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -14,7 +12,9 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: 朱利尔
@@ -30,6 +30,8 @@ public class LineClientController extends BaseController {
 
     @Resource
     LineService lineService;
+    @Resource
+    GroupService groupService;
 
     /**
      * @auther: 朱利尔
@@ -110,8 +112,12 @@ public class LineClientController extends BaseController {
     @ResponseBody
     public ModelMap detail(@RequestBody Line request){
         Line line = lineService.findById(request.getId());
+        List<Group> groupList = groupService.findByIds(line.getGroupIds());
+        LineDetailResponseDTO lineDetailResponseDTO = new LineDetailResponseDTO();
+        lineDetailResponseDTO.setGroupList(groupList);
+        lineDetailResponseDTO.setLine(line);
         log.info("返回旅线详情：{}", line);
-        return getModelMap(StateParameter.SUCCESS, line, "获取旅线详情成功");
+        return getModelMap(StateParameter.SUCCESS, lineDetailResponseDTO, "获取旅线详情成功");
     }
 
 }

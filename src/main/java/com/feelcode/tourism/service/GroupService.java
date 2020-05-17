@@ -24,4 +24,6 @@ public interface GroupService {
     Page<Group> findAllByPage(GroupRequestPageDTO request);
 
     Long findAllByCount();
+
+    List<Group> findByIds(String ids);
 }
