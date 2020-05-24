@@ -1,10 +1,13 @@
 package com.feelcode.tourism.controller;
 
+import com.feelcode.tourism.base.constant.SystemConstant;
 import com.feelcode.tourism.base.controller.BaseController;
 import com.feelcode.tourism.base.utils.StateParameter;
+import com.feelcode.tourism.entity.Hotel;
 import com.feelcode.tourism.entity.Order;
 import com.feelcode.tourism.entity.OrderRequestPageDTO;
 import com.feelcode.tourism.entity.OrderResponsePageDTO;
+import com.feelcode.tourism.service.HotelService;
 import com.feelcode.tourism.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -29,6 +32,8 @@ public class OrderClientController extends BaseController {
 
     @Resource
     OrderService orderService;
+    @Resource
+    HotelService hotelService;
 
     /**
      * @auther: 朱利尔
@@ -37,21 +42,32 @@ public class OrderClientController extends BaseController {
      * @param: [order]
      * @return: org.springframework.ui.ModelMap
      */
-    @RequestMapping(value="/addOrder", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/create", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelMap addOrder(@RequestBody Order order){
+    public ModelMap create(@RequestBody Order order){
         try {
             if(StringUtils.isEmpty(order.getId())){
                 order.setId(getUuid());
             }else{
                 order.setUpdateDate(new Date());
             }
+            if(SystemConstant.ProductType.hotel.equals(order.getProductType())){
+                Order oldOrder = orderService.findByUserIdAndProductId(order.getUserId(),order.getProductId());
+                if(SystemConstant.OrderStatus.submit.equals(oldOrder.getOrderStatus())){
+                    return getModelMap(StateParameter.FAULT, null, "不能重复提交订单");
+                }
+                Hotel hotel = hotelService.findById(order.getProductId());
+                order.setOrderAmount(hotel.getHotelPrice());
+                order.setPreviewImage((hotel.getHotelImages().split(","))[0]);
+                order.setDealingTime(new Date());
+                order.setOrderStatus(SystemConstant.OrderStatus.submit);
+            }
             orderService.save(order);
-            log.info("保存成功");
-            return getModelMap(StateParameter.SUCCESS, null, "保存成功");
+            log.info("订单提交成功");
+            return getModelMap(StateParameter.SUCCESS, null, "订单提交成功");
         } catch (Exception e) {
             e.printStackTrace();
-            return getModelMap(StateParameter.FAULT, null, "保存失败");
+            return getModelMap(StateParameter.FAULT, null, "订单提交失败");
         }
     }
 
@@ -88,9 +104,10 @@ public class OrderClientController extends BaseController {
     @RequestMapping(value="/list", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ModelMap list(@RequestBody OrderRequestPageDTO request){
+
         OrderResponsePageDTO resList = new OrderResponsePageDTO();
         Long count = orderService.findAllByCount();
-        Page<Order> orderPage = orderService.findAllByPage(request);
+        Page<Order> orderPage = orderService.findAllByUserIdAndPage(request);
         resList.setRecordsTotal(count);
         resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
         resList.setOrderList(orderPage.getContent());

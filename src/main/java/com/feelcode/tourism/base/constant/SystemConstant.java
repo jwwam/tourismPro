@@ -17,4 +17,13 @@ public interface SystemConstant {
         Integer done = 2;
     }
 
+    /**
+     * 1-酒店
+     * 2-航班
+     */
+    interface ProductType{
+        Integer hotel = 1;
+        Integer plane = 2;
+    }
+
 }

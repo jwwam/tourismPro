@@ -23,5 +23,10 @@ public interface OrderService {
 
     Page<Order> findAllByPage(OrderRequestPageDTO request);
 
+    Order findByUserIdAndProductId(String userId, String productId);
+
+    Page<Order> findAllByUserIdAndPage(OrderRequestPageDTO request);
+
     Long findAllByCount();
+
 }

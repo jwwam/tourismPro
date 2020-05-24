@@ -42,6 +42,9 @@ public class Hotel extends BaseEntity{
     @Column(name = "bed_type")
     private String bedType;
 
+    @Column(name = "star")
+    private String star;
+
     @Column(columnDefinition="text", name = "hotel_description")
     private String hotelDescription;
 

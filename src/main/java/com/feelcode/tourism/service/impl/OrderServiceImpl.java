@@ -54,6 +54,19 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public Order findByUserIdAndProductId(String userId, String productId) {
+        return orderDao.findByUserIdAndProductId(userId, productId);
+    }
+
+    @Override
+    public Page<Order> findAllByUserIdAndPage(OrderRequestPageDTO request) {
+        // 排序方式，这里是以“recordNo”为标准进行降序
+        Sort sort = new Sort(Sort.Direction.DESC, "createDate");  // 这里的"recordNo"是实体类的主键，记住一定要是实体类的属性，而不能是数据库的字段
+        Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort); // （当前页， 每页记录数， 排序方式）
+        return orderDao.findByUserId(request.getUserId(), pageable);
+    }
+
+    @Override
     public Long findAllByCount() {
         return orderDao.count();
     }
