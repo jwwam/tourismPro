@@ -18,4 +18,11 @@ public interface CommentService {
     void delete(Comment comment);
 
     List<Comment> findAll();
+
+    Long findAllByCount();
+
+    List<Comment> findByUserIdAndProductId(String userId, String productId);
+
+    List<Comment> findByProductId(String productId);
+
 }

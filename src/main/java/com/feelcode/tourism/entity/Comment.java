@@ -32,4 +32,16 @@ public class Comment extends BaseEntity{
     @Column(name = "comment_num")
     private String commentNum;
 
+    @Column(name = "user_id")
+    private String userId;
+
+    @Column(name = "user_Name")
+    private String userName;
+
+    @Column(name = "product_id")
+    private String productId;
+
+    @Column(name = "product_type")
+    private Integer productType;
+
 }

@@ -112,7 +112,10 @@ public class LineClientController extends BaseController {
     @ResponseBody
     public ModelMap detail(@RequestBody Line request){
         Line line = lineService.findById(request.getId());
-        List<Group> groupList = groupService.findByIds(line.getGroupIds());
+        List<Group> groupList = new ArrayList<>();
+        if(!StringUtils.isEmpty(line.getGroupIds())){
+            groupList = groupService.findByIds(line.getGroupIds());
+        }
         LineDetailResponseDTO lineDetailResponseDTO = new LineDetailResponseDTO();
         lineDetailResponseDTO.setGroupList(groupList);
         lineDetailResponseDTO.setLine(line);
