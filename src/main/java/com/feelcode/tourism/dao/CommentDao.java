@@ -38,7 +38,7 @@ public interface CommentDao extends PagingAndSortingRepository<Comment, Long>, J
             "s.grade as score \n" +
             "from tourism_comment c \n" +
             "left join tourism_score s \n" +
-            "on c.user_id=s.user_id \n" +
+            "on c.user_id=s.user_id and c.product_id=s.product_id \n" +
             "where c.product_id=?",nativeQuery = true)
     List<Comment>  findByProductId(String productId);
 
