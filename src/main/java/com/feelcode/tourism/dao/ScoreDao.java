@@ -16,9 +16,13 @@ import java.util.List;
  */
 public interface ScoreDao extends PagingAndSortingRepository<Score, Long>, JpaSpecificationExecutor<Score>, JpaRepository<Score,Long> {
 
-    List<Score> findBySpotsId(String id);
+    Score findById(String id);
 
-    @Query(value = "select * from tourism_score group by spots_id",nativeQuery = true)
-    List<Score> findAllGroupBySpotsId();
+    List<Score> findByProductId(String id);
+
+    @Query(value = "select * from tourism_score group by product_id",nativeQuery = true)
+    List<Score> findAllGroupByProductId();
+
+    Score findByUserIdAndProductId(String userId, String productId);
 
 }

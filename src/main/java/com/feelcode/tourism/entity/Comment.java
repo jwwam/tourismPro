@@ -6,6 +6,10 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -43,5 +47,11 @@ public class Comment extends BaseEntity{
 
     @Column(name = "product_type")
     private Integer productType;
+
+    @Max(value = 10)
+    @Min(value = 1)
+    //@Transient
+    @Column(name = "score")
+    private BigDecimal score;
 
 }

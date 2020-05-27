@@ -64,25 +64,25 @@ public class SpotsServiceImpl implements SpotsService {
 
     @Override
     public List<Spots> findRecommendList(String id) {
-        List<Score> spotsScoreList = scoreDao.findBySpotsId(id);
-        double[] ownSpotsScoreList = new double[spotsScoreList.size()];
-        for (int i = 0; i < spotsScoreList.size(); i++) {
-            ownSpotsScoreList[i] = Double.parseDouble(spotsScoreList.get(i).getGrade());
+        List<Score> productScoreList = scoreDao.findByProductId(id);
+        double[] ownProductScoreList = new double[productScoreList.size()];
+        for (int i = 0; i < productScoreList.size(); i++) {
+            ownProductScoreList[i] = Double.parseDouble(productScoreList.get(i).getGrade());
         }
-        List<Score> spotsCountInScoreList = scoreDao.findAllGroupBySpotsId();
+        List<Score> productCountInScoreList = scoreDao.findAllGroupByProductId();
         HashMap<String,double[]> ss = new HashMap<String,double[]>();
-        for (int i = 0; i < spotsCountInScoreList.size(); i++) {
-            List<Score> bb = scoreDao.findBySpotsId(spotsCountInScoreList.get(i).getSpotsId());
-            double[] otherSpotsScoreList = new double[bb.size()];
+        for (int i = 0; i < productCountInScoreList.size(); i++) {
+            List<Score> bb = scoreDao.findByProductId(productCountInScoreList.get(i).getProductId());
+            double[] otherProductScoreList = new double[bb.size()];
             for (int j = 0; j < bb.size(); j++) {
-                otherSpotsScoreList[j] = Double.parseDouble(bb.get(j).getGrade());
+                otherProductScoreList[j] = Double.parseDouble(bb.get(j).getGrade());
             }
-            ss.put(spotsCountInScoreList.get(i).getSpotsId(),otherSpotsScoreList);
+            ss.put(productCountInScoreList.get(i).getProductId(),otherProductScoreList);
         }
         List<Spots> resSpotsList = new ArrayList<>();
         ss.forEach((String k, double[] v)->{
-            double n = CFUtils.cosineSimilarity(ownSpotsScoreList,v);
-            log.info("景点id：{},线性相似度：{}",k,n);
+            double n = CFUtils.cosineSimilarity(ownProductScoreList,v);
+            log.info("id：{},线性相似度：{}",k,n);
             if(n > pearsonCorrelation) {
                 resSpotsList.add(spotsDao.findById(k));
             }

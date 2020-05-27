@@ -53,7 +53,7 @@ public class OrderClientController extends BaseController {
             }
             if(SystemConstant.ProductType.hotel.equals(order.getProductType())){
                 Order oldOrder = orderService.findByUserIdAndProductId(order.getUserId(),order.getProductId());
-                if(SystemConstant.OrderStatus.submit.equals(oldOrder.getOrderStatus())){
+                if(oldOrder!=null && SystemConstant.OrderStatus.submit.equals(oldOrder.getOrderStatus())){
                     return getModelMap(StateParameter.FAULT, null, "不能重复提交订单");
                 }
                 Hotel hotel = hotelService.findById(order.getProductId());

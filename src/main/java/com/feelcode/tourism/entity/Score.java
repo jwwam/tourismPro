@@ -17,7 +17,10 @@ public class Score extends BaseEntity{
     @Column(name="user_id")
     private String userId;
 
-    @Column(name="spots_id")
-    private String spotsId;
+    @Column(name="product_id")
+    private String productId;
+
+    @Column(name="product_type")
+    private Integer productType;
 
 }

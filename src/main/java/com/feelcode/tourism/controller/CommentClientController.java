@@ -5,6 +5,7 @@ import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.entity.*;
 import com.feelcode.tourism.service.CommentService;
 import com.feelcode.tourism.service.HotelService;
+import com.feelcode.tourism.service.ScoreService;
 import com.feelcode.tourism.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -35,6 +36,8 @@ public class CommentClientController extends BaseController {
     CommentService commentService;
     @Resource
     UserService userService;
+    @Resource
+    ScoreService scoreService;
 
     /**
      * @auther: 朱利尔
@@ -57,6 +60,22 @@ public class CommentClientController extends BaseController {
             comment.setCommentTime(new Date());
             commentService.save(comment);
             log.info("评论保存成功");
+            if(!StringUtils.isEmpty(comment.getScore())){
+                Score score = new Score();
+                Score olScore = scoreService.findByUserIdAndProductId(comment.getUserId(),comment.getProductId());
+                if(olScore==null){
+                    score.setId(getUuid());
+                }else{
+                    score.setId(olScore.getId());
+                    score.setUpdateDate(new Date());
+                }
+                score.setGrade(String.valueOf(comment.getScore()));
+                score.setProductId(comment.getProductId());
+                score.setProductType(comment.getProductType());
+                score.setUserId(user.getId());
+                scoreService.save(score);
+                log.info("评分保存成功");
+            }
             return getModelMap(StateParameter.SUCCESS, null, "评论提交成功");
         } catch (Exception e) {
             e.printStackTrace();

@@ -20,10 +20,14 @@ public interface SystemConstant {
     /**
      * 1-酒店
      * 2-航班
+     * 3-线路
+     * 4-景点
      */
     interface ProductType{
         Integer hotel = 1;
         Integer plane = 2;
+        Integer line = 3;
+        Integer spots = 4;
     }
 
 }
