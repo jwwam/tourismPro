@@ -15,7 +15,7 @@
 * 引入皮尔逊线性相似度推荐算法的Java实现，应用于项目的“景点推荐”栏目   
  
 # Project framework-项目架构   
-![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/projectFramework.png)    
+![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200528175153.png)    
 * 采用前后端分离，Jquery + SpringBoot2.0    
 * 后端语言Java  
 * ORM使用SpringDataJPA    
