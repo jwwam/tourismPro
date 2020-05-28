@@ -11,7 +11,6 @@
 * 引入皮尔逊线性相似度推荐算法的Java实现，应用于项目的“景点推荐”栏目   
  
 # Project framework-项目架构   
-给出其实现公式：  
 ![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/projectFramework.png)    
 * 采用前后端分离，Jquery + SpringBoot2.0    
 * 后端语言Java  
@@ -20,8 +19,9 @@
 * 缓存Redis  
 * 部署Nginx+Jar  
 
-# Project algorithm-相关算法
-* 皮尔逊相关系数的相似度算法(Pearson)
+# Project algorithm-相关算法  
+* 皮尔逊相关系数的相似度算法(Pearson)  
+* 以下给出其实现公式：  
 ![相关算法](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20150218130748809.png)   
 该算法在本系统中实现了基于景点分数近似度的推荐功能，以下给出数据获取方法代码，具体算法实现请查看CFUtils.cosineSimilarity()方法。
 ```
