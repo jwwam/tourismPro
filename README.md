@@ -27,7 +27,7 @@
 * 皮尔逊相关系数的相似度算法(Pearson)  
 * 以下给出其实现公式：  
 * 
-![相关算法](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20150218130748809.png)   
+![相关算法](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/2015021813074.png)   
 
 * 该算法在本系统中实现了基于景点分数近似度的推荐功能，以下给出数据获取方法代码，具体算法实现请查看CFUtils.cosineSimilarity()方法。  
 ```
