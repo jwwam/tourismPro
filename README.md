@@ -1,8 +1,8 @@
 # tourismPro旅游网站
-* 这是一个轻量化、简单、易上手的旅游网站项目，架构包括完整的前端和后台，仅适合作为JavaWeb入门或毕业设计使用。
+这是一个轻量化、简单、易上手的旅游网站项目，系统包括完整的前端Html页面和后台代码，该项目仅适合作为JavaWeb入门或毕业设计使用，不具备实际使用价值，项目中涉及皮尔逊相关系数的相似度算法Java实现和实际应用可查看景点推荐模块。
 
 # Project description-项目描述 
-* 此项目为tourism的重构版本【tourism是3年前做的一个旅游网站项目，采用ssh架构】  
+* 此项目为tourism的重构版本【tourism是3年前做的一个旅游网站毕业设计，采用ssh架构】  
 * 因为tourism开发时间久远，现在对这个项目进行了全新升级  
 * 本次升级抛弃了原来一些老旧的技术，底层的所有代码全部重写  
 * 采用前后端分离架构  
@@ -10,8 +10,9 @@
 * 前端没有采用主流框架如Vue、React等，使用基本的HTML+CSS+JQ也减轻了上手难度  
 * 引入皮尔逊线性相似度推荐算法的Java实现，应用于项目的“景点推荐”栏目   
  
-# Project framework-项目架构  
-![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/projectFramework.png)   
+# Project framework-项目架构   
+给出其实现公式：  
+![avatar](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/projectFramework.png)    
 * 采用前后端分离，Jquery + SpringBoot2.0    
 * 后端语言Java  
 * ORM使用SpringDataJPA    
@@ -164,13 +165,13 @@ java -jar tourismPro.jar
 ```
 java -jar mongodb-file-server.jar
 ```  
-5.view 
+5.view address  
 ``` 
 前台：http://localhost:8082/index.html  
 后台：http://localhost  
 ```
 
-# Callme-联系方式  
+# Call me-联系方式  
 * E-mail：zhulier1124@gmail.com
 * QQ：824247231
 * QQ群：696852484
