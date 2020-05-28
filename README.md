@@ -26,8 +26,10 @@
 # Project algorithm-相关算法  
 * 皮尔逊相关系数的相似度算法(Pearson)  
 * 以下给出其实现公式：  
+* 
 ![相关算法](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20150218130748809.png)   
-该算法在本系统中实现了基于景点分数近似度的推荐功能，以下给出数据获取方法代码，具体算法实现请查看CFUtils.cosineSimilarity()方法。
+
+* 该算法在本系统中实现了基于景点分数近似度的推荐功能，以下给出数据获取方法代码，具体算法实现请查看CFUtils.cosineSimilarity()方法。  
 ```
     public List<Spots> findRecommendList(String id) {
         //系统中我将景点抽象成了产品，这样便于扩展，如酒店、旅行团均可看作产品评分，统一记录在系统的分数表中
