@@ -175,7 +175,7 @@ spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
 ```
 如图启动main方法(mongodb-file-server同理)  
-[idea启动项目](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200530140655.png)  
+![idea启动项目](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200530140655.png)  
 5.view address访问地址  
 ``` 
 前台：http://localhost  
