@@ -149,7 +149,7 @@ nginx.exe -s reload
 * 下载后需要本地配置，具体请自行搜索([参考地址](https://www.cnblogs.com/skmobi/p/11696620.html))。
 ```
 启动命令：redis-server.exe  --service-start --service-name redisserver
-```
+```  
 4.启动项目
 * jar方式启动tourismPro
 ```
@@ -174,15 +174,15 @@ spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 ```
 spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
 ```
-如图启动main方法(mongodb-file-server同理)
-[idea启动项目](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200530140655.png)
-5.view address访问地址
+如图启动main方法(mongodb-file-server同理)  
+[idea启动项目](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200530140655.png)  
+5.view address访问地址  
 ``` 
 前台：http://localhost  
 后台：http://localhost:8082/index.html  
 ```
 
 # Call me-联系方式  
-* E-mail：824247231@qq.com
-* QQ：824247231
-* QQ群：696852484
+* E-mail：824247231@qq.com  
+* QQ：824247231  
+* QQ群：696852484  
