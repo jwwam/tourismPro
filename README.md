@@ -26,7 +26,7 @@
 # Project algorithm-相关算法  
 * 皮尔逊相关系数的相似度算法(Pearson)  
 * 以下给出其实现公式：  
-* 
+
 ![相关算法](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/2015021813074.png)   
 
 * 该算法在本系统中实现了基于景点分数近似度的推荐功能，以下给出数据获取方法代码，具体算法实现请查看CFUtils.cosineSimilarity()方法。  
@@ -92,7 +92,12 @@
 
 
 # Run-启动访问  
-将两个前端页面【tour-front】和【tour】文件包拷贝到Nginx根目录下，修改./conf/nginx.conf配置文件，替换原有的server配置如下：
+1.启动Nginx  
+* 下载地址：[点击下载](http://nginx.org/download/nginx-1.18.0.zip)  
+```
+启动命令：nginx.exe  
+```
+将两个前端页面【tour-front】和【tour】文件包拷贝到Nginx根目录下，修改./conf/nginx.conf配置文件，替换原有的server配置如下：  
 ```
     server {
         listen       80;
@@ -124,23 +129,6 @@
         }
     }
 ```
-修改tourismPro项目中application.properties配置文件，将你自己的MySQL账号和密码替换写入  
-
-```
-#数据源
-spring.datasource.url=jdbc:mysql://localhost:3306/tourismPro?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf8
-spring.datasource.username=你自己的MySQL账号
-spring.datasource.password=你自己的MySQL密码
-spring.datasource.driver-class-name=com.mysql.jdbc.Driver
-```
-修改mongodb-file-server项目中application.properties配置文件，将你自己本地创建的数据库替换写入，这里创建了名为tourismPro的mongodb数据库
-```
-spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
-```
-1.启动Nginx
-```
-nginx.exe
-```
 关闭Nginx
 ```
 nginx.exe -s stop
@@ -163,15 +151,32 @@ nginx.exe -s reload
 启动命令：redis-server.exe  --service-start --service-name redisserver
 ```
 4.启动项目
-* 启动tourismPro
+* jar方式启动tourismPro
 ```
 java -jar tourismPro.jar
 ```
-* 启动mongodb-file-server
+* jar方式启动mongodb-file-server
 ```
 java -jar mongodb-file-server.jar
 ```  
-5.view address  
+* 本地启动  
+
+打开idea选择import project，选择tourismPro或者mongodb-file-server导入，然后等待相关依赖加载完成  
+修改tourismPro项目中application.properties配置文件，将你自己的MySQL账号和密码替换写入  
+```
+#数据源
+spring.datasource.url=jdbc:mysql://localhost:3306/tourismPro?useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf8
+spring.datasource.username=你自己的MySQL账号
+spring.datasource.password=你自己的MySQL密码
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+```
+修改mongodb-file-server项目中application.properties配置文件，将你自己本地创建的数据库替换写入，这里在mongodb中创建了名为tourismPro的数据库
+```
+spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
+```
+如图启动main方法(mongodb-file-server同理)
+[idea启动项目](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200530140655.png)
+5.view address访问地址
 ``` 
 前台：http://localhost  
 后台：http://localhost:8082/index.html  
