@@ -220,6 +220,11 @@ java -jar mongodb-file-server.jar
 ```
 在后台添加数据查看是否在前台正确展示  
 
+# PS-赘述
+* 本项目使用SpringDataJpa自动构建数据库表，启动项目自动生成表结构，无需手动创建
+* 项目使用Redis存储Session缓存
+* 项目使用MongoDB作为小型文件存储数据库
+
    
 # Call me-联系方式  
 * E-mail：824247231@qq.com  
