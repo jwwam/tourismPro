@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -29,5 +30,8 @@ public class User extends BaseEntity implements Serializable {
 
     @Column(name = "age")
     private Long age;
+
+    @Transient
+    private String isAdmin;
 
 }

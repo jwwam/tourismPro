@@ -82,6 +82,9 @@ public class UserClientController extends BaseController {
                 us.setUserInfo(userSessionEntity);
                 String userJsonString = JSON.toJSONString(us);
                 redisUtil.set("user_session_"+us.getId(), userJsonString, RedisConstants.datebase1,300);
+                if("admin".equals(us.getUserName())){
+                    us.setIsAdmin("true");
+                }
                 return getModelMap(StateParameter.SUCCESS, us, "登录成功");
             }else {
                 return getModelMap(StateParameter.FAULT, null, "登录失败");

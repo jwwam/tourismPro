@@ -32,11 +32,11 @@ public class Hotel extends BaseEntity{
     private String hotelPrice;
 
     @Column(name = "check_in_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date checkInTime;
 
     @Column(name = "check_out_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private Date checkOutTime;
 
     @Column(name = "bed_type")
