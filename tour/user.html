@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+        <title>Hi.嗨旅-用户</title>
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <!--STYLESHEET-->
+        <!--=================================================-->
+        <!--Roboto Slab Font [ OPTIONAL ] -->
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400" rel="stylesheet">
+        <!--Bootstrap Stylesheet [ REQUIRED ]-->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!--Jasmine Stylesheet [ REQUIRED ]-->
+        <link href="css/style.css" rel="stylesheet">
+        <!--Font Awesome [ OPTIONAL ]-->
+        <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!--Switchery [ OPTIONAL ]-->
+        <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+        <!--FooTable [ OPTIONAL ]-->
+        <link href="plugins/fooTable/css/footable.core.css" rel="stylesheet">
+        <!--Demo [ DEMONSTRATION ]-->
+        <link href="css/demo/jasmine.css" rel="stylesheet">
+        <!--SCRIPT-->
+        <!--=================================================-->
+        <!--Page Load Progress Bar [ OPTIONAL ]-->
+        <link href="plugins/pace/pace.min.css" rel="stylesheet">
+        <script src="plugins/pace/pace.min.js"></script>
+    </head>
+    <body>
+        <div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed">
+            <!--NAVBAR-->
+            <!--===================================================-->
+            <header id="navbar">
+                <div id="navbar-container" class="boxed">
+                    <!--Navbar Dropdown-->
+                    <!--================================-->
+                    <div class="navbar-content clearfix">
+                        <ul class="nav navbar-top-links pull-left">
+                            <!--Navigation toogle button-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="tgl-menu-btn">
+                                <a class="mainnav-toggle" href="#"> 
+                                    <i class="fa fa-navicon fa-lg"></i> 
+                                </a>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        </ul>
+                        <ul class="nav navbar-top-links pull-right">
+                            <!--Profile toogle button-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li id="dropdown-user" class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                    <span class="pull-right"> <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture"> </span>
+                                    <div class="username hidden-xs">朱利尔</div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right with-arrow">
+                                    <!-- User dropdown menu -->
+                                    <ul class="head-list">
+                                        <li>
+                                            <a href="#"> <i class="fa fa-user fa-fw"></i> Profile </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">  <i class="fa fa-envelope fa-fw"></i> Messages </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">  <i class="fa fa-gear fa-fw"></i> Settings </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <i class="fa fa-sign-out fa-fw"></i> Logout </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End user dropdown-->
+                        </ul>
+                    </div>
+                    <!--================================-->
+                    <!--End Navbar Dropdown-->
+                </div>
+            </header>
+            <!--===================================================-->
+            <!--END NAVBAR-->
+            <div class="boxed">
+                <!--CONTENT CONTAINER-->
+                <!--===================================================-->
+                <div id="content-container">
+                    <div class="pageheader hidden-xs">
+                        <h1><i class="fa fa-home"></i> 用户 </h1>
+                          <div class="breadcrumb-wrapper">
+                            <span class="label">当前位置：</span>
+                               <ol class="breadcrumb">
+                                  <li> <a href="#"> Home </a> </li>
+                                  <li class="active">用户 </li>
+                               </ol>
+                          </div>
+                      </div>
+                    <!--Page content-->
+                    <!--===================================================-->
+                    <div id="page-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">用户列表</h3>
+                                    </div>
+                                    <!-- Foo Table - Add & Remove Rows -->
+                                    <!--===================================================-->
+                                    <div class="panel-body">
+                                            <div class="pad-btm form-inline">
+                                                <div class="row">
+                                                    <!-- <div class="col-sm-6 text-xs-center">
+                                                        <div class="form-group">
+                                                            <button id="demo-bootbox-custom-h-form" class="btn btn-default">添加</button>
+                                                        </div>
+                                                    </div> -->
+                                                    <!-- <div class="col-sm-6 text-xs-center text-right">
+                                                        <div class="form-group">
+                                                            <input id="demo-input-search2" type="text" placeholder="搜索" class="form-control" autocomplete="off">
+                                                        </div>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        <table id="user_list" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                                            <thead>
+                                                <tr>
+                                                    <th name="id">id</th>
+                                                    <th name="userName">用户名</th>
+                                                    <th name="password">用户密码</th>
+                                                    <th name="age">年龄</th>
+                                                    <th name="createDate">创建时间</th>
+                                                    <th name="id">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--===================================================-->
+                                    <!-- End Foo Table - Add & Remove Rows -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    <!--===================================================-->
+                    <!--End page content-->
+                </div>
+                <!--===================================================-->
+                <!--END CONTENT CONTAINER-->
+                <!--MAIN NAVIGATION-->
+                <!--===================================================-->
+                
+                <include src="menu.html"></include>
+
+                <!--===================================================-->
+                <!--END MAIN NAVIGATION-->
+            </div>
+            <!-- FOOTER -->
+            <!--===================================================-->
+            <footer id="footer">
+                <!-- Visible when footer positions are fixed -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="show-fixed pull-right">
+                    <ul class="footer-list list-inline">
+                        <li>
+                            <p class="text-sm">SEO Proggres</p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 80%" class="progress-bar progress-bar-danger"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="text-sm">Online Tutorial</p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 80%" class="progress-bar progress-bar-primary"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-sm btn-dark btn-active-success">Checkout</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Visible when footer positions are static -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="hide-fixed pull-right pad-rgt">Currently v2.2</div>
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <p class="pad-lft">Copyright &copy; 2020.Company 朱利尔 All rights reserved.<a target="_blank" href="http://www.baidu.com"></a></p>
+            </footer>
+            <!--===================================================-->
+            <!-- END FOOTER -->
+            <!-- SCROLL TOP BUTTON -->
+            <!--===================================================-->
+            <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+            <!--===================================================-->
+        </div>
+        <!--===================================================-->
+        <!-- END OF CONTAINER -->
+
+        <!--Small Bootstrap Modal-->
+        <!--===================================================-->
+        <div id="demo-sm-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title" id="mySmallModalLabel">结果</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="model-res"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--===================================================-->
+
+        <!--JAVASCRIPT-->
+        <!--=================================================-->
+        <!--jQuery [ REQUIRED ]-->
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <!--BootstrapJS [ RECOMMENDED ]-->
+        <script src="js/bootstrap.min.js"></script>
+        <!--Fast Click [ OPTIONAL ]-->
+        <script src="plugins/fast-click/fastclick.min.js"></script>
+        <!--Jquery Nano Scroller js [ REQUIRED ]-->
+        <script src="plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+        <!--Metismenu js [ REQUIRED ]-->
+        <script src="plugins/metismenu/metismenu.min.js"></script>
+        <!--Jasmine Admin [ RECOMMENDED ]-->
+        <script src="js/scripts.js"></script>
+        <!--Switchery [ OPTIONAL ]-->
+        <script src="plugins/switchery/switchery.min.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+        <!--FooTable [ OPTIONAL ]-->
+        <script src="plugins/fooTable/dist/footable.all.min.js"></script>
+        <!--Fullscreen jQuery [ OPTIONAL ]-->
+        <script src="plugins/screenfull/screenfull.js"></script>
+        <!--FooTable Example [ SAMPLE ]-->
+        <script src="js/demo/tables-footable.js"></script>
+        <!-- DataTables -->
+        <!-- <script src="plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+        <script src="plugins/datatables/media/js/jquery.dataTables.js"></script>-->
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap.min.js"></script>
+        <!--Bootbox Modals [ OPTIONAL ]-->
+        <script src="plugins/bootbox/bootbox.min.js"></script>
+        <script src="js/include.js"></script>
+        <script>
+            //var base_url = 'http://10.127.127.1:8080/s/user';
+            var base_url = 'http://localhost:8080/s/user';
+            // init date tables
+            var userTable = $("#user_list").dataTable({
+                "deferRender": true,
+                "processing" : true,
+                "serverSide": true,
+                "bLengthChange": false,
+                "bPaginate": true,
+                "iDisplayLength": 10,
+                "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
+                "ajax": {
+                    url: base_url + "/list",
+                    type:"post",
+                    dataType: "json",
+                    async:false,
+                    contentType:'application/json;chart=utf-8',
+                    data : function ( d ) {
+                        var obj = {};
+                        // obj.id = $('#id').val();
+                        // obj.userName = $('#userName').val();
+                        // obj.password = $('#password').val();
+                        // obj.age = $('#age').val();
+                        // obj.createDate = $('#createDate').val();
+                        obj.start = d.start/d.length;
+                        obj.length = d.length;
+                        return JSON.stringify(obj);
+
+                        //通过形参"d"可以获取到datable自带的参数信息，然后计算和转换设置接口所需要的参数
+                        //我的服务端接口配置是pageno为页数，count为数量，state是其他参数
+                        //d.pageno = d.start/d.length+1;
+                        //d.count = d.length;
+                    },
+                    dataFilter: function (json) {//json是服务器端返回的数据
+                        //如果服务端返回的json字符串符合datatable要求，则直接return json，若不符合则进行以下步骤
+                        //获取到的是json字符串,转换成json对象，提取所需要的数据
+                        var dt = $.parseJSON(json);
+                        console.log(dt);
+                        //然后定义一个符合datatable要求的对象，data属性的值是实际返回的数据
+                        var returndt = {
+                            //"draw": ,
+                            "recordsTotal": dt.data.recordsTotal,
+                            "recordsFiltered": dt.data.recordsFiltered,
+                            "data":dt.data.userList
+                        };
+                        //把符合要求的对象再次转为json字符串return出去
+                        return JSON.stringify(returndt);
+                },
+                },
+                "searching": false,
+                "ordering": false,
+                //"scrollX": true,	// scroll x，close self-adaption
+                "columns": [
+                            {
+                                "data": 'id',
+                                "bSortable": false,
+                                "visible" : true,
+                                "width":'20%'
+                            },
+                            {
+                                "data": 'userName',
+                                "visible" : true,
+                                "width":'20%'
+                            },
+                            {
+                                "data": 'password',
+                                "visible" : true,
+                                "width":'20%'
+                            },
+                            {
+                                "data": 'age',
+                                "width":'20%',
+                                "visible" : true,
+                            },
+                            { 
+                                "data": 'createDate', 
+                                "width":'20%',
+                                "visible" : true,
+                                "render": function ( data, type, row ) {
+                                    return getMyDate(data);
+                                }
+                            },
+                            {
+                                "data": 'id' ,
+                                "width":'10%',
+                                "render": function ( data, type, row ) {
+                                    return function(){
+                                        // status
+                                        //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
+                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
+
+                                        // log url
+                                        //var logHref = base_url +'/joblog?jobId='+ row.id;
+
+                                        // data
+                                        //tableData['key'+row.id] = row;
+
+                                        // opt
+                                        var html = start_stop_div;
+                                        return html;
+                                    };
+                                }
+                            }
+                        ],
+                        "oLanguage": {//插件的汉化
+                            "sLengthMenu": "每页显示 _MENU_ 条记录",
+                            "sZeroRecords": "抱歉， 没有找到",
+                            "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                            "sInfoEmpty": "没有数据",
+                            "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                            "oPaginate": {
+                                "sFirst": "首页",
+                                "sPrevious": "前一页",
+                                "sNext": "后一页",
+                                "sLast": "尾页"
+                            },
+                            "sZeroRecords": "没有检索到数据",
+                            "sProcessing": "<img src='' />",
+                            "sSearch": "搜索"
+                        },
+            });
+
+            // table data
+            var tableData = {};
+
+            function deleteThisRowPapser(id){
+                bootbox.confirm({
+                    message: "确认删除吗?",
+                    buttons: {
+                        confirm: {
+                            label: '确认',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: '取消',
+                            className: 'btn-danger'
+                        }
+                },
+                callback: function (result,id) {
+                    $.ajax({
+                        type:'post',
+                        async:false,
+                        url:base_url+'/deleteUser',
+                        contentType:'application/json;chart=utf-8',
+                        dataType:'json',
+                        data:function(){
+                            var obj = {};
+                            obj.id= id;
+                            return JSON.stringify(obj);
+                        },
+                        success:function(result){
+                            userTable.fnClearTable(); //清空一下table
+                            userTable.fnDestroy(); //还原初始化了的datatable
+                            $('#demo-sm-modal').modal('show');
+                            $('#model-res').html(result.msg);
+                            
+                        }
+                    })
+                }
+		        });
+            }
+
+            //将时间戳格式化 
+            function getMyDate(time){  
+                if(typeof(time)=="undefined"){
+                    return "";
+                }
+                var oDate = new Date(time),  
+                oYear = oDate.getFullYear(),  
+                oMonth = oDate.getMonth()+1,  
+                oDay = oDate.getDate(),  
+                oHour = oDate.getHours(),  
+                oMin = oDate.getMinutes(),  
+                oSen = oDate.getSeconds(),  
+                oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间  
+                        
+                return oTime;  
+                };
+                
+                //补0操作,当时间数据小于10的时候，给该数据前面加一个0  
+                function getzf(num){  
+                    if(parseInt(num) < 10){  
+                        num = '0'+num;  
+                    }  
+                    return num;  
+                }
+
+
+    // BOOTBOX - CUSTOM HTML FORM
+	// =================================================================
+	// Require Bootbox
+	// http://bootboxjs.com/
+	// =================================================================
+	$('#demo-bootbox-custom-h-form').click(function(){
+		bootbox.dialog({
+
+            title: "添加用户",
+            message:"<div class='row'> " +
+            "<div class='col-md-6'> " +
+            "<div class='form-group'> " +
+            "<label class='control-label' for='name'>用户名</label> " +
+            "<input id='name' name='name' type='text' placeholder='输入用户名' class='form-control input-md'> " +
+            "</div> " +
+            "</div> " +
+            "<div class='col-md-6'> " +
+            "<div class='form-group'> " +
+            "<label class='control-label' for='name'>昵称</label> " +
+            "<input id='nikename' name='name' type='text' placeholder='输入昵称' class='form-control input-md'> " +
+            "</div> " +
+            "</div> " +
+            "</div> " +
+            "<div class='row'> " +
+            "<div class='col-md-12'> " +
+            "<div class='form-group'> " +
+            "<label class='control-label' for='name'>地址 :- </label> " +
+            "<input id='address' name='name' type='text' placeholder='输入地址' class='form-control input-md'> " +
+            "</div> " +
+            "</div> " +
+            "</div> " +
+            "<div class='row'> " +
+            "<div class='col-md-4'> " +
+            "<div class='form-group'> " +
+            "<label class='control-label' for='name'>城市  </label> " +
+            "<input id='city' name='name' type='text' placeholder='输入城市' class='form-control input-md'> " +
+            "</div> " +
+            "</div> " +
+            "<div class='col-md-4'> " +
+            "<div class='form-group'> " +
+            "<label class='control-label' for='name'>国家  </label> " +
+            "<input id='country' name='name' type='text' placeholder='输入国家' class='form-control input-md'> " +
+            "</div> " +
+            "</div> " +
+            "<div class='col-md-4'> " +
+            "<div class='form-group'> " +
+            "<label class='control-label' for='name'>邮编  </label> " +
+            "<input id='post' name='name' type='text' placeholder='输入邮编' class='form-control input-md'> " +
+            "</div> " +
+            "</div> " +
+            "</div> " +
+            "<div class='row'> " +
+            "<div class='col-md-12'> " +
+            "<div class='form-group'> " +
+            "<label class='control-label' for='name'>详细地址 :- </label> " +
+            "<textarea class='form-control autogrow' id='address_detail' placeholder='输入具体地址信息...' style='height: 104px;'> </textarea>  " +
+            "</div> " +
+            "</div> " +
+            "</div> " +
+            "<div class='row'> " +
+                "<div class='form-group'> " +
+                    "<label class='col-md-4 control-label' for='awesomeness'>How awesome is this ?</label> " +
+                    "<div class='col-md-8'>"+
+                        "<div class='form-block'>" +
+                            "<label class='form-radio form-icon demo-modal-radio active'><input type='radio' autocomplete='off' name='awesomeness' value='Really awesome' checked> Really awesome</label>" +
+                            "<label class='form-radio form-icon demo-modal-radio'><input type='radio' autocomplete='off' name='awesomeness' value='Super awesome'> Super awesome </label>" +
+                        "</div>" +
+                    "</div> " +
+                "</div> " +
+            "</div> " +
+            "</div> " +
+            "</div> </div>" + 
+            "</form> </div> </div>",
+			
+			buttons: {
+				success: {
+					label: "添加用户",
+					className: "btn-danger",
+					callback: function() {
+						var name = $('#name').val();
+                        var obj = new Object();
+                        obj.userName= name;
+                        console.log("obj="+JSON.stringify(obj));
+						//var answer = $("input[name='awesomeness']:checked").val();
+                        $.ajax({
+                            type:'post',
+                            async:false,
+                            url:base_url+'/addUser',
+                            contentType:'application/json;chart=utf-8',
+                            dataType:'json',
+                            data:JSON.stringify(obj),
+                            success:function(result){
+                                userTable.fnClearTable(); //清空一下table
+                                userTable.fnDestroy(); //还原初始化了的datatable
+                                $('#demo-sm-modal').modal('hide');
+                                
+                            }
+                        })
+						
+					}
+				},
+                cancel: {
+					label: "取消",
+					className: "btn-default"
+				}
+			}
+		});
+
+		$(".demo-modal-radio").jasmineCheck();
+	});
+
+     
+        </script>
+    </body>
+</html>

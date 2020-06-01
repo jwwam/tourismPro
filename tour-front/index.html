@@ -1,0 +1,499 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>首页</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+<!-- Mobile Specific
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="home">
+<div id="slider-wrap">
+	<div class="camera_wrap" id="camera-wrap">
+		<div data-src="images/uploads/1280x800/st-basil.jpg">
+		
+			<div class="camera_caption moveFromBottom camera_text_center">
+				<div class="caption_slider h2">
+					30%的折扣：莫斯科三日游
+				</div>
+			</div>
+			
+		</div>
+		<div data-src="images/uploads/1280x800/temple-kyoto.jpg">
+        
+        	<div class="camera_caption moveFromLeft camera_text_center">
+				<div class="caption_slider h2">
+					城堡豪华假期
+				</div>
+			</div>
+        
+        </div>
+		<div data-src="images/uploads/1280x800/moscow.jpg">
+        	
+            <div class="camera_caption fadeIn camera_text_center">
+				<div class="caption_slider h2">
+					30%的折扣：莫斯科三日游
+				</div>
+			</div>
+        
+        </div>
+		<div data-src="images/uploads/1280x800/temple-kyoto.jpg">
+        
+        	<div class="camera_caption moveFromBottom camera_text_center">
+				<div class="caption_slider h2">
+					探索最有趣的日本
+				</div>
+			</div>
+        
+        </div>
+		
+		
+	</div><!--camera-wrap -->
+</div>
+
+<div id="wrapper">
+	<div id="container">
+	
+		<!--start header -->
+		<header id="header">
+			<div id="logo">
+				<a href="index.html"><strong>Hi.</strong>嗨Bike</a>
+				<label id="session"></label>
+			</div>	
+			<div id="searchbox">
+					<input type="text" id="userName" class="user-offline-title user-input" placeholder="账号" value=""/>
+					<input type="password" id="password" class="user-offline-title user-input" placeholder="密码" value=""/>
+					<button type="submit" class="user-offline-title user-login">登录</button>
+					<button type="submit" class="user-offline-title user-regist">注册</button>
+					<button type="submit" class="user-online-title user-logout">注销</button>
+			</div>
+			<div id="navigation">
+				<ul id="nav">
+					<li class="selected"><a href="index.html">首页</a></li>
+					<li><a href="spots.html">景点</a>
+					<li><a href="spots-recommend.html">景点推荐</a>
+						<!-- <ul>
+							<li><a href="browse-result.html">Browse Result</a></li>
+							<li><a href="browse-detail.html">Browse Detail</a></li>
+						</ul> -->
+					</li>
+					<li><a href="hotel.html">酒店</a></li>
+					<!-- <li><a href="plane.html">航班</a></li> -->
+					<li><a href="line.html">旅线</a></li>
+					<li><a href="order.html">我的订单</a></li>
+					<!-- <li><a href="#">关于我们</a></li> -->
+				</ul>
+			</div>
+		</header>
+		<!--end header -->
+		
+		<!--start content -->
+		<section id="content">
+			<div class="two-third">
+				<div id="searchmodule" class="tabs">
+					<ul class="tab-control">
+						<li><a href="#flight-search">机票预定</a></li>
+						<li><a href="#hotel-search">酒店预定</a></li>
+						<!-- <li><a href="#travel-search"></a></li> -->
+					</ul>
+					<div id="flight-search" class="tab-content">
+						<form action="#">
+							<div class="field">
+								<label for="flight-from">出发:</label>
+								<input type="text" id="flight-from" class="input-text" placeholder="出发地" autocomplete="off" />
+							</div>
+							<div class="field">
+								<label for="flight-to">到达:</label>
+								<input type="text" id="flight-to" class="input-text" placeholder="目的地" autocomplete="off" />
+							</div>
+							<div class="field half">
+								<label for="flight-depart">离开:</label>
+								<input type="text" id="flight-depart" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+							</div>
+							<div class="field half even">
+								<label for="flight-return">返回:</label>
+								<input type="text" id="flight-return" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+							</div>
+							<div class="field half">
+								<label for="flight-class">类型:</label>
+								<select id="flight-class">
+									<option>默认</option>
+									<option>VIP</option>
+									<option>公司</option>
+								</select>
+							</div>
+							<div class="field half even">
+								<label for="flight-person">人数:</label>
+								<select id="flight-person">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+							<button type="submit" class="submit plane-search-button">查询</button>
+							<br class="clear" />
+						</form>
+					</div>
+					<!--flight search -->
+					
+					<div id="hotel-search" class="tab-content">
+						<form action="#">
+							<div class="field">
+								<label for="hotel-to">城市:</label>
+								<input type="text" id="hotel-to" class="input-text" placeholder="输入地址" autocomplete="off" />
+							</div>
+							<div class="field half">
+								<label for="hotel-depart">入住日期:</label>
+								<input type="text" id="hotel-depart" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+							</div>
+							<div class="field half even">
+								<label for="hotel-return">离店日期:</label>
+								<input type="text" id="hotel-return" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+							</div>
+							<div class="field half even">
+								<label for="hotel-room">人数:</label>
+								<select id="hotel-room">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+								</select>
+							</div>
+							<button type="submit" class="submit hotel-search-button">查询</button>
+							<br class="clear" />
+						</form>
+					</div>
+					<!--hotel search -->
+					
+					<!--travel search -->
+				</div>
+			</div>
+			<!--searchmodule -->
+			
+			<div class="one-third last">
+				<div id="newsletter" class="module">
+					<div class="module-content">
+						<div class="module-content-wrap">
+							<a href="www.baidu.com"><img width="100%" height="auto" src="https://source.qunarzz.com/site/images/wns/20171019_pc_464x320_7667.jpg"/></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--newsletter -->
+			
+			<div class="hr"><hr /></div>
+			
+			<div class="one-third">
+				<h3 class="icon32 icon-tick thin">技术领先</h3>
+				<p>我们一直将技术创新视为企业的活力源泉，在提升研发能力方面不遗余力。我们建立了一整套现代化服务系统，包括：国际机票、酒店预订平台、客户管理系统、房量管理系统、呼叫排队系统、订单处理系统、服务质量监控系统等。依靠这些先进的服务和管理系统，我们为会员提供更加便捷和高效的服务。</p>
+			</div>
+			
+			<div class="one-third">
+				<h3 class="icon32 icon-tick thin">规模经营</h3>
+				<p>服务规模化和资源规模化是我们的核心优势之一。我们在全球200个国家和地区与近80万家酒店建立了长期稳定的合作关系，其机票预订网络已覆盖国际国内绝大多数航线。规模化的运营不仅可以为会员提供更多优质的旅行选择，还保障了服务的标准化，确保服务质量，并降低运营成本。</p>
+			</div>
+			
+			<div class="one-third last">
+				<h3 class="icon32 icon-tick thin">体系规范</h3>
+				<p>先进的管理和控制体系是我们的又一核心优势。我们将服务过程分割成多个环节，以细化的指标控制不同环节，并建立起一套精益服务体系。同时，我们还将制造业的质量管理方法——六西格玛体系成功运用于旅行业。目前，我们各项服务指标均已接近国际领先水平，服务质量和客户满意度也随之大幅提升。</p>
+			</div>
+			
+			<div class="hr"><hr /></div>			
+			
+			<!--newsection -->
+			<div class="section-title">
+				<span class="h3">热门目的地</span>
+				<a class="right" href="spots.html">查看所有目的地</a>		
+			</div>
+			
+			<div class="fourth-spots">
+				<!-- <div class="one-fourth">
+					<div class="post-item">
+						<div class="image-place">
+							<img src="images/uploads/220x135/auckland-city.jpg" alt="image" />
+						</div>
+						<div class="post-content">
+							<h4 class="post-title">马尔代夫旅行</h4>
+							<p class="post-excerpt">坐落于马尔代夫的emboodhufinolhu岛——马尔代夫的最大岛屿之一。</p>
+						</div>
+						<div class="post-meta">
+							<span class="comment-count">12条留言</span>
+							<a class="read-more" href="#">了解更多</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="one-fourth">
+					<div class="post-item">
+						<div class="image-place">
+							<img src="images/uploads/220x135/rio-de-jainero.jpg" alt="image" />
+						</div>
+						<div class="post-content">
+							<h4 class="post-title">巴西旅行</h4>
+							<p class="post-excerpt">激情热辣的里约热内卢奔放刺激的伊瓜苏大瀑布热情火辣的桑巴表演。</p>
+						</div>
+						<div class="post-meta">
+							<span class="comment-count">27条留言</span>
+							<a class="read-more" href="#">了解更多</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="one-fourth">
+					<div class="post-item">
+						<div class="image-place">
+							<img src="images/uploads/220x135/stupa.jpg" alt="image" />
+						</div>
+						<div class="post-content">
+							<h4 class="post-title">婆罗浮屠寺庙群</h4>
+							<p class="post-excerpt">婆罗浮屠位于东南亚的印度尼西亚，大约于公元750年至850年间，由...</p>
+						</div>
+						<div class="post-meta">
+							<span class="comment-count">51条留言</span>
+							<a class="read-more" href="#">了解更多</a>
+						</div>
+					</div>
+				</div>
+				
+				<div class="one-fourth last">
+					<div class="post-item">
+						<div class="image-place">
+							<img src="images/uploads/220x135/st-basil-2.jpg" alt="image" />
+						</div>
+						<div class="post-content">
+							<h4 class="post-title">莫斯科圣彼得堡</h4>
+							<p class="post-excerpt">位于俄罗斯西北部，波罗的海沿岸，涅瓦河口，是俄罗斯的中央直辖市。</p>
+						</div>
+						<div class="post-meta">
+							<span class="comment-count">32条留言</span>
+							<a class="read-more" href="#">Read More</a>
+						</div>
+					</div>
+				</div> -->
+				
+				<!-- <br class="clear" /> -->
+			</div>
+			
+			
+			<div class="action-box">
+				<div class="left">
+					<div class="action-title">30％的折扣：3晚豪华逃生到巴厘岛库塔</div>
+					<div class="action-desc">一场前所未有的旅途体验，带上你的好友们快来体验吧！点击现在预定获取最低优惠，我们等你哦~</div>
+				</div>
+				<div class="right">
+					<a class="button">
+						现在预定
+					</a>
+				</div>
+			</div>
+			<!--action-box -->
+			
+			
+			<br class="clear" />
+		</section>
+		<!--end content -->
+	
+	</div>
+	<!--container -->
+	
+	<include src="common-footer.html"></include>
+
+</div>
+
+	<!-- Java Script
+	================================================== -->
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile.customized.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script> 
+	<script type="text/javascript" src="js/camera.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="js/selectnav.min.js"></script>
+	<!--<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyB3tShW1hLlV2lYW8_sCVln6TLF2bWvgU8"></script>-->
+	<script type="text/javascript" src="js/jquery.googlemaps.1.01.min.js"></script>
+	<script type="text/javascript" src="js/theme.js"></script>
+	<script type="text/javascript" src="js/jquerysession.js"></script>
+	<script type="text/javascript" src="js/include.js"></script>
+	<script>
+		$(function() {
+			var base_url = 'http://localhost:8080/c';
+			var userId=$.session.get('userSession');
+			var obj = {};
+			obj.id=userId;
+			var reqData = JSON.stringify(obj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/user/getSession',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data: reqData,
+				success:function(result){
+					if(result.status==1){
+						$("#session").text("-欢迎您："+result.data.userInfo.userName);
+						$(".user-offline-title").hide();
+						$(".user-online-title").show();
+						$.session.set('userSession', result.data.id);
+						$.session.set('userName', result.data.userName);
+						$("#session").show();
+					}else{
+						$("#session").val("");
+						$("#session").hide();
+						//$(".user-offline-title").show();
+						//$(".user-online-title").hide();
+						$.session.remove('userSession');
+						$.session.remove('userName');
+						window.location.href="login.html";
+					}
+				}
+			})
+
+
+			$(".user-login").on("click",function(){
+				var userName=$("#userName").val();
+				var password=$("#password").val();
+				var obj = {};
+				obj.userName=userName;
+				obj.password=password;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/login',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							$("#session").text("——欢迎您："+result.data.userInfo.userName);
+							$(".user-offline-title").hide();
+							$(".user-online-title").show();
+							$("#session").show();
+							$.session.set('userSession', result.data.id);
+							$.session.set('userName', result.data.userName)
+						}
+					}
+				})
+			})
+
+
+			$(".user-regist").on("click",function(){
+				var userName=$("#userName").val();
+				var password=$("#password").val();
+				var obj = {};
+				obj.userName=userName;
+				obj.password=password;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/logon',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							alert("注册成功");
+						}else{
+							alert(result.msg);
+						}
+					}
+				})
+			})
+
+			$(".user-logout").on("click",function(){
+				var userName=$.session.get('userName');
+				var obj = {};
+				obj.userName=userName;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/logout',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							$.session.clear();
+							window.location.href="login.html";
+						}else{
+							alert(result.msg);
+						}
+					}
+				})
+			})
+
+
+			var fourthSpotsObj = {};
+			fourthSpotsObj.start=1;
+			fourthSpotsObj.length=4;
+			var requestDataFourthSpotsObj = JSON.stringify(fourthSpotsObj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/spots/list',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data:requestDataFourthSpotsObj,
+				success:function(result){
+					setContent(result.data.spotsList);
+				}
+			})
+
+			function setContent(data){
+				var htmlContent = "";
+				$.each(data, function(i,val){
+					var parentDivClass = i==3?"<div class='one-fourth last'>":"<div class='one-fourth'>";
+					var endDiv = i==3?"<br class='clear' />":"";
+					htmlContent = htmlContent + parentDivClass +
+						"<div class='post-item'>"+
+							"<div class='image-place'>"+
+								"<img src='http://"+ val.spotsImages.split(',')[0]+"' width='220px' height='135px' alt='image' />"+
+							"</div>"+
+							"<div class='post-content' style='height:85px'>"+
+								"<h4 class='post-title'><a href='browse-detail.html?id="+ val.id +"'>"+ val.spotsName +"</a></h4>"+
+								"<p class='post-excerpt'>"+ (val.spotsDescription).substring(0,50) +"...</p>"+
+							"</div>"+
+							"<div class='post-meta'>"+
+								"<span class='comment-count'>12条留言</span>"+
+								"<a class='read-more' href='spots-detail.html?id="+ val.id +"'>了解更多</a>"+		
+							"</div>"+
+						"</div>"+
+					"</div>"+endDiv
+				});
+				$(".fourth-spots").html(htmlContent);
+			}
+
+			$(".plane-search-button").on("click",function(){
+				window.location.href = "plane.html";
+			})
+
+			$(".hotel-search-button").on("click",function(){
+				window.location.href = "hotel.html";
+			})
+
+			});
+	</script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+
+
+/* Lower Screen
+====================================================================== */
+@media only screen and (max-width: 959px) {
+	#container, .wrap{ width:100%; }
+	#header, #content, #footer{ padding-left:20px; padding-right:20px; }
+	.subheader{ margin-left:20px; margin-right:20px; }
+	
+	.two-third #searchmodule .tab-content form{ width:114%; }
+	.two-third #searchmodule .field,
+	.two-third #searchmodule .field .input-text{ width:92%; }
+	.two-third #searchmodule .field.half{ width:38%; margin-right:9%; }
+	.two-third #searchmodule .field.half .input-text{ width:100%; margin-right:0; }
+	
+	.one-third #searchmodule .tab-content form{ width:114%; }
+	.one-third #searchmodule .field,
+	.one-third #searchmodule .field .input-text{ width:92%; }
+	.one-third #searchmodule .field.half{ width:38%; margin-right:9%; }
+	.one-third #searchmodule .field.half .input-text{ width:100%; margin-right:0; }
+	
+	#searchmodule .tab-content form .submit{ position:inherit; top:auto; right:auto; width:87%; border-radius:2px; margin:0 0 20px; }
+	
+	.one-half, .one-third, .two-third, .one-fourth{ margin-right:2.083%; }
+	.one-half{ width:47.916%; }
+	.one-third{ width:31.25%; }
+	.two-third{ width:64.583%; }
+	.one-fourth{ width:22.916%; }
+	.two-third .one-half{ width:47.916%; }
+	.action-box .left{ width:auto; }
+	
+}
+
+/* Tablet Portrait (devices and browsers)
+====================================================================== */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+	
+	#content, 
+	.subheader, 
+	#footer .wrap, 
+	#subfooter .wrap, 
+	.tag-filter-container { width: 748px; margin-left:auto; margin-right:auto; }
+	
+	.subheader{ width:708px; }
+	.one-half, .one-third, .two-third, .one-fourth{ margin-right:20px; }
+	.one-half { width: 364px; }
+	.one-third { width: 236px; }
+	.two-third { width: 492px; }
+	.one-fourth { width: 172px; }
+	.three-fourth { width: 556px; }
+	.two-third .one-half{ width:215px; }
+	
+	/*
+	.two-third #searchmodule .tab-content form{ width:510px; }
+	.two-third #searchmodule .field,
+	.two-third #searchmodule .field .input-text{ width:190px; }
+	.two-third #searchmodule .field.half,
+	.two-third #searchmodule .field.half .input-text{ width:190px; margin-right:60px; }
+	
+	.one-third #searchmodule .tab-content form{ width:260px; }
+	.one-third #searchmodule .field,
+	.one-third #searchmodule .field .input-text{ width:187px; }
+	.one-third #searchmodule .field.half,
+	.one-third #searchmodule .field.half .input-text{ width:83px; margin-right:20px; }
+	*/
+	
+	.tag-filter-container{ width:768px; }
+	
+	.post-item .post-content-detail{ display:none; }
+
+}
+
+/* All Mobile Sizes (devices and browser)
+====================================================================== */
+@media only screen and (max-width: 767px) {
+
+	#header{ padding:20px 0; text-align:center; height:auto; }
+	#header #searchbox{ display:none; }
+	#header #logo,
+	#header #navigation{ float:none; margin:0 auto; }
+	#header #logo{ line-height:1em; margin-bottom:20px; }
+	
+	.js #nav { display: none; }
+	.js .selectnav { display: block; width:420px; margin:0 auto; }
+
+	.subheader .page-desc{ display:none; }
+	.post-item .image-place img{ width:100%; }
+	.one-half, .one-third, .two-third, .one-fourth{ width:420px; margin-right:0; }
+	
+	.post-thumb-hor .image-place{ float:none; width:auto; height:auto; }
+	.post-thumb-hor .post-content{ margin-left:0; padding:20px; height:auto; }
+		
+	#subfooter .left, 
+	#subfooter .right{ width:100%; margin:0 0 10px; text-align:center; }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers)
+====================================================================== */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+	
+	#content, 
+	.subheader, 
+	#footer .wrap, 
+	#subfooter .wrap, 
+	.tag-filter-container { width: 420px; margin-left:auto; margin-right:auto; }
+	
+	.subheader{ width:378px; }
+	
+	.tag-filter-container{ width:440px; }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
+====================================================================== */
+@media only screen and (max-width: 479px) {
+	
+	#navigation{ padding:0 20px; }
+	.js .selectnav { width:100%; }
+	
+	.tag-filter-container{ width:100%; }
+	.one-half, .one-third, .two-third, .one-fourth, .two-third .one-half{ width:100% !important; margin-right:0 !important; }
+
+}

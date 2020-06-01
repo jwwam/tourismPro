@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="216343bc-6e0d-4a9b-aff0-1b2f236ce015" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1bc60XnZ2p5a5RY9gTYsmvTICUY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="216343bc-6e0d-4a9b-aff0-1b2f236ce015" name="Default Changelist" comment="" />
+      <created>1588918811652</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588918811652</updated>
+      <workItem from="1588918812877" duration="17000" />
+      <workItem from="1588944967063" duration="1364000" />
+      <workItem from="1590396958014" duration="106000" />
+      <workItem from="1590568724903" duration="240000" />
+      <workItem from="1590568972729" duration="119000" />
+      <workItem from="1590575536656" duration="31000" />
+      <workItem from="1590584109182" duration="533000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="832" y="517" width="256" height="297" key="Github.ShareDialog" timestamp="1590584191360">
+      <screen x="0" y="0" width="1920" height="1240" />
+    </state>
+    <state x="832" y="517" width="256" height="297" key="Github.ShareDialog/0.0.1920.1240@0.0.1920.1240" timestamp="1590584191360" />
+    <state x="728" y="323" key="Github.UntrackedFilesDialog" timestamp="1590584359757">
+      <screen x="0" y="0" width="1920" height="1240" />
+    </state>
+    <state x="728" y="323" key="Github.UntrackedFilesDialog/0.0.1920.1240@0.0.1920.1240" timestamp="1590584359757" />
+    <state x="461" y="264" key="SettingsEditor" timestamp="1590569050699">
+      <screen x="0" y="0" width="1920" height="1240" />
+    </state>
+    <state x="461" y="264" key="SettingsEditor/0.0.1920.1240@0.0.1920.1240" timestamp="1590569050699" />
+    <state x="502" y="182" width="1009" height="798" key="find.popup" timestamp="1588945131680">
+      <screen x="0" y="0" width="1920" height="1240" />
+    </state>
+    <state x="502" y="182" width="1009" height="798" key="find.popup/0.0.1920.1240@0.0.1920.1240" timestamp="1588945131680" />
+  </component>
+</project>

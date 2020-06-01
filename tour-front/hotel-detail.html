@@ -1,0 +1,465 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>酒店预定详情</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+<!-- Mobile Specific
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+
+
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="blog">
+
+<div id="slider-wrap">
+	<div class="camera_overlayer"></div>
+</div>
+
+<div id="wrapper">
+	<div id="container">
+
+		<!--start header -->
+		<header id="header">
+			<div id="logo">
+				<a href="index.html"><strong>Hi.</strong>嗨Bike</a>
+				<label id="session"></label>
+			</div>	
+			<div id="searchbox">
+				<form action="#">
+					<input type="text" id="userName" class="user-offline-title user-input" placeholder="账号" value=""/>
+					<input type="password" id="password" class="user-offline-title user-input" placeholder="密码" value=""/>
+					<button type="submit" class="user-offline-title user-login">登录</button>
+					<button type="submit" class="user-offline-title user-regist">注册</button>
+					<button type="submit" class="user-online-title user-logout">注销</button>
+				</form>
+			</div>
+			<div id="navigation">
+				<ul id="nav">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="spots.html">景点</a>
+					<li><a href="spots-recommend.html">景点推荐</a>
+						<!-- <ul>
+							<li><a href="browse-result.html">Browse Result</a></li>
+							<li><a href="browse-detail.html">Browse Detail</a></li>
+						</ul> -->
+					</li>
+					<li class="selected"><a href="hotel.html">酒店</a></li>
+					<!-- <li><a href="plane.html">航班</a></li> -->
+					<li><a href="line.html">旅线</a></li>
+					<li><a href="order.html">我的订单</a></li>
+					<!-- <li><a href="#">关于我们</a></li> -->
+				</ul>
+			</div>
+		</header>
+		<!--end header -->
+
+		
+		<div class="subheader">
+			<div class="left">
+				<span class="page-title">酒店预订</span>
+				<span class="page-desc">我们提供最优惠的酒店价格，助您入住愉快。</span>			
+			</div>
+		</div>
+		<!--subheader -->
+		
+		
+		<div id="content">
+		
+			<div class="post-item post-thumb-hor" id="hotel-detail-title">
+				
+			</div>
+			<!--post item -->
+		
+			<!-- <div class="one-third">
+				
+				
+				<div id="searchmodule">
+					<ul class="tab-control">
+						<li class="ui-tabs-selected"><a href="#hotel-search">酒店查询</a></li>
+					</ul>					
+					<div id="hotel-search" class="tab-content">
+						<form action="#">
+							<div class="field">
+								<label for="hotel-to">城市:</label>
+								<input type="text" id="hotel-to" class="input-text" placeholder="输入地址" autocomplete="off" />
+							</div>
+							<div class="field half">
+								<label for="hotel-depart">入住日期:</label>
+								<input type="text" id="hotel-depart" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+							</div>
+							<div class="field half even">
+								<label for="hotel-return">离店日期:</label>
+								<input type="text" id="hotel-return" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+							</div>
+							<div class="field half">
+								<label for="flight-class">类型:</label>
+								<select id="flight-class">
+									<option>默认</option>
+									<option>VIP</option>
+									<option>公司</option>
+								</select>
+							</div>
+							<div class="field half even">
+								<label for="hotel-room">人数:</label>
+								<select id="hotel-room">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+								</select>
+							</div>
+							<button type="submit" class="submit">查询</button>
+							<br class="clear" />
+						</form>
+					</div>
+				</div>
+				
+				<div class="widget similiar-place">
+					<div class="h3 widget-title">
+						相似推荐
+					</div>
+					<div class="widget-content">
+						<ul>
+							<li class="link-thumb">
+								<div class="link-image">
+									<a href="#"><img src="images/uploads/50x50/mount-rushmore.jpg" alt="image"></a>	
+								</div>
+								<div class="link-text">
+									<h5><a href="#">Vivamus Place</a></h5>
+									<p>
+										<span class="place">Rushmore, USA</span><br />
+										<strong class="price">30$</strong> <span class="sprite-stars star4">4 stars</span>
+									</p>
+								</div>
+							</li>
+							<li class="link-thumb">
+								<div class="link-image">
+									<a href="#"><img src="images/uploads/50x50/rome.jpg" alt="image"></a>
+								</div>
+								<div class="link-text">
+									<h5><a href="#">Maecenas Hotel</a></h5>
+									<p>
+										<span class="place">Rome, Italy</span><br />
+										<strong class="price">30$</strong> <span class="sprite-stars star4">4 stars</span>
+									</p>
+								</div>
+							</li>
+							<li class="link-thumb">
+								<div class="link-image">
+									<a href="#"><img src="images/uploads/50x50/royal-versailes.jpg" alt="image"></a>
+								</div>
+								<div class="link-text">
+									<h5><a href="#">Nulla Place</a></h5>
+									<p>
+										<span class="place">Versailles, France</span><br />
+										<strong class="price">30$</strong> <span class="sprite-stars star4">4 stars</span>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div> -->
+			<!--one third -->
+			
+			<div class="" id="hotel-detail-content">
+				<!-- <div class="module-box">
+					<div class="flexslider">
+						<ul class="slides">
+
+						</ul>
+					</div>
+				</div> -->
+				<!--module-box -->
+			</div>
+			<!--two third -->
+			
+			<br class="clear" />	
+		</div>
+		<!--content -->
+	
+	</div>
+	<!--container -->
+	
+	<include src="common-footer.html"></include>
+</div>
+<!--wrapper -->
+
+<!-- Java Script
+================================================== -->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile.customized.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script> 
+<script type="text/javascript" src="js/camera.min.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="js/selectnav.min.js"></script>
+<!--
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyB3tShW1hLlV2lYW8_sCVln6TLF2bWvgU8"></script>-->
+<script type="text/javascript" src="js/jquery.googlemaps.1.01.min.js"></script>
+<script type="text/javascript" src="js/theme.js"></script>
+<script type="text/javascript" src="js/jquerysession.js"></script>
+<script type="text/javascript" src="js/include.js"></script>
+<script>
+	$(function() {
+
+		var base_url = 'http://localhost:8080/c';
+		var userId=$.session.get('userSession');
+		var obj = {};
+		obj.id=userId;
+		var reqData = JSON.stringify(obj);
+		$.ajax({
+			type:'post',
+			async:false,
+			url:base_url+'/user/getSession',
+			contentType:'application/json;chart=utf-8',
+			dataType:'json',
+			data: reqData,
+			success:function(result){
+				if(result.status==1){
+					$("#session").text("-欢迎您："+result.data.userInfo.userName);
+					$(".user-offline-title").hide();
+					$(".user-online-title").show();
+					$.session.set('userSession', result.data.id);
+					$.session.set('userName', result.data.userName);
+					$("#session").show();
+				}else{
+					$("#session").val("");
+					$("#session").hide();
+					//$(".user-offline-title").show();
+					//$(".user-online-title").hide();
+					$.session.remove('userSession');
+					$.session.remove('userName');
+					window.location.href="login.html";
+				}
+			}
+		})
+
+
+		$(".user-login").on("click",function(){
+			var userName=$("#userName").val();
+			var password=$("#password").val();
+			var obj = {};
+			obj.userName=userName;
+			obj.password=password;
+			var reqData = JSON.stringify(obj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/user/login',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data:reqData,
+				success:function(result){
+					if(result.status==1){
+						$("#session").text("——欢迎您："+result.data.userInfo.userName);
+						$(".user-offline-title").hide();
+						$(".user-online-title").show();
+						$("#session").show();
+						$.session.set('userSession', result.data.id);
+						$.session.set('userName', result.data.userName)
+					}
+				}
+			})
+		})
+
+
+		$(".user-regist").on("click",function(){
+			var userName=$("#userName").val();
+			var password=$("#password").val();
+			var obj = {};
+			obj.userName=userName;
+			obj.password=password;
+			var reqData = JSON.stringify(obj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/user/logon',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data:reqData,
+				success:function(result){
+					if(result.status==1){
+						alert("注册成功");
+					}else{
+						alert(result.msg);
+					}
+				}
+			})
+		})
+
+		$(".user-logout").on("click",function(){
+			var userName=$.session.get('userName');
+			$.session.clear();
+			var obj = {};
+			obj.userName=userName;
+			var reqData = JSON.stringify(obj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/user/logout',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data:reqData,
+				success:function(result){
+					if(result.status==1){
+						window.location.href="login.html";
+					}else{
+						alert(result.msg);
+					}
+				}
+			})
+		})
+
+		
+		var url = location.search; //获取url中"?"符后的字串
+		var theRequest = new Object();
+		if (url.indexOf("?") != -1) {
+			var str = url.substr(1);
+			strs = str.split("&");
+			for(var i = 0; i < strs.length; i ++) {
+				theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+			}
+		}
+		var detailData = JSON.stringify(theRequest);
+		$.ajax({
+			type:'post',
+			async:false,
+			url:base_url+'/hotel/detail',
+			contentType:'application/json;chart=utf-8',
+			dataType:'json',
+			data:detailData,
+			success:function(result){
+				setSearchHotelDetail(result.data);
+				setHotelDetailContent(result.data);
+			}
+		})
+
+		function setSearchHotelDetail(hotel){
+			var htmlContent=
+				"<h2 style='color:#2b4d7f;margin-top:20px;margin-left:5px'>您当前查看的酒店是：</h2>"+
+				"<div class='image-place'>"+
+					"<img src='http://"+ hotel.hotelImages.split(',')[0]+"' alt='image'  width='200px' height='200px'/>"+
+				"</div>"+
+				"<div class='post-content'>"+
+					"<h1 class='post-title' style='font-size:25px;'>"+ hotel.hotelName +"</h1>"+
+					"<p class='post-excerpt'>"+ hotel.hotelDescription +"</p>"+
+					"<ul class='post-content-detail'>"+
+						"<li>"+
+							"<span>星级</span>"+
+							"<strong class='sprite-stars star"+ hotel.star +"'>"+ hotel.star +"</strong>"+							
+						"</li>"+
+						"<li>"+
+							"<span>最低价</span>"+
+							"<strong class='price'>￥ "+ hotel.hotelPrice +"</strong>"+							
+						"</li>"+
+					"</ul>"+
+				"</div>"+
+				"<div class='post-meta'>"+
+					"<span class='icon-place'>"+ hotel.hotelAddress +"</span>"+
+					"<span class='offer-type'>全包</span>"+
+				"</div>";
+			$("#hotel-detail-title").html(htmlContent);
+		}
+
+		function setHotelDetailContent(hotel){
+			var imgs = hotel.hotelImages.split(',');
+			var img="";
+			imgs.forEach(element => {
+				//img = img + "<li><a href=''><img src='http://"+ element +"' width='116px' height='87px' alt='image' /></a></li>"					
+				img = img + "<div class='image-place'><img src='http://"+ element +"' width='100%' height='560px' alt='image' /></div>"					
+			});
+			var htmlContent=
+			"<div class='module-box'>"+
+				"<h1 style='text-align:center;color:#006db8;'>酒店预览</h1>"+img+
+				// "<div class='flexslider'>"+
+				// 	"<ul class='slides'>"+
+				// 		img
+				// 		+
+				// 	"</ul>"+
+				// "</div>"+
+				// "<h3>Lorem ipsum dolor</h3>"+
+				// "<p><img class='left' src='http://"+ imgs[1] +"'  width='220px' height='135px' alt='image' />Lorem ipsum dolor sit amet, con.</p>"+
+				// "<br class='clear' />"+
+				// "<div id='gmap' class='widget side-map'></div>"+
+				"<div>"+
+					"<h2>预定须知</h2>"+
+					"<p style='color: green;font-size:15px;line-height:30px'>网上的酒店介绍、图片、房态、价格、等信息只作参考，预定是否成功以最终电话或短信确认为准。</br>付款方式：前台支付（ 现金/信用卡）。 </br>房费包含酒店服务费，不包括酒店其他费用、税收及客人额外要求的费用。</br>通常酒店的入店时间为13：00以后，离店时间为中午12：00整前。如提前入住或推迟离店，酒店均可酌情加收一定费用。</br> 会员及非会员预订酒店无须支付任何费用。 非会员预订也享受优惠价，会员预定可享受积分奖励</br> 信 用 卡 担 保</br>当节假日期间或举办大型会展期间、旅游旺季等酒店房间紧张的情况下，部分酒店需要您提供信用卡担保，以保证您的预订能够顺利的获得确定。如您的信用卡信息有效，酒店会优先给予房间确认且延长保留时间。需要信用卡担保的酒店，订单一经确认将不可取消或修改。因此请在填写担保订单前慎重考虑您是否会修改行程，以免给您造成不必要的损失。如您未按订单上约定的时间或房间数量入住，酒店将按国际惯例扣除相应的房费。</br>保 密 承 诺</br>嗨Bike旅行网很了解在您进行网上浏览、交易时，保密性和安全性的重要性。我们会将保护您私人信息的保密和安全放在最优先解决的位置，这些信息包括您的信用卡信息、姓名、电话、地址、email等。为了保护您私人信息的机密性，我们采取了安全技术以确保您私人信息的保密性。在您注册成为嗨Bike旅行网会员时，我们会收集您的姓名、电话、地址、email等私人信息，以便于与您联系。当您预订的产品需要信用卡担保或您选择网上支付时，我们会收集您的相关信用卡信息。您提供给嗨Bike旅行网的这些相关私人信息，会被储存在我们的安全系统中，并采用加密手段传输，不会被嗨Bike旅行网公开、出卖或未经授权用于其它商业目的。</p>"+
+				"</div>"+
+				"<div class='one-half submit-order'>"+
+					"<a class='button medium red submit-button' id='create-order' product-id='"+ hotel.id +"' product-name='"+ hotel.hotelName +"' order-amount='"+ hotel.hotelPrice +"'>立即预订</a>"+
+				"</div>"+
+				"<br class='clear' />"+
+			"</div>";
+			$("#hotel-detail-content").html(htmlContent);
+			//$(".slides").html(htmlContent);
+			//$.parser.parse();
+			//$.parser.parse($("#hotel-detail-content").parent());
+			//$("#hotel-detail-content").append(obj);  // 用append 方式添加拼接的标签
+			//$("#hotel-slider-ul").listview('refresh');   //在使用'ul'标签时才使用，作用:刷新列表
+			//$("#hotel-slider-ul").trigger("create");
+			// $(".flexslider").flexslider({
+			// 	directionNav:false
+			// });
+		}
+
+		$("#create-order").on("click",function(){
+			var userId=$.session.get('userSession');
+			var productId=$(this).attr('product-id');
+			var productName=$(this).attr('product-name');
+			var productType='1';
+			var obj = {};
+			obj.userId=userId;
+			obj.productId=productId;
+			obj.productType=productType;
+			obj.productName=productName;
+			var reqData = JSON.stringify(obj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/order/create',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data:reqData,
+				success:function(result){
+					if(result.status==1){
+						submitOrder();
+					}else{
+						alert(result.msg);
+					}
+				}
+			})
+		})
+
+		function submitOrder(){
+			var htmlContent = 
+			"<div class='module-box'>"+
+				"<div class='image-place' style='text-align:center'><img src='images/submit-success.png' width='100' height='100px' alt='image' /></div>"+
+				"<h1 style='text-align:center;color:#006db8;'>恭喜，提交成功</h1>"+
+			"</div>";
+			$("#hotel-detail-content").html(htmlContent);
+		}
+
+	});
+</script>
+</body>
+</html>

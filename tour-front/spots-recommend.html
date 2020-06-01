@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>景点介绍</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+<!-- Mobile Specific
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="blog">
+
+<div id="slider-wrap">
+	<div class="camera_overlayer"></div>
+</div>
+
+<div id="wrapper">
+	<div id="container">
+	
+		<!--start header -->
+		<header id="header">
+			<div id="logo">
+				<a href="index.html"><strong>Hi.</strong>嗨Bike</a>
+				<label id="session"></label>
+			</div>	
+			<div id="searchbox">
+				<form action="#">
+					<input type="text" id="userName" class="user-offline-title user-input" placeholder="账号" value=""/>
+					<input type="password" id="password" class="user-offline-title user-input" placeholder="密码" value=""/>
+					<button type="submit" class="user-offline-title user-login">登录</button>
+					<button type="submit" class="user-offline-title user-regist">注册</button>
+					<button type="submit" class="user-online-title user-logout">注销</button>
+				</form>
+			</div>
+			<div id="navigation">
+				<ul id="nav">
+					<li><a href="index.html">首页</a></li>
+					<li><a href="spots.html">景点</a>
+					<li class="selected"><a href="spots-recommend.html">景点推荐</a>
+						<!-- <ul>
+							<li><a href="browse-result.html">Browse Result</a></li>
+							<li><a href="browse-detail.html">Browse Detail</a></li>
+						</ul> -->
+					</li>
+					<li><a href="hotel.html">酒店</a></li>
+					<!-- <li><a href="plane.html">航班</a></li> -->
+					<li><a href="line.html">旅线</a></li>
+					<li><a href="order.html">我的订单</a></li>
+					<!-- <li><a href="#">关于我们</a></li> -->
+				</ul>
+			</div>
+		</header>
+		<!--end header -->
+		
+		<div class="subheader">
+			<div class="left">
+				<span class="page-title">景点推荐</span>
+				<span class="page-desc">网罗天下美景，助您直达完美之旅。</span>			
+			</div>
+		</div>
+		<!--subheader -->
+		
+		
+		<div id="content">
+                <div id="searchbox" class="user-searchbox">
+					<form action="#">
+						<input type="text" id="search-spots-input" class="user-search" placeholder="搜索推荐景点" />
+						<a id="search-spots" class="button medium red searchbox-button">为我推荐</a>
+					</form>
+				</div>
+
+
+				<div class="post-item post-thumb-hor" id="own-spots">
+					
+				</div>
+				<!--post item -->
+
+
+			
+			<div class="tag-filter-container" id="post-content">
+				
+				
+			</div>
+
+			<!--tag container -->
+			
+			<br class="clear" />	
+		</div>
+		<!--content -->
+	
+	</div>
+	<!--container -->
+	
+	<include src="common-footer.html"></include>
+	
+</div>
+<!--wrapper -->
+
+<!-- Java Script
+================================================== -->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile.customized.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script> 
+<script type="text/javascript" src="js/camera.min.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="js/selectnav.min.js"></script>
+<!--<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyB3tShW1hLlV2lYW8_sCVln6TLF2bWvgU8"></script>-->
+<script type="text/javascript" src="js/jquery.googlemaps.1.01.min.js"></script>
+<script type="text/javascript" src="js/theme.js"></script>
+<script type="text/javascript" src="js/jquerysession.js"></script>
+<script type="text/javascript" src="js/include.js"></script>
+
+<script>
+	$(function() {
+		var base_url = 'http://localhost:8080/c';
+			var userId=$.session.get('userSession');
+			var obj = {};
+			obj.id=userId;
+			var reqData = JSON.stringify(obj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/user/getSession',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data: reqData,
+				success:function(result){
+					if(result.status==1){
+						$("#session").text("-欢迎您："+result.data.userInfo.userName);
+						$(".user-offline-title").hide();
+						$(".user-online-title").show();
+						$.session.set('userSession', result.data.id);
+						$.session.set('userName', result.data.userName);
+						$("#session").show();
+					}else{
+						$("#session").val("");
+						$("#session").hide();
+						//$(".user-offline-title").show();
+						//$(".user-online-title").hide();
+						$.session.remove('userSession');
+						$.session.remove('userName');
+						window.location.href="login.html";
+					}
+				}
+			})
+
+
+			$(".user-login").on("click",function(){
+				var userName=$("#userName").val();
+				var password=$("#password").val();
+				var obj = {};
+				obj.userName=userName;
+				obj.password=password;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/login',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							$("#session").text("——欢迎您："+result.data.userInfo.userName);
+							$(".user-offline-title").hide();
+							$(".user-online-title").show();
+							$("#session").show();
+							$.session.set('userSession', result.data.id);
+							$.session.set('userName', result.data.userName)
+						}
+					}
+				})
+			})
+
+
+			$(".user-regist").on("click",function(){
+				var userName=$("#userName").val();
+				var password=$("#password").val();
+				var obj = {};
+				obj.userName=userName;
+				obj.password=password;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/logon',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							alert("注册成功");
+						}else{
+							alert(result.msg);
+						}
+					}
+				})
+			})
+
+			$(".user-logout").on("click",function(){
+				var userName=$.session.get('userName');
+				$.session.clear();
+				var obj = {};
+				obj.userName=userName;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/logout',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							window.location.reload();
+						}else{
+							alert(result.msg);
+						}
+					}
+				})
+			})
+
+			var allSpotsObj = {};
+			allSpotsObj.start=0;
+			allSpotsObj.length=9999;
+			var requestDataAllSpotsObj = JSON.stringify(allSpotsObj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/spots/list',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data:requestDataAllSpotsObj,
+				success:function(result){
+					setGeneralContent(result.data.spotsList);
+				}
+			})
+
+			$("#search-spots").on("click",function(){
+				var spotsName=$("#search-spots-input").val();
+				//var userId=$.session.get('userSession');
+				//var userName=$.session.get('userName');
+				var obj = {};
+				obj.spotsName=spotsName;
+				//obj.userId=userId;
+				//obj.userName=userName;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/spots/recommendList',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							setRecommendContent(result.data.spotsList,result.data.spots);
+						}else{
+							alert(result.msg);
+						}
+					}
+				})
+			})
+
+
+		function setGeneralContent(data){
+			var htmlContent = "";
+			data.forEach(element => {
+				htmlContent = htmlContent +
+				"<div class='one-fourth travel'>"+
+					"<div class='post-item'>"+
+						"<div class='image-place'>"+
+							"<img src='http://"+ element.spotsImages.split(',')[0]+"' width='220px' height='135px' alt='image' />"+						
+						"</div>"+
+						"<div class='post-content' style='height:85px'>"+
+							"<h2 class='post-title'><a href='browse-detail.html'>"+ element.spotsName +"</a></h2>"+
+							"<p class='post-excerpt'>"+ (element.spotsDescription).substring(0,50) +"...</p>"+
+						"</div>"+
+						"<div class='post-meta'>"+
+							"<span class='comment-count'>12 Comments</span>"+
+							"<a class='read-more' href='spots-detail.html?id="+ element.id +"'>查看更多</a>"+						
+						"</div>"+
+					"</div>"+
+				"</div>"
+			});
+			$("#post-content").html(htmlContent);
+		}
+
+		function setRecommendContent(data,spots){
+			$("#post-content").html("");
+			setOwnSpotsDetail(spots)
+			var htmlContent = "<h2 style='color:#2b4d7f;margin-top:20px;margin-left:5px'>为您推荐以下相似度较高的景点：</h2>";
+			data.forEach(element => {
+				htmlContent = htmlContent +
+				"<div class='one-fourth travel'>"+
+					"<div class='post-item'>"+
+						"<div class='image-place'>"+
+							"<img src='http://"+ element.spotsImages.split(',')[0]+"' width='220px' height='135px' alt='image' />"+						
+						"</div>"+
+						"<div class='post-content' style='height:85px'>"+
+							"<h2 class='post-title'><a href='browse-detail.html'>"+ element.spotsName +"</a></h2>"+
+							"<p class='post-excerpt'>"+ (element.spotsDescription).substring(0,50) +"...</p>"+
+						"</div>"+
+						"<div class='post-meta'>"+
+							"<span class='comment-count'>12 Comments</span>"+
+							"<a class='read-more' href='spots-detail.html?id="+ element.id +"'>查看更多</a>"+						
+						"</div>"+
+					"</div>"+
+				"</div>"
+			});
+			$("#post-content").html(htmlContent);
+		}
+
+		function setOwnSpotsDetail(spots){
+			var htmlContent=
+				"<h2 style='color:#2b4d7f;margin-top:20px;margin-left:5px'>您查询的景点是：</h2>"+
+				"<div class='image-place'>"+
+					"<img src='images/uploads/620x220/temple-kyoto.jpg' alt='image' />"+
+				"</div>"+
+				"<div class='post-content'>"+
+					"<h2 class='post-title'>"+ spots.spotsName +"</h2>"+
+					"<p class='post-excerpt'>"+ spots.spotsDescription +"</p>"+
+					"<ul class='post-content-detail'>"+
+						"<li>"+
+							"<span>评分</span>"+
+							"<strong class='sprite-stars star4'>4 Stars</strong>"+							
+						"</li>"+
+						"<li>"+
+							"<span>最低价</span>"+
+							"<strong class='price'>￥ 300</strong>"+							
+						"</li>"+
+					"</ul>"+
+				"</div>"+
+				"<div class='post-meta'>"+
+					"<span class='icon-place'>Kyoto, Japan</span>"+
+					"<span class='offer-type'>All Inclusive</span>"+
+				"</div>";
+			$("#own-spots").html(htmlContent);
+		}
+
+	});
+</script>
+</body>
+</html>

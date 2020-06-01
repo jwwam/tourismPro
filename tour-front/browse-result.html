@@ -1,0 +1,386 @@
+
+<!DOCTYPE html>
+<!--[if IE 7 ]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"><!--<![endif]-->
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<meta charset="utf-8">
+<title>TravelSite Theme</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+
+
+<!-- Mobile Specific
+================================================== -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+
+<!-- Java Script
+================================================== -->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+<script type="text/javascript" src="js/jquery.mobile.customized.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script> 
+<script type="text/javascript" src="js/camera.min.js"></script> 
+<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" src="js/selectnav.min.js"></script>
+<!--
+<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyB3tShW1hLlV2lYW8_sCVln6TLF2bWvgU8"></script>-->
+<script type="text/javascript" src="js/jquery.googlemaps.1.01.min.js"></script>
+<script type="text/javascript" src="js/theme.js"></script>
+
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="blog">
+
+<div id="slider-wrap">
+	<div class="camera_overlayer"></div>
+</div>
+
+<div id="wrapper">
+	<div id="container">
+		
+		<!--start header -->
+		<header id="header">
+			<div id="logo">
+				<a href="index.html"><strong>Travel</strong>Site</a>
+			</div>	
+			<div id="searchbox">
+				<form action="#">
+					<input type="text" id="search" placeholder="Search" />
+					<button type="submit"></button>
+				</form>
+			</div>
+			<div id="navigation">
+				<ul id="nav">
+					<li><a href="index.html">Home</a></li>
+					<li class="selected"><a href="browse.html">Browse</a>
+						<ul>
+							<li><a href="browse-result.html">Browse Result</a></li>
+							<li><a href="browse-detail.html">Browse Detail</a></li>
+						</ul>
+					</li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="contact.html">Contact</a></li>
+					<li><a href="element.html">Element</a></li>
+				</ul>
+			</div>
+		</header>
+		<!--end header -->
+		
+		
+		<div class="subheader">
+			<div class="left">
+				<span class="page-title">Browse</span>
+				<span class="page-desc">Lorem ipsum dolor sit amet consectuer adisplicing</span>			</div>
+		</div>
+		<!--subheader -->
+		
+		
+		<div id="content">
+			<div class="one-third">
+				
+				
+				<div id="searchmodule">
+					<ul class="tab-control">
+						<li class="ui-tabs-selected"><a href="#hotel-search">Find Hotel</a></li>
+					</ul>					
+					<div id="hotel-search" class="tab-content">
+						<form action="#">
+							<div class="field">
+								<label for="hotel-to">City:</label>
+								<input type="text" id="hotel-to" class="input-text" placeholder="Destination" autocomplete="off" />
+							</div>
+							<div class="field half">
+								<label for="hotel-depart">Check-In:</label>
+								<input type="text" id="hotel-depart" class="input-text input-cal" placeholder="2012-10-01" autocomplete="off" />
+							</div>
+							<div class="field half even">
+								<label for="hotel-return">Check-Out:</label>
+								<input type="text" id="hotel-return" class="input-text input-cal" placeholder="2012-10-01" autocomplete="off" />
+							</div>
+							<div class="field half">
+								<label for="hotel-class">Class:</label>
+								<input type="text" id="hotel-class" class="input-text" autocomplete="off" />
+							</div>
+							<div class="field half even">
+								<label for="hotel-room">Person:</label>
+								<select id="hotel-room">
+									<option>1</option>
+								</select>
+							</div>
+							<button type="submit" class="submit">Search</button>
+							<br class="clear" />
+						</form>
+					</div>
+					<!--hotel search -->
+				</div>
+				<!--searchmodule -->				
+				
+				<div class="widget refine-search">
+					<div class="h3 widget-title">
+						Refine Your Search					</div>
+					<div class="widget-content">
+						<h5>Stars</h5>
+						<ul class="pointer">
+							<li>
+								<a href="#" class="sprite-stars star1">1 Star</a>
+								<small>12 Places</small>							</li>
+							<li>
+								<a href="#" class="sprite-stars star2">2 Star</a>
+								<small>12 Places</small>							</li>
+							<li>
+								<a href="#" class="sprite-stars star3">3 Star</a>
+								<small>12 Places</small>							</li>
+							<li>
+								<a href="#" class="sprite-stars star4">4 Star</a>
+								<small>12 Places</small>							</li>
+							<li>
+								<a href="#" class="sprite-stars star5">5 Star</a>
+								<small>12 Places</small>							</li>
+						</ul>
+						
+						<h5>Price Range ($)</h5>
+						<ul class="pointer">
+							<li>
+								<a href="#">10 - 20</a>
+								<small>23 Places</small>							</li>
+							<li>
+								<a href="#">20 - 30</a>
+								<small>12 Places</small>							</li>
+							<li>
+								<a href="#">30 - 40</a>
+								<small>19 Places</small>							</li>
+							<li>
+								<a href="#">40 - 50</a>
+								<small>11 Places</small>							</li>
+							<li>
+								<a href="#">&gt; 50</a>
+								<small>15 Places</small>							</li>
+						</ul>
+						
+						<h5>Offer Type</h5>
+						<ul class="pointer">
+							<li>
+								<a href="#">Late Deals</a>
+								<small>23 Places</small>							</li>
+							<li>
+								<a href="#">Half Terms</a>
+								<small>12 Places</small>							</li>
+							<li>
+								<a href="#">All Inclusive</a>
+								<small>19 Places</small>							</li>
+							<li>
+								<a href="#">Family Offers</a>
+								<small>11 Places</small>							</li>
+						</ul>
+					</div>
+				</div>
+				<!--widget -->
+			</div>
+			<!--one third -->
+			
+			<div class="two-third last">
+				
+				<div class="post-item post-thumb-hor">
+					<div class="image-place">
+						<img src="images/uploads/620x220/temple-kyoto.jpg" alt="image" />					</div>
+					<div class="post-content">
+						<h2 class="post-title">Japan Religious Travel Destination</h2>
+						<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla mi et eros ornare quis molestie magna adipiscing. Sed a urna nulla, non bibendum nulla. Praesent vitae vehicula eros.</p>
+						<ul class="post-content-detail">
+							<li>
+								<span>Rating</span>
+								<strong class="sprite-stars star4">4 Stars</strong>							</li>
+							<li>
+								<span>Start From</span>
+								<strong class="price">$ 30</strong>							</li>
+						</ul>
+					</div>
+					<div class="post-meta">
+						<span class="icon-place">Kyoto, Japan</span>
+						<span class="offer-type">All Inclusive</span>
+						<a class="read-more" href="#">Read More</a>					</div>
+				</div>
+				<!--post item -->
+				
+				<div class="post-item post-thumb-hor">
+					<div class="image-place">
+						<img src="images/uploads/620x220/auckland-city.jpg" alt="image" />					</div>
+					<div class="post-content">
+						<h2 class="post-title">City Travel</h2>
+						<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla mi et eros ornare quis molestie magna adipiscing. Sed a urna nulla, non bibendum nulla. Praesent vitae vehicula eros.</p>
+						<ul class="post-content-detail">
+							<li>
+								<span>Rating</span>
+								<strong class="sprite-stars star4">4 Stars</strong>							</li>
+							<li>
+								<span>Start From</span>
+								<strong class="price">$ 30</strong>							</li>
+						</ul>
+					</div>
+					<div class="post-meta">
+						<span class="icon-place">Auckland, USA</span>
+						<span class="offer-type">All Inclusive</span>
+						<a class="read-more" href="#">Read More</a>					</div>
+				</div>
+				<!--post item -->
+				
+				<div class="post-item post-thumb-hor">
+					<div class="image-place">
+						<img src="images/uploads/620x220/moscow.jpg" alt="image" />					</div>
+					<div class="post-content">
+						<h2 class="post-title">Enjoy Russia Holidays</h2>
+						<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla mi et eros ornare quis molestie magna adipiscing. Sed a urna nulla, non bibendum nulla. Praesent vitae vehicula eros.</p>
+						<ul class="post-content-detail">
+							<li>
+								<span>Rating</span>
+								<strong class="sprite-stars star4">4 Stars</strong>							</li>
+							<li>
+								<span>Start From</span>
+								<strong class="price">$ 30</strong>							</li>
+						</ul>
+					</div>
+					<div class="post-meta">
+						<span class="icon-place">Moscow, Russia</span>
+						<span class="offer-type">All Inclusive</span>
+						<a class="read-more" href="#">Read More</a>					</div>
+				</div>
+				<!--post item -->
+				
+				<div class="post-item post-thumb-hor">
+					<div class="image-place">
+						<img src="images/uploads/620x220/egypt.jpg" alt="image" />					</div>
+					<div class="post-content">
+						<h2 class="post-title">Travel to Egypt</h2>
+						<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla mi et eros ornare quis molestie magna adipiscing. Sed a urna nulla, non bibendum nulla. Praesent vitae vehicula eros.</p>
+						<ul class="post-content-detail">
+							<li>
+								<span>Rating</span>
+								<strong class="sprite-stars star4">4 Stars</strong>							</li>
+							<li>
+								<span>Start From</span>
+								<strong class="price">$ 30</strong>							</li>
+						</ul>
+					</div>
+					<div class="post-meta">
+						<span class="icon-place">Egypt</span>
+						<span class="offer-type">All Inclusive</span>
+						<a class="read-more" href="#">Read More</a>					</div>
+				</div>
+				<!--post item -->
+				
+				<div class="post-item post-thumb-hor">
+					<div class="image-place">
+						<img src="images/uploads/620x220/stupa.jpg" alt="image" />					</div>
+					<div class="post-content">
+						<h2 class="post-title">Borobudur Get Aways</h2>
+						<p class="post-excerpt">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla fringilla mi et eros ornare quis molestie magna adipiscing. Sed a urna nulla, non bibendum nulla. Praesent vitae vehicula eros.</p>
+						<ul class="post-content-detail">
+							<li>
+								<span>Rating</span>
+								<strong class="sprite-stars star4">4 Stars</strong>							</li>
+							<li>
+								<span>Start From</span>
+								<strong class="price">$ 30</strong>							</li>
+						</ul>
+					</div>
+					<div class="post-meta">
+						<span class="icon-place">East Java, Indonesia</span>
+						<span class="offer-type">All Inclusive</span>
+						<a class="read-more" href="#">Read More</a>					</div>
+				</div>
+				<!--post item -->
+				
+				<p class="pagination">
+					<a class="current"><b>1</b></a>
+					<a href="#">2</a>
+					<a href="#">3</a>
+					<a href="#">4</a>
+					<a href="#">Next</a>
+					<a href="#">Last</a>				</p>
+			</div>
+			<!--two third -->
+			
+			<br class="clear" />	
+		</div>
+		<!--content -->
+	
+	</div>
+	<!--container -->
+	
+	<!--start footer -->
+	<footer id="footer">
+		<div class="wrap">
+			<div class="one-fourth">
+				<div class="theme-logo"><strong>Travel</strong>Site</div>
+				<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+				<p>Integer hendrerit bibendum luctus. Nam vel porttitor leo</p>
+			</div>
+			
+			<div class="one-fourth">
+				<h3>Quick Links</h3>
+				<ul>
+					<li><a href="#">Browse Cheap Holidays</a></li>
+					<li><a href="#">Holiday Travel Guide</a></li>
+					<li><a href="#">Holiday Travel Blog</a></li>
+					<li><a href="#">Compares Holidays Packets</a></li>
+				</ul>
+			</div>
+			
+			<div class="one-fourth">
+				<h3>Our Office</h3>
+				<ul>
+					<li class="glyph-home">Sudirman Kav.52-53<br>Central Business Distric<br>South Jakarta 12040</li>
+					<li class="glyph-briefcase">Phone : +621 760 4020</li>
+					<li class="glyph-envelope">Email : info@domain.com</li>
+				</ul>
+			</div>
+			
+			<div class="one-fourth last">
+				<h3>Flickr Galleries</h3>
+				<!-- Start of Flickr Badge -->
+				<div id="flickr_badge_uber_wrapper">
+					<div id="flickr_badge_wrapper">
+					</div>
+				</div>
+				<!-- End of Flickr Badge -->
+			</div>
+			
+			<br class="clear" />
+		</div>
+		<!--footer wrap -->
+	</footer>
+	<!--end footer -->
+	
+	<div id="subfooter">
+		<div class="wrap">
+			<div class="left">
+				Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+			</div>
+			
+			<div class="foot-links right">
+				<a href="#">Terms and Condition</a>
+				<a href="#">Privacy Policy</a>
+				<a href="#">Sitemap</a>
+			</div>
+			
+			<br class="clear" />
+		</div>
+	</div>
+	<!--subfooter -->
+	
+</div>
+<!--wrapper -->
+<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+.form-wizard>.steps{
+	position:relative;
+	padding:10px 15px;
+	border-top-left-radius:3px;
+	border-top-right-radius:3px
+}
+
+.panel.form-wizard>.steps,.panel>.form-wizard>.steps{
+	border-radius:0
+}
+
+.form-wizard>.steps>ul{
+	margin:0;
+	padding:0
+}
+
+.form-wizard>.steps>ul>li{
+	list-style:none
+}
+
+.form-wizard>.steps>ul>li+li{
+	margin-top:16px
+}
+
+.form-wizard>.steps>ul>li>a{
+	position:relative;
+	display:block;
+	color:#b1c2c6
+}
+
+.form-wizard>.steps>ul>li>a:after{
+	content:"";
+	position:absolute;
+	width:2px;
+	top:-8px;
+	bottom:-8px;
+	left:17px;
+	border:1px solid #eee;
+}
+
+.form-wizard>.steps>ul>li:first-child>a:after{
+	top:0
+}
+
+.form-wizard>.steps>ul>li:last-child>a:after{
+	bottom:0
+}
+
+.form-wizard>.steps>ul>li.current>a {
+	color:#01c0c8
+}
+
+.form-wizard>.steps>ul>li.done>a {
+	color: #01c0c8;
+}
+
+.form-wizard>.steps>ul>li.error>a{
+	color:rgba(237,84,102,.9);
+}
+
+.form-wizard>.steps>ul>li>a>.current-info{
+	display:none;
+}
+
+.form-wizard>.steps>ul>li>a>.number,.form-wizard>.steps>ul>li>a>.title{
+	position:relative;
+	display:inline-block;
+	vertical-align:top;
+	line-height:36px
+}
+
+.form-wizard>.steps>ul>li>a>.number{
+	position: relative;
+	z-index: 2;
+	font-size: 14px;
+	border: 4px solid #01c0c8;
+	background: #ffffff;
+	width: 36px;
+	height: 36px;
+	border-radius: 100%;
+	font-weight: 700;
+	text-align: center;
+	color: #b1c2c6
+}
+
+.form-wizard>.steps>ul>li>a>.number:after{
+	font-family:iconfont;
+	font-size: 22px;
+	font-weight:400;
+	color: #01c0c8;
+	text-shadow:0 -1px 0 rgba(0,0,0,.1)
+}
+
+.form-wizard>.steps>ul>li.error>a>.number:after {
+	color:#ffffff;
+}
+
+.form-wizard>.steps>ul>li>a>.title{
+	width:auto;
+	font-weight:700
+}
+
+.form-wizard>.steps>ul>li>a>.number+.title,.form-wizard>.steps>ul>li>a>.title+.number{
+	padding-left:10px
+}
+
+
+.form-wizard>.steps>ul>li.current>a>.number{
+	font-size:0;
+	border: 4px solid #01c0c8;
+}
+
+.form-wizard>.steps>ul>li.current>a>.number:after{
+   content: "\f040";
+	font-family: FontAwesome;
+}
+
+
+.form-wizard>.steps>ul>li.done>a>.number{
+	font-size: 0;
+	background-color: #01c0c8
+}
+
+.form-wizard>.steps>ul>li.done>a>.number:after{
+	content:"\f00c";
+	font-family: FontAwesome;
+	color: #ffffff
+}
+
+
+.form-wizard>.steps>ul>li.error>a>.number{
+    font-size: 0;
+    background-color: #ed5466;
+    border: 4px solid #ed5466;
+}
+
+.form-wizard>.steps>ul>li.error>a>.number:after{
+	content:"\f00d";
+	font-family: FontAwesome;
+}
+
+.form-wizard>.content>.wizard-container{
+	padding-right:15px;
+	padding-left:15px
+}
+
+.form-wizard>.content>.title,.form-wizard>.content>.wizard-title{
+	display:none
+}
+
+.form-wizard>.actions{
+	padding:8px 15px;
+	background-color:#f8f8f8;
+	border-top:1px solid #cfd9db
+}
+
+.form-wizard>.actions>ul{
+	margin:0;
+	padding:0
+}
+
+.form-wizard>.actions>ul>li{
+	list-style:none;
+	float:right
+}
+
+.form-wizard>.actions>ul>li:first-child{
+	float:left
+}
+
+.panel .form-wizard>.actions,.panel.form-wizard>.actions{
+	border-bottom-right-radius:3px;
+	border-bottom-left-radius:3px
+}
+
+.form-wizard>.actions>ul>li.disabled>.btn{
+	color:#777;
+	background-color:#ededed;
+	border-color:#c6d2d5;
+	cursor:not-allowed;
+	pointer-events:none;
+	opacity:.65;
+	filter:alpha(opacity=65);
+	-webkit-box-shadow:none;
+	box-shadow:none
+}
+
+@media (min-width:768px){
+	.form-wizard>.steps>ul{
+		display:table;
+		width:100%;
+		table-layout:fixed
+	}
+
+	.form-wizard>.steps>ul>li{
+		display:table-cell;
+		width:auto;
+		vertical-align:top
+	}
+
+	.form-wizard>.steps>ul>li>a:after{
+		width: auto;
+		height: 2px;
+		top: 30px;
+		bottom: auto;
+		left: 0;
+		right: 0;
+	}
+
+	.form-wizard>.steps>ul>li:first-child>a:after{
+		top: 30px;
+		left: 50%
+	}
+
+	.form-wizard>.steps>ul>li:last-child>a:after{
+		top: 30px;
+		right: 50%
+	}
+
+	.form-wizard>.steps>ul>li>a>.number,.form-wizard>.steps>ul>li>a>.title{
+		display:block;
+		margin:0 auto
+	}
+
+	.form-wizard>.steps>ul>li>a>.number{
+		width: 60px;
+		height: 60px;
+		line-height: 50px
+	}
+
+	.form-wizard>.steps>ul>li>a>.title{
+		text-align:center;
+		line-height:normal
+	}
+
+	.form-wizard>.steps>ul>li>a>.number+.title,.form-wizard>.steps>ul>li>a>.title+.number{
+		padding-left:0;
+		margin-top:5px
+	}
+
+}

@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hi.嗨旅-首页</title>
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <!--STYLESHEET-->
+        <!--=================================================-->
+        <!--Roboto Slab Font [ OPTIONAL ] -->
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400" rel="stylesheet">
+        <!--Bootstrap Stylesheet [ REQUIRED ]-->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!--Jasmine Stylesheet [ REQUIRED ]-->
+        <link href="css/style.css" rel="stylesheet">
+        <!--Font Awesome [ OPTIONAL ]-->
+        <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!--Switchery [ OPTIONAL ]-->
+        <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+        <!--ricksaw.js [ OPTIONAL ]-->
+        <link href="plugins/jquery-ricksaw-chart/css/rickshaw.css" rel="stylesheet">
+        <!--Bootstrap Validator [ OPTIONAL ]-->
+        <link href="plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
+        <!--Demo [ DEMONSTRATION ]-->
+        <link href="css/demo/jquery-steps.min.css" rel="stylesheet">
+        <!--Summernote [ OPTIONAL ]-->
+        <link href="plugins/summernote/summernote.min.css" rel="stylesheet">
+        <!--Demo [ DEMONSTRATION ]-->
+        <link href="css/demo/jasmine.css" rel="stylesheet">
+        <!--SCRIPT-->
+        <!--=================================================-->
+        <!--Page Load Progress Bar [ OPTIONAL ]-->
+        <link href="plugins/pace/pace.min.css" rel="stylesheet">
+        <script src="plugins/pace/pace.min.js"></script>
+        <script type="text/javascript" src="js/include.js"></script>
+    </head>
+    <!--TIPS-->
+    <!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
+    <body>
+        <div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed">
+            <!--NAVBAR-->
+            <!--===================================================-->
+            <header id="navbar">
+                <div id="navbar-container" class="boxed">
+                    <!--Navbar Dropdown-->
+                    <!--================================-->
+                    <div class="navbar-content clearfix">
+                        <ul class="nav navbar-top-links pull-left">
+                            <!--Navigation toogle button-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="tgl-menu-btn">
+                                <a class="mainnav-toggle" href="#"> 
+                                    <i class="fa fa-navicon fa-lg"></i> 
+                                </a>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        </ul>
+                        <ul class="nav navbar-top-links pull-right">
+                            <!--Profile toogle button-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li id="dropdown-user" class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                    <span class="pull-right"> <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture"> </span>
+                                    <div class="username hidden-xs">朱利尔</div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right with-arrow">
+                                    <!-- User dropdown menu -->
+                                    <ul class="head-list">
+                                        <li>
+                                            <a href="#"> <i class="fa fa-user fa-fw"></i> Profile </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">  <i class="fa fa-envelope fa-fw"></i> Messages </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">  <i class="fa fa-gear fa-fw"></i> Settings </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <i class="fa fa-sign-out fa-fw"></i> Logout </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End user dropdown-->
+                        </ul>
+                    </div>
+                    <!--================================-->
+                    <!--End Navbar Dropdown-->
+                </div>
+            </header>
+            <!--===================================================-->
+            <!--END NAVBAR-->
+            <div class="boxed">
+                <!--CONTENT CONTAINER-->
+                <!--===================================================-->
+                <div id="content-container">
+                <div class="pageheader hidden-xs">
+                  <h1><i class="fa fa-home"></i> 首页 </h1>
+                    <div class="breadcrumb-wrapper">
+                      <span class="label">当前位置：</span>
+                         <ol class="breadcrumb">
+                            <li> <a href="#"> Home </a> </li>
+                            <li class="active"> 首页 </li>
+                         </ol>
+                    </div>
+                </div>
+                    <!--Page content-->
+                    <!--===================================================-->
+                    <div id="page-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">欢迎您</h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <!--Tooltip Example-->
+                                        <p class="muted" style="font-size: large;">欢迎来到Hi.嗨Bike旅游网站后台管理系统</p>
+                                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                    </div>
+                                </div>
+							</div>
+                            <div class="col-md-4 eq-box-md grid">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-9 col-sm-9 col-xs-10">
+                                                <h3 class="mar-no"> <span class="counter">50</span></h3>
+                                                <p class="mar-ver-5">今日订单总数</p>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-2" style="text-align: right;"> <i class="fa fa-calendar fa-5x text-primary"></i> </div>
+                                        </div>
+                                        <p> 4% higher than last month </p>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="col-md-4 eq-box-md grid">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-9 col-sm-9 col-xs-10">
+                                                <h3 class="mar-no"> <span class="counter">100</span></h3>
+                                                <p class="mar-ver-5">订单总数</p>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-2" style="text-align: right;"> <i class="fa fa-shopping-cart fa-5x text-primary"></i> </div>
+                                        </div>
+                                        <p> 4% higher than last month </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 eq-box-md grid">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-9 col-sm-9 col-xs-10">
+                                                <h3 class="mar-no"> <span class="counter">50</span></h3>
+                                                <p class="mar-ver-5">产品总数</p>
+                                            </div>
+                                            <div class="col-md-3 col-sm-3 col-xs-2" style="text-align: right;"> <i class="fa fa-server fa-5x text-primary"></i> </div>
+                                        </div>
+                                        <p> 4% higher than last month </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div id="carousel-example-vertical" class="carousel vertical slide" data-ride="carousel">
+                                            <div class="carousel-inner" role="listbox">
+                                                <div class="item active">
+                                                    <div class="ticker-headline">
+                                                        <div class="media">
+                                                            <span class="pull-left"><i class="fa fa-twitter fa-4x text-azure"></i></span>
+                                                            <div class="media-body">
+                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur.Suspendisse id nunc sed massa cursus efficitur.  
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="ticker-headline">
+                                                        <div class="media">
+                                                            <span class="pull-left"><i class="fa fa-facebook fa-4x text-primary"></i></span>
+                                                            <div class="media-body">
+                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur. Suspendisse id nunc sed massa cursus efficitur. 
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="item">
+                                                    <div class="ticker-headline">
+                                                        <div class="media">
+                                                            <span class="pull-left"><i class="fa fa-google-plus fa-4x text-danger"></i></span>
+                                                            <div class="media-body">
+                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur. Suspendisse id nunc sed massa cursus efficitur. 
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- Controls -->
+                                            <a class="up carousel-control" href="#carousel-example-vertical" role="button" data-slide="prev">
+                                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                                            <span class="sr-only">Previous</span>
+                                            </a>
+                                            <a class="down carousel-control" href="#carousel-example-vertical" role="button" data-slide="next">
+                                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                            <span class="sr-only">Next</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 eq-box-md grid">
+                                
+                                <div class="bg-light">
+                                    <ul class="nav nav-section nav-justified">
+                                        <li>
+                                            <div class="section">
+                                                <h4 class="text-left"> HDD 1 <i class="fa fa-caret-up text-success"></i></h4>
+                                                <p class="text-left"> Traffic this month </p>
+                                                <div class="progress progress-striped progress-xs">
+                                                    <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
+                                                </div>
+                                                <p class="text-left">Health: <span class="text-success">Good</span></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="section">
+                                                <h4 class="text-left"> HDD 2 <i class="fa fa-caret-down text-danger"></i></h4>
+                                                <p class="text-left"> Traffic this month </p>
+                                                <div class="progress progress-striped progress-xs">
+                                                    <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
+                                                </div>
+                                                <p class="text-left">Health: <span class="text-danger">Bad</span></p>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="section">
+                                                <h4 class="text-left"> HDD 3 <i class="fa fa-caret-up text-success"></i></h4>
+                                                <p class="text-left"> Traffic this month </p>
+                                                <div class="progress progress-striped progress-xs">
+                                                    <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
+                                                </div>
+                                                <p class="text-left">Health: <span class="text-success">Good</span></p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+
+                    </div>
+                    <!--===================================================-->
+                    <!--End page content-->
+                </div>
+                <!--===================================================-->
+                <!--END CONTENT CONTAINER-->
+                <!--MAIN NAVIGATION-->
+                <!--===================================================-->
+
+                <include src="menu.html"></include>
+
+                <!--===================================================-->
+                <!--END MAIN NAVIGATION-->
+            </div>
+            <!-- FOOTER -->
+            <!--===================================================-->
+            <footer id="footer">
+                <!-- Visible when footer positions are fixed -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="show-fixed pull-right">
+                    <ul class="footer-list list-inline">
+                        <li>
+                            <p class="text-sm">SEO Proggres</p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 80%" class="progress-bar progress-bar-danger"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="text-sm">Online Tutorial</p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 80%" class="progress-bar progress-bar-primary"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-sm btn-dark btn-active-success">Checkout</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Visible when footer positions are static -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="hide-fixed pull-right pad-rgt">By 朱利尔 v1.0</div>
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <p class="pad-lft">Copyright &copy; 2020.Company 朱利尔 All rights reserved.<a target="_blank" href="http://www.baidu.com"></a></p>
+            </footer>
+            <!--===================================================-->
+            <!-- END FOOTER -->
+            <!-- SCROLL TOP BUTTON -->
+            <!--===================================================-->
+            <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+            <!--===================================================-->
+        </div>
+        <!--===================================================-->
+        <!-- END OF CONTAINER -->
+        <!--JAVASCRIPT-->
+        <!--=================================================-->
+        <!--jQuery [ REQUIRED ]-->
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <!--BootstrapJS [ RECOMMENDED ]-->
+        <script src="js/bootstrap.min.js"></script>
+        <!--Fast Click [ OPTIONAL ]-->
+        <script src="plugins/fast-click/fastclick.min.js"></script>
+        <!--Jquery Nano Scroller js [ REQUIRED ]-->
+        <script src="plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+        <!--Metismenu js [ REQUIRED ]-->
+        <script src="plugins/metismenu/metismenu.min.js"></script>
+        <!--Jasmine Admin [ RECOMMENDED ]-->
+        <script src="js/scripts.js"></script>
+        <!--Switchery [ OPTIONAL ]-->
+        <script src="plugins/switchery/switchery.min.js"></script>
+        <!--Jquery Steps [ OPTIONAL ]-->
+        <script src="plugins/parsley/parsley.min.js"></script>
+        <!--Jquery Steps [ OPTIONAL ]-->
+        <script src="plugins/jquery-steps/jquery-steps.min.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+        <!--Bootstrap Wizard [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+        <!--Masked Input [ OPTIONAL ]-->
+        <script src="plugins/masked-input/bootstrap-inputmask.min.js"></script>
+        <!--Bootstrap Validator [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+        <!--Flot Chart [ OPTIONAL ]-->
+        <script src="plugins/moment/moment.min.js"></script>
+        <script src="plugins/moment-range/moment-range.js"></script>
+        <!--Flot Order Bars Chart [ OPTIONAL ]-->
+        <!--ricksaw.js [ OPTIONAL ]-->
+       <!--Summernote [ OPTIONAL ]-->
+        <script src="plugins/summernote/summernote.min.js"></script>
+        <!--Fullscreen jQuery [ OPTIONAL ]-->
+        <script src="plugins/screenfull/screenfull.js"></script>
+        <!--Form Wizard [ SAMPLE ]-->
+        <script src="js/demo/wizard.js"></script>
+        <!--Form Wizard [ SAMPLE ]-->
+        <script src="js/demo/form-wizard.js"></script>
+        <script src="js/demo/dashboard-v2.js"></script>
+      
+    </body>
+</html>

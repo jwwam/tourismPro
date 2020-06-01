@@ -1,0 +1,78 @@
+/* yui reset */
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0}
+td{vertical-align:top}
+address,caption,cite,code,dfn,em,strong,th,var{font-style:normal;font-weight:normal}
+ol,ul{list-style:none}
+caption,th{text-align:left}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+q:before,q:after{content:''}
+fieldset,img,abbr,acronym{border:0}
+
+/* yui base */
+
+h6{font-size:12px}
+h5{font-size:14px}
+h4{font-size:16px}
+h3,.h3{font-size:18px}
+h2,.h2{font-size:24px}
+h1,.h1{font-size:30px}
+h1,h2,h3,.h1,.h2,.h3{margin:0 0 0.5em; line-height:36px;}
+h1,h2,h3,h4,h5,h6,strong,b{font-weight:bold}
+abbr,acronym{border-bottom:1px dotted #000;cursor:help}
+em{font-style:italic}
+blockquote,ul,ol,dl{margin:0 1em 1em}
+ol,ul{margin-left:2em}
+ol li{list-style:decimal outside}
+ul li{list-style:disc outside}
+dl dd{margin:0 0 1em 1em}
+dl dt{font-weight:bold;}
+caption{margin-bottom:.5em;text-align:center}
+p,fieldset,table{margin-bottom:1em}
+small{font-size:0.9em; color:#BFBFBF}
+h1 small, h2 small, h3 small, h4 small, h5 small, h6 small{ font-weight:normal }
+a{text-decoration:none}
+th{ font-weight:700; }
+
+/* basegs common tags */
+
+body{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-size:12px;line-height:18px;font-weight:normal;color:#404040;margin:0}
+blockquote{border-left:5px solid #eee;padding-left:15px}
+blockquote p{font-size:14px;font-weight:300;line-height:18px;margin-bottom:0}
+blockquote small{display:block;font-size:12px;font-weight:300;line-height:18px;color:#bfbfbf}
+blockquote small:before{content:'\2014 \00A0'}
+code,pre{font-family:Monaco, Andale Mono, Courier New, monospace;font-size:12px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;padding:0 3px 2px}
+code{background-color:#fee9cc;color:rgba(0,0,0,0.75);padding:1px 3px}
+pre{background-color:#f5f5f5;display:block;line-height:18px;font-size:12px;border:1px solid rgba(0,0,0,0.15);-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;white-space:pre-wrap;word-wrap:break-word;margin:0 0 18px;padding:8.5px}
+
+/* basegs common class */
+
+.wrap{width:940px;margin:0 auto}
+.grid-row:after{content:'.';display:block;clear:both;font-size:0;height:0;visibility:hidden}
+.grid-row{*zoom:1}
+
+.span3,.span4,.span8,.span12{float:left;margin-right:20px;display:block;list-style:none}
+.span3:last-child,.span4:last-child,.span8:last-child,.span12:last-child{margin-right:0}
+.span3.last,.span4.last,.span8.last,.span12.last{margin-right:0}
+.span2{width:110px}
+.span3{width:300px}
+.span4{width:220px}
+.span8{width:460px}
+.span12{width:700px}
+
+.clearfix:after{content:'.';display:block;clear:both;font-size:0;height:0;visibility:hidden;}
+.clearfix{*zoom:1}
+
+.thin{font-weight:400}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left}
+.text-right{text-align:right}
+.text-center{text-align:center}
+.text-justify{text-align:justify}
+
+/* basegs form element */
+.input-text, .button, input, select, textarea, button{ color:#565656; border:#ccc solid 1px; padding:4px; border-radius:2px; }
+select{ padding:2px; }
+.button, input[type="button"], input[type="submit"], button{ background:#f7f7f7; cursor:pointer; padding:2px 5px; display:inline-block; }
+.button:hover, input[type="button"]:hover, input[type="submit"]:hover, button:hover{ background:#e7e7e7;}

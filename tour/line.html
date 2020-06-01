@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hi.嗨旅-线路</title>
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <!--STYLESHEET-->
+        <!--=================================================-->
+        <!--Roboto Slab Font [ OPTIONAL ] -->
+        <link href="http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/css?family=Roboto:500,400italic,100,700italic,300,700,500italic,400" rel="stylesheet">
+        <!--Bootstrap Stylesheet [ REQUIRED ]-->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <!--Jasmine Stylesheet [ REQUIRED ]-->
+        <link href="css/style.css" rel="stylesheet">
+        <!--Font Awesome [ OPTIONAL ]-->
+        <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!--Switchery [ OPTIONAL ]-->
+        <link href="plugins/switchery/switchery.min.css" rel="stylesheet">
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <link href="plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+        <!--FooTable [ OPTIONAL ]-->
+        <link href="plugins/fooTable/css/footable.core.css" rel="stylesheet">
+        <!--Demo [ DEMONSTRATION ]-->
+        <link href="css/demo/jasmine.css" rel="stylesheet">
+        <!--file upload-->
+        <link rel="stylesheet" href="css/file/fileinput.css">
+        <link rel="stylesheet" href="themes/explorer-fa/theme.css">
+        <!--SCRIPT-->
+        <!--=================================================-->
+        <!--Page Load Progress Bar [ OPTIONAL ]-->
+        <link href="plugins/pace/pace.min.css" rel="stylesheet">
+        <script src="plugins/pace/pace.min.js"></script>
+    </head>
+    <body>
+        <div id="container" class="effect mainnav-lg navbar-fixed mainnav-fixed">
+            <!--NAVBAR-->
+            <!--===================================================-->
+            <header id="navbar">
+                <div id="navbar-container" class="boxed">
+                    <!--Navbar Dropdown-->
+                    <!--================================-->
+                    <div class="navbar-content clearfix">
+                        <ul class="nav navbar-top-links pull-left">
+                            <!--Navigation toogle button-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li class="tgl-menu-btn">
+                                <a class="mainnav-toggle" href="#"> 
+                                    <i class="fa fa-navicon fa-lg"></i> 
+                                </a>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                        </ul>
+                        <ul class="nav navbar-top-links pull-right">
+                            <!--Profile toogle button-->
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <li id="dropdown-user" class="dropdown">
+                                <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                                    <span class="pull-right"> <img class="img-circle img-user media-object" src="img/av1.png" alt="Profile Picture"> </span>
+                                    <div class="username hidden-xs">朱利尔</div>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right with-arrow">
+                                    <!-- User dropdown menu -->
+                                    <ul class="head-list">
+                                        <li>
+                                            <a href="#"> <i class="fa fa-user fa-fw"></i> Profile </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">  <i class="fa fa-envelope fa-fw"></i> Messages </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">  <i class="fa fa-gear fa-fw"></i> Settings </a>
+                                        </li>
+                                        <li>
+                                            <a href="#"> <i class="fa fa-sign-out fa-fw"></i> Logout </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+                            <!--End user dropdown-->
+                        </ul>
+                    </div>
+                    <!--================================-->
+                    <!--End Navbar Dropdown-->
+                </div>
+            </header>
+            <!--===================================================-->
+            <!--END NAVBAR-->
+            <div class="boxed">
+                <!--CONTENT CONTAINER-->
+                <!--===================================================-->
+                <div id="content-container">
+                    <div class="pageheader hidden-xs">
+                        <h1><i class="fa fa-home"></i> 线路 </h1>
+                          <div class="breadcrumb-wrapper">
+                            <span class="label">当前位置：</span>
+                               <ol class="breadcrumb">
+                                  <li> <a href="#"> Home </a> </li>
+                                  <li class="active">线路 </li>
+                               </ol>
+                          </div>
+                      </div>
+                    <!--Page content-->
+                    <!--===================================================-->
+                    <div id="page-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">线路列表</h3>
+                                    </div>
+                                    <!-- Foo Table - Add & Remove Rows -->
+                                    <!--===================================================-->
+                                    <div class="panel-body">
+                                        <div class="pad-btm form-inline">
+                                            <div class="row">
+                                                <div class="col-sm-6 text-xs-center">
+                                                    <div class="form-group">
+                                                        <button id="demo-bootbox-custom-h-form" class="btn btn-default">添加</button>
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-sm-6 text-xs-center text-right">
+                                                    <div class="form-group">
+                                                        <input id="demo-input-search2" type="text" placeholder="搜索" class="form-control" autocomplete="off">
+                                                    </div>
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                        <table id="line_list" class="table table-bordered table-hover toggle-circle" data-page-size="7">
+                                            <thead>
+                                                <tr>
+                                                    <th name="id">id</th>
+                                                    <th name="lineName">旅线名称</th>
+                                                    <th name="lineAddress">旅线途径地址</th>
+                                                    <th name="linePhone">旅线咨询电话</th>
+                                                    <th name="linePrice">旅线价格</th>
+                                                    <th name="lineDescription">旅线描述</th>
+                                                    <th name="createDate">创建时间</th>
+                                                    <th name="lineImages">旅线图片</th>
+                                                    <th name="id">操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!--===================================================-->
+                                    <!-- End Foo Table - Add & Remove Rows -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+                    <!--===================================================-->
+                    <!--End page content-->
+                    <div id='fileUrlDiv' class='row' hidden></div>
+                </div>
+                <!--===================================================-->
+                <!--END CONTENT CONTAINER-->
+                <!--MAIN NAVIGATION-->
+                <!--===================================================-->
+                
+                <include src="menu.html"></include>
+
+                <!--===================================================-->
+                <!--END MAIN NAVIGATION-->
+            </div>
+            <!-- FOOTER -->
+            <!--===================================================-->
+            <footer id="footer">
+                <!-- Visible when footer positions are fixed -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="show-fixed pull-right">
+                    <ul class="footer-list list-inline">
+                        <li>
+                            <p class="text-sm">SEO Proggres</p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 80%" class="progress-bar progress-bar-danger"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <p class="text-sm">Online Tutorial</p>
+                            <div class="progress progress-sm progress-light-base">
+                                <div style="width: 80%" class="progress-bar progress-bar-primary"></div>
+                            </div>
+                        </li>
+                        <li>
+                            <button class="btn btn-sm btn-dark btn-active-success">Checkout</button>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Visible when footer positions are static -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <div class="hide-fixed pull-right pad-rgt">By 朱利尔 v1.0</div>
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <!-- Remove the class name "show-fixed" and "hide-fixed" to make the content always appears. -->
+                <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                <p class="pad-lft">Copyright &copy; 2020.Company 朱利尔 All rights reserved.<a target="_blank" href="http://www.baidu.com"></a></p>
+            </footer>
+            <!--===================================================-->
+            <!-- END FOOTER -->
+            <!-- SCROLL TOP BUTTON -->
+            <!--===================================================-->
+            <button id="scroll-top" class="btn"><i class="fa fa-chevron-up"></i></button>
+            <!--===================================================-->
+        </div>
+        <!--===================================================-->
+        <!-- END OF CONTAINER -->
+
+        <!--Small Bootstrap Modal-->
+        <!--===================================================-->
+        <div id="demo-sm-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title" id="mySmallModalLabel">结果</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p id="model-res"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--===================================================-->
+
+        <!--JAVASCRIPT-->
+        <!--=================================================-->
+        <!--jQuery [ REQUIRED ]-->
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <!--BootstrapJS [ RECOMMENDED ]-->
+        <script src="js/bootstrap.min.js"></script>
+        <!--Fast Click [ OPTIONAL ]-->
+        <script src="plugins/fast-click/fastclick.min.js"></script>
+        <!--Jquery Nano Scroller js [ REQUIRED ]-->
+        <script src="plugins/nanoscrollerjs/jquery.nanoscroller.min.js"></script>
+        <!--Metismenu js [ REQUIRED ]-->
+        <script src="plugins/metismenu/metismenu.min.js"></script>
+        <!--Jasmine Admin [ RECOMMENDED ]-->
+        <script src="js/scripts.js"></script>
+        <!--Switchery [ OPTIONAL ]-->
+        <script src="plugins/switchery/switchery.min.js"></script>
+        
+        <!--FooTable [ OPTIONAL ]-->
+        <script src="plugins/fooTable/dist/footable.all.min.js"></script>
+        <!--Fullscreen jQuery [ OPTIONAL ]-->
+        <script src="plugins/screenfull/screenfull.js"></script>
+        <!--FooTable Example [ SAMPLE ]-->
+        <script src="js/demo/tables-footable.js"></script>
+        <!-- DataTables -->
+        <!-- <script src="plugins/datatables/media/js/dataTables.bootstrap.js"></script>
+        <script src="plugins/datatables/media/js/jquery.dataTables.js"></script>-->
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap.min.js"></script>
+        <!--Bootbox Modals [ OPTIONAL ]-->
+        <script src="plugins/bootbox/bootbox.min.js"></script>
+        <!--file upload-->
+        <script src="js/file/plugins/piexif.js"></script>
+        <script src="js/file/plugins/sortable.js"></script>
+        <script src="js/file/fileinput.js"></script>
+        <script src="js/file/locales/zh.js"></script>
+        <script src="themes/explorer-fa/theme.js"></script>
+        <script src="js/include.js"></script>
+        <!--Bootstrap Select [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
+        <script>
+            //var base_url = 'http://10.127.127.1:8080/s/user';
+            var base_url = 'http://localhost:8080/s';
+            // init date tables
+            var lineTable = $("#line_list").dataTable({
+                "deferRender": true,
+                "processing" : true,
+                "serverSide": true,
+                "bLengthChange": false,
+                "bPaginate": true,
+                "iDisplayLength": 10,
+                "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
+                "ajax": {
+                    url: base_url + "/line/list",
+                    type:"post",
+                    dataType: "json",
+                    async:false,
+                    contentType:'application/json;chart=utf-8',
+                    data : function ( d ) {
+                        var obj = {};
+                        // obj.id = $('#id').val();
+                        // obj.userName = $('#userName').val();
+                        // obj.password = $('#password').val();
+                        // obj.age = $('#age').val();
+                        // obj.createDate = $('#createDate').val();
+                        obj.start = d.start/d.length;
+                        obj.length = d.length;
+                        return JSON.stringify(obj);
+
+                        //通过形参"d"可以获取到datable自带的参数信息，然后计算和转换设置接口所需要的参数
+                        //我的服务端接口配置是pageno为页数，count为数量，state是其他参数
+                        //d.pageno = d.start/d.length+1;
+                        //d.count = d.length;
+                    },
+                    dataFilter: function (json) {//json是服务器端返回的数据
+                        //如果服务端返回的json字符串符合datatable要求，则直接return json，若不符合则进行以下步骤
+                        //获取到的是json字符串,转换成json对象，提取所需要的数据
+                        var dt = $.parseJSON(json);
+                        console.log(dt);
+                        //然后定义一个符合datatable要求的对象，data属性的值是实际返回的数据
+                        var returndt = {
+                            //"draw": ,
+                            "recordsTotal": dt.data.recordsTotal,
+                            "recordsFiltered": dt.data.recordsFiltered,
+                            "data":dt.data.lineList
+                        };
+                        //把符合要求的对象再次转为json字符串return出去
+                        return JSON.stringify(returndt);
+                },
+                },
+                "searching": false,
+                "ordering": false,
+                //"scrollX": true,	// scroll x，close self-adaption
+                "columns": [
+                            {
+                                "data": 'id',
+                                "bSortable": false,
+                                "visible" : true,
+                                "width":'10%'
+                            },
+                            {
+                                "data": 'lineName',
+                                "visible" : true,
+                                "width":'10%'
+                            },
+                            {
+                                "data": 'lineAddress',
+                                "visible" : true,
+                                "width":'10%'
+                            },
+                            {
+                                "data": 'linePhone',
+                                "width":'10%',
+                                "visible" : true,
+                            },
+                            {
+                                "data": 'linePrice',
+                                "width":'10%',
+                                "visible" : true,
+                            },
+                            {
+                                "data": 'lineDescription',
+                                "width":'10%',
+                                "visible" : true,
+                            },
+                            { 
+                                "data": 'createDate', 
+                                "width":'10%',
+                                "visible" : true,
+                                "render": function ( data, type, row ) {
+                                    return getMyDate(data);
+                                }
+                            },
+                            {
+                                "data": 'lineImages',
+                                "width":'10%',
+                                "visible" : true,
+                                "render": function ( data, type, row ) {
+                                    if(data!=null){
+                                        var img = data.split(',');
+                                        //$("#a").text(arr[0]);
+                                        var imgHtml = "<img src='http://"+img[0]+"' width='150px' height='150px'>";
+                                        return imgHtml;
+                                    }
+                                    return "";
+                                }
+                            },
+                            {
+                                "data": 'id' ,
+                                "width":'10%',
+                                "render": function ( data, type, row ) {
+                                    return function(){
+                                        // status
+                                        //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
+                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
+
+                                        // log url
+                                        //var logHref = base_url +'/joblog?jobId='+ row.id;
+
+                                        // data
+                                        //tableData['key'+row.id] = row;
+
+                                        // opt
+                                        var html = start_stop_div;
+                                        return html;
+                                    };
+                                }
+                            }
+                        ],
+                        "oLanguage": {//插件的汉化
+                            "sLengthMenu": "每页显示 _MENU_ 条记录",
+                            "sZeroRecords": "抱歉， 没有找到",
+                            "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                            "sInfoEmpty": "没有数据",
+                            "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                            "oPaginate": {
+                                "sFirst": "首页",
+                                "sPrevious": "前一页",
+                                "sNext": "后一页",
+                                "sLast": "尾页"
+                            },
+                            "sZeroRecords": "没有检索到数据",
+                            "sProcessing": "<img src='' />",
+                            "sSearch": "搜索"
+                        },
+            });
+
+            // table data
+            var tableData = {};
+
+            function deleteThisRowPapser(id){
+                var obj = {};
+                obj.id= id;
+                var deleteData = JSON.stringify(obj);
+                bootbox.confirm({
+                    message: "确认删除吗?",
+                    buttons: {
+                        confirm: {
+                            label: '确认',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: '取消',
+                            className: 'btn-danger'
+                        }
+                },
+                callback: function (result,id) {
+                    if(result==true){
+                        $.ajax({
+                        type:'post',
+                        async:false,
+                        url:base_url+'/line/deleteLine',
+                        contentType:'application/json;chart=utf-8',
+                        dataType:'json',
+                        data:deleteData,
+                        success:function(result){
+                            lineTable.fnClearTable(); //清空一下table
+                            lineTable.fnDestroy(); //还原初始化了的datatable
+                            $('#demo-sm-modal').modal('show');
+                            $('#model-res').html(result.msg);
+                            
+                        }
+                    })
+                    }
+                }
+		        });
+            }
+
+            //将时间戳格式化 
+            function getMyDate(time){  
+                if(typeof(time)=="undefined"){
+                    return "";
+                }
+                var oDate = new Date(time),  
+                oYear = oDate.getFullYear(),  
+                oMonth = oDate.getMonth()+1,  
+                oDay = oDate.getDate(),  
+                oHour = oDate.getHours(),  
+                oMin = oDate.getMinutes(),  
+                oSen = oDate.getSeconds(),  
+                oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间  
+                        
+                return oTime;  
+                };
+                
+                //补0操作,当时间数据小于10的时候，给该数据前面加一个0  
+                function getzf(num){  
+                    if(parseInt(num) < 10){  
+                        num = '0'+num;  
+                    }  
+                    return num;  
+                }
+
+
+            // BOOTBOX - CUSTOM HTML FORM
+            // =================================================================
+            // Require Bootbox
+            // http://bootboxjs.com/
+            // =================================================================
+            $('#demo-bootbox-custom-h-form').click(function(){
+                $('#fileUrlDiv').empty();
+                bootbox.dialog({
+                    title: "添加旅线",
+                    size: "large",
+                    message:
+                        "<div id='addContent'> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='lineName'>旅线名称</label> " +
+                                        "<input id='lineName' name='lineName' type='text' placeholder='输入旅线名称' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='lineAddress'>旅线途径地址</label> " +
+                                        "<input id='lineAddress' name='lineAddress' type='text' placeholder='输入旅线途径地址' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='linePhone'>旅线咨询电话</label> " +
+                                        "<input id='linePhone' name='linePhone' type='text' placeholder='输入旅线咨询电话' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='linePrice'>旅线价格</label> " +
+                                        "<input id='linePrice' name='linePrice' type='text' placeholder='输入旅线价格' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'>"+
+                                        "<div class='input-group'>"+
+                                            "<div class='input-group-addon'>添加旅团</div>"+
+                                            "<input type='hidden' id='groupIds' />"+
+                                            "<input class='form-control' type='text' id='txt' onclick='show(this)' placeholder='选择旅团' readonly style='width:450px'>"+
+                                            "<div class='popover fade bottom in' id='panel-select' style='display:block;opacity:0'>"+ 
+                                                "<div class='arrow'></div>"+
+                                                "<div class='popover-title' style='height:35px;'>"+
+                                                    "<div class='checkbox' style='margin-top:0;margin-bottom:0px;'></div><label><input type='checkbox' onchange='CheckAll(this)' />全选</label>"+
+                                                    "<button type='button' class='close' onclick='hide()'>"+
+                                                        "<span aria-hidden='true'>&times;</span>"+
+                                                        "<span class='sr-only'>Close</span>"+
+                                                    "</button>"+
+                                                "</div>"+
+                                                "<div class='popover-content' style='overflow:auto;height:300px'>"+
+                                                    "<ul class='list-inline' id='ul-select' >"+
+                                                    "</ul>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='lineDescription'>旅线描述</label> " +
+                                        "<textarea id='lineDescription' name='lineDescription' type='text' placeholder='输入旅线描述' class='form-control input-md' style='height:100px'> </textarea>" +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='lineImages'>旅线图片 </label> " +
+
+                                        "<div class='container kv-main'>"+
+                                            "<div class='row'>"+
+                                                "<div style='margin:10px 20px 100px 20px;width:830px;height:300px'>"+
+                                                    "<form nctype='multipart/form-data'>"+
+                                                    "<input id='file-0a' class='file' name='file' type='file' multiple data-min-file-count='1'><br>"+
+                                                    "</form>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                        "</div>",
+                        buttons: {
+                            success: {
+                                label: "添加旅线",
+                                className: "btn-danger",
+                                callback: function() {
+                                    var imgUrls="";
+                                    $(".fileUrl").each(function(index, el) {
+                                        if(index==0){
+                                            imgUrls = imgUrls + el.value;
+                                        }else{
+                                            imgUrls = imgUrls + "," + el.value;
+                                        }
+                                    });
+                                    var lineName = $('#lineName').val();
+                                    var lineAddress = $('#lineAddress').val();
+                                    var linePhone = $('#linePhone').val();
+                                    var linePrice = $('#linePrice').val();
+                                    var lineDescription = $('#lineDescription').val();
+                                    var groupIds = $("#groupIds").val();
+
+                                    var obj = new Object();
+                                    obj.lineName=lineName;
+                                    obj.lineAddress=lineAddress;
+                                    obj.linePhone=linePhone;
+                                    obj.linePrice=linePrice;
+                                    obj.lineDescription=lineDescription;
+                                    obj.lineImages=imgUrls;
+                                    obj.groupIds=groupIds;
+                                    //var answer = $("input[name='awesomeness']:checked").val();
+                                    $.ajax({
+                                        type:'post',
+                                        async:false,
+                                        url:base_url+'/line/addLine',
+                                        contentType:'application/json;chart=utf-8',
+                                        dataType:'json',
+                                        data:JSON.stringify(obj),
+                                        success:function(result){
+                                            lineTable.fnClearTable(); //清空一下table
+                                            lineTable.fnDestroy(); //还原初始化了的datatable
+                                            $('#demo-sm-modal').modal('hide');
+                                            
+                                        }
+                                    })
+                                    
+                                }
+                            },
+                            cancel: {
+                                label: "取消",
+                                className: "btn-default"
+                            }
+                        }
+                    });
+                
+                
+                
+                    $('#file-0a').fileinput({
+                        'theme':'explorer',
+                        language:'zh',
+                        uploadUrl:'http://localhost:8081/uploadByMap',
+                        showPreview:true,//是否显示预览
+                        allowedPreviewTypes : ['image','html','text','video','audio','flash'],
+                        maxFileCount :3,// 表示允许同时上传的最大文件个数
+                    });
+                    
+                    // $('#file-0a').on('fileuploaderror',function(event, data, previewId, index) {
+                    //     var form = data.form,files = data.files,extra = data.extra,
+                    //     response = data.response,reader = data.reader;
+                    //     console.log(data);
+                    //     console.log('File upload error');
+                    // });
+                    
+                    $('#file-0a').on('fileerror',function(event, data) {
+                        console.log(data.id);
+                        console.log(data.index);
+                        console.log(data.file);
+                        console.log(data.reader);
+                        console.log(data.files);
+                    });
+
+                    $('#file-0a').on('fileuploaded',function(event, data, previewId, index) {
+                        var form = data.form,files = data.files,extra = data.extra,
+                        response = data.response,reader = data.reader;
+                        
+                        $('#fileUrlDiv').append("<input class='fileUrl' value='"+ response.imgUrl +"'/>");
+                        console.log('File uploaded triggered');
+                    });
+
+
+                    var groupData = {};
+                    $.ajax({
+                        type:'post',
+                        async:false,
+                        url:base_url+'/group/list',
+                        contentType:'application/json;chart=utf-8',
+                        dataType:'json',
+                        data:JSON.stringify(groupData),
+                        success:function(result){
+                            var objArr = [];
+                            for (var i = 0; i < result.data.groupList.length; i++) {
+                                var obj = new Object();
+                                obj.id = result.data.groupList[i].id;
+                                obj.value=result.data.groupList[i].groupName;
+                                objArr.push(obj);
+                            }
+                            //加载多选框的数据
+                            var ul = $("#ul-select");
+                            for (var i = 0; i < objArr.length; i++) {
+                                ul.append("<li style='width:300px;'><div class='checkbox'></div><label><input type='checkbox' value=" + objArr[i].id + " onclick='Choose(this)'/>" + objArr[i].value + "</label></li>");
+                            }
+                            
+                        }
+                    })
+                    
+                
+
+                });
+
+     
+
+
+            //显示多选框
+            function show(t) {
+                //设置多选框显示的位置，在选择框的中间
+                var left = t.offsetLeft;
+                var top = t.offsetTop + t.clientHeight + document.body.scrollTop;
+                $("#panel-select").css("opacity", "1");
+                $("#panel-select").css("margin-left", left);
+                $("#panel-select").css("margin-top", top + 5);
+                $("#panel-select").css("max-width", "450px");
+            }
+            //隐藏多选框
+            function hide() {
+                $("#panel-select").css("opacity", "0");
+            }
+            //全选操作
+            function CheckAll(t) {
+                var name = "";
+                var groupIds = "";
+                var popoverContent = $($(t).parent().parent().parent().children()[2]);
+                popoverContent.find("input[type=checkbox]").each(function(i,th) {
+                    th.checked = t.checked;
+                    if (t.checked) {
+                        name += $(th).parent().text() + ",";
+                        groupIds += $(th).val() + ",";
+                    }
+                });
+                name = name.substr(0, name.length - 1);
+                groupIds = groupIds.substr(0, groupIds.length - 1);
+                $("#txt").val(name);
+                $("#groupIds").val(groupIds);
+            }
+            
+            //勾选某一个操作
+            function Choose(t) {
+                var oldName = $("#txt").val();
+                var name = oldName == "" ? "," + $("#txt").val() : "," + $("#txt").val() + ",";
+                var groupIds = oldName == "" ? "," + $("#groupIds").val() : "," + $("#groupIds").val() + ",";
+                var newName = $(t).parent().text();
+                var newid = $(t).val();
+                
+                if (t.checked) {//选中的操作
+                    $("#txt").val(name += newName + ",");
+                    $("#groupIds").val(groupIds += newid + ",");
+                } else {//去掉选中的操作
+                    var index = name.indexOf(","+newName+",");
+                    var len = newName.length;
+                    name = name.substring(0, index) + name.substring(index + len + 1, name.length);
+        
+                    var index = groupIds.indexOf("," + newid + ",");
+                    var len = newid.length;
+                    groupIds = groupIds.substring(0, index) + groupIds.substring(index + len + 1, groupIds.length);
+                }
+                name = name.substr(1, name.length - 2);
+                groupIds = groupIds.substr(1, groupIds.length - 2);
+                $("#txt").val(name);
+                $("#groupIds").val(groupIds);
+            }
+
+
+            
+        </script>
+    </body>
+</html>
