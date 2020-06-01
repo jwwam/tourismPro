@@ -92,7 +92,7 @@
  ![前台旅游线路](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200511020238.png)   
 
 
-# Run-启动访问  
+# Run-启动访问(本地部署)  
 1.启动Nginx  
 * 下载地址：[点击下载](http://nginx.org/download/nginx-1.18.0.zip)  
 ```
@@ -175,15 +175,26 @@ spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
 ```
 
 ## Quick start-快速部署(另一种部署方式)  
-下载部署包：[点我]()   
-1.前端部署： 
+注：使用我配置好的Nginx部署前端项目，通过我打包的jar直接启动后端项目  
+* 下载部署包：[百度网盘](https://pan.baidu.com/s/1oHK2AYOtqBVYGYifySjX8Q)   
+* 提取码：1bra  
+
+1.工具介绍：  
+* 【MongoDB安装包】mongodb-win32-x86_64-3.4.24.zip
+* 【MongoDB连接工具】Robo3T_v1.3.1.exe  
+* 【Redis安装包】Redis-x64-3.0.504.zip  
+* 【Redis连接工具】redis-desktop-manager-0.9.3.817.exe  
+* 【Nginx安装包】nginx-1.18.0.zip   
+* 【MySql连接工具】Navicat网上一大堆我就不上传了 
+
+2.前端部署： 
 * 务必保证系统的80端口、8082端口不被占用  
 * 解压nginx-1.18.0-tourismPro.rar  
 * 双击解压后nginx-1.18.0-tourismPro目录中的nginx.exe  
 * 打开浏览器，输入localhost，再打开新标签输入localhost:8082  
 * 页面正常显示则前端部署完成  
 
-2.后端部署：  
+3.后端部署：  
 * 务必保证系统的8081端口不被占用  
 * 务必保证系统已经正确配置了JDK1.8环境变量  
 * 务必保证系统正确安装且启动了Redis且未修改默认端口、未设置密码  
@@ -200,7 +211,8 @@ java -jar mongodb-file-server.jar
 ```  
 两个jar包启动都不报错则部署成功  
 
-3.验证：  
+4.验证：  
+
 打开浏览器访问地址  
 ``` 
 前台：http://localhost  
@@ -208,6 +220,7 @@ java -jar mongodb-file-server.jar
 ```
 在后台添加数据查看是否在前台正确展示  
 
+   
 # Call me-联系方式  
 * E-mail：824247231@qq.com  
 * QQ：824247231  
