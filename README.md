@@ -174,7 +174,7 @@ spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
 后台：http://localhost:8082/index.html  
 ```
 
-## Quick start-快速部署(另一种部署方式)  
+# Quick start-快速部署(另一种部署方式)  
 注：使用我配置好的Nginx部署前端项目，通过我打包的jar直接启动后端项目  
 * 下载部署包：[百度网盘](https://pan.baidu.com/s/1oHK2AYOtqBVYGYifySjX8Q)   
 * 提取码：1bra  
@@ -220,10 +220,11 @@ java -jar mongodb-file-server.jar
 ```
 在后台添加数据查看是否在前台正确展示  
 
-# PS-赘述
-* 本项目使用SpringDataJpa自动构建数据库表，启动项目自动生成表结构，无需手动创建
-* 项目使用Redis存储Session缓存
+# PS-其他说明
+* 本项目使用SpringDataJpa自动构建数据库表，启动项目会自动生成表结构，无需您手动创建
+* 项目使用Redis存储Session会话
 * 项目使用MongoDB作为小型文件存储数据库
+* 项目中推荐算法部分的实现需要评分数据支撑，请登录不同用户为景点提交评分、评论(每个景点不少于5个评分)
 
    
 # Call me-联系方式  
