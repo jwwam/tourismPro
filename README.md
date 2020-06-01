@@ -10,6 +10,7 @@
 * 因为tourism开发时间久远，现在对这个项目进行了全新升级  
 * 本次升级抛弃了原来一些老旧的技术，底层的所有代码全部重写  
 * 采用前后端分离架构  
+* RESTful API风格接口化、Json形式数据传输    
 * 前端页面进行了升级，引用了一些基本的组件，如dataTables.js、bootstrap.js、bootbox.js  
 * 前端没有采用主流框架如Vue、React等，使用基本的HTML+CSS+JQ也减轻了上手难度  
 * 引入皮尔逊线性相似度推荐算法的Java实现，应用于项目的“景点推荐”栏目   
@@ -150,17 +151,8 @@ nginx.exe -s reload
 ```
 启动命令：redis-server.exe  --service-start --service-name redisserver
 ```  
-4.启动项目
-* jar方式启动tourismPro
-```
-java -jar tourismPro.jar
-```
-* jar方式启动mongodb-file-server
-```
-java -jar mongodb-file-server.jar
-```  
+4.启动项目  
 * 本地启动  
-
 打开idea选择import project，选择tourismPro或者mongodb-file-server导入，然后等待相关依赖加载完成  
 修改tourismPro项目中application.properties配置文件，将你自己的MySQL账号和密码替换写入  
 ```
@@ -181,6 +173,40 @@ spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
 前台：http://localhost  
 后台：http://localhost:8082/index.html  
 ```
+
+## Quick start-快速部署(另一种部署方式)  
+下载部署包：[点我]()   
+1.前端部署： 
+* 务必保证系统的80端口、8082端口不被占用  
+* 解压nginx-1.18.0-tourismPro.rar  
+* 双击解压后nginx-1.18.0-tourismPro目录中的nginx.exe  
+* 打开浏览器，输入localhost，再打开新标签输入localhost:8082  
+* 页面正常显示则前端部署完成  
+
+2.后端部署：  
+* 务必保证系统的8081端口不被占用  
+* 务必保证系统已经正确配置了JDK1.8环境变量  
+* 务必保证系统正确安装且启动了Redis且未修改默认端口、未设置密码  
+* 务必保证系统正确安装且启动了Mongodb且新建了一个名为tourismPro的数据库  
+* 务必保证系统安装的是Mysql5.X版本（本项目暂不支持8.X系列的MySQL数据库）且新建了一个名为tourismPro的数据库  
+* 安装数据库时设置初始化账号为root，密码为1234  
+* 打开cmd或者powershell输入以下命令：     
+```
+java -jar tourismPro.jar
+```
+* 打开一个新的cmd或powershell输入以下命令：  
+```
+java -jar mongodb-file-server.jar
+```  
+两个jar包启动都不报错则部署成功  
+
+3.验证：  
+打开浏览器访问地址  
+``` 
+前台：http://localhost  
+后台：http://localhost:8082/index.html  
+```
+在后台添加数据查看是否在前台正确展示  
 
 # Call me-联系方式  
 * E-mail：824247231@qq.com  
