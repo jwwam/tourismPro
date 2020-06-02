@@ -27,6 +27,10 @@
         <!--file upload-->
         <link rel="stylesheet" href="css/file/fileinput.css">
         <link rel="stylesheet" href="themes/explorer-fa/theme.css">
+        <!--Bootstrap Timepicker [ OPTIONAL ]-->
+        <link href="plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+        <!--Bootstrap Datepicker [ OPTIONAL ]-->
+        <link href="plugins/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
         <!--SCRIPT-->
         <!--=================================================-->
         <!--Page Load Progress Bar [ OPTIONAL ]-->
@@ -267,6 +271,10 @@
         <script src="js/file/locales/zh.js"></script>
         <script src="themes/explorer-fa/theme.js"></script>
         <script src="js/include.js"></script>
+        <!--Bootstrap Timepicker [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+        <!--Bootstrap Datepicker [ OPTIONAL ]-->
+        <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
         <script>
             //var base_url = 'http://10.127.127.1:8080/s/hotel';
             var base_url = 'http://localhost:8080/s/hotel';
@@ -535,17 +543,15 @@
                                 "</div> " +
                             "</div> " +
                             "<div class='row'> " +
-                                "<div class='col-md-6'> " +
-                                    "<div class='form-group'> " +
-                                        "<label class='control-label' for='checkInTime'>入住时间</label> " +
-                                        "<input id='checkInTime' name='checkInTime' type='text' placeholder='输入酒店入住时间' class='form-control input-md'> " +
-                                    "</div> " +
-                                "</div> " +
-                                "<div class='col-md-6'> " +
-                                    "<div class='form-group'> " +
-                                        "<label class='control-label' for='checkOutTime'>退房时间</label> " +
-                                        "<input id='checkOutTime' name='checkOutTime' type='text' placeholder='输入酒店退房时间' class='form-control input-md'> " +
-                                    "</div> " +
+                                "<div class='col-md-12'> " +
+                                    "<label class='control-label' for='checkInTime'>入住时间-退房时间</label> " +
+                                    "<div id='demo-dp-range'>"+
+                                        "<div class='input-daterange input-group' id='datepicker'>"+
+                                            "<input type='text' class='form-control' id='checkInTime' name='checkInTime' placeholder='输入酒店入住时间'/>"+
+                                            "<span class='input-group-addon'> 至 </span>"+
+                                            "<input type='text' class='form-control' id='checkOutTime' name='checkOutTime' placeholder='输入酒店退房时间'/>"+
+                                        "</div>"+
+                                    "</div>"+
                                 "</div> " +
                             "</div> " +
                             "<div class='row'> " +
@@ -672,6 +678,11 @@
                     $('#fileUrlDiv').append("<input class='fileUrl' value='"+ response.imgUrl +"'/>");
                     console.log('File uploaded triggered');
                 });
+
+                $('#datepicker').datepicker({
+                    language: "zh-CN",
+                    format: "yyyy-mm-dd"
+                })
 
 	        });
         </script>
