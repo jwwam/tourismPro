@@ -222,6 +222,7 @@ java -jar mongodb-file-server.jar
 
 # PS-其他说明
 * 本项目使用SpringDataJpa自动构建数据库表，启动项目会自动生成表结构，无需您手动创建
+* 启动不能自动构建表，并且报错"Specified key was too long; max key length is xxx bytes"的请保证您的MySQL版本为5.X，并且修改您的数据库编码字符集为utf8 -- UTF-8 Unicode
 * 项目使用Redis存储Session会话
 * 项目使用MongoDB作为小型文件存储数据库
 * 项目中推荐算法部分的实现需要评分数据支撑，请登录不同用户为景点提交评分、评论(每个景点不少于5个评分)
