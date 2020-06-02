@@ -135,14 +135,14 @@
 					<div class="widget-content">
 						<div class="tabs">
 							<ul class="tab-control">
-								<li><a href="#tabs-1">朱利尔</a></li>
-								<li><a href="#tabs-2">狗子</a></li>
+								<li><a href="#tabs-1" id="tab-1-name">朱利尔</a></li>
+								<li><a href="#tabs-2" id="tab-2-name">朱利尔</a></li>
 							</ul>
 							<div id="tabs-1" class="tab-content">
-								<p>这能否v快决定快决定那就睡觉，缩放等级分为女警，的刹那间你屋俄方那你就。 </p>
+								<p id="tab-1-value">Morbic. Duis.</p>
 							</div>
 							<div id="tabs-2" class="tab-content">
-								<p>Morbi tincidunt, dui sit amet facilisis feugiat, odio metus gravida ante, ut pharetra massa metus id nunc. Duis scelerisque molestie turpis. Sed fringilla, massa eget luctus malesuada, metus eros molestie lectus, ut tempus eros massa ut dolor. Aenean aliquet fringilla sem. Suspendisse sed ligula in ligula suscipit aliquam. Praesent in eros vestibulum mi adipiscing adipiscing.</p>
+								<p id="tab-2-value">Morbic. Duis.</p>
 							</div>
 						</div>
 					</div>
@@ -401,7 +401,7 @@
 						"<h2 class='post-title' style='text-align:center'><a href=''>"+ data.lineName +"</a></h2>"+
 					"</div>"+
 					"<div class='image-place'>"+img+
-						"</br><p class='post-excerpt'>"+ data.lineDescription +"</p></br>"+
+						"</br><p class='post-excerpt' style='padding:15px;'>"+ data.lineDescription +"</p></br>"+
 					"</div>"+
 					// "<div class='post-meta'>"+
 					// 	"<span class='comment-count'>22 Comments</span>"+
@@ -500,6 +500,7 @@
 			success:function(result){
 				if(result.status==1){
 					setCommentList(result.data.commentList);
+					setRightCommentList(result.data.commentList);
 				}else{
 					alert(result.msg);
 				}
@@ -530,6 +531,37 @@
 			});
 			$("#comments-title").text("全部评论 ("+ data.length +")");
 			$(".comment-list").html(htmlContent);
+		}
+
+		function setRightCommentList(data){
+			if(data.length==0){
+				$(".tabs-widget").hide();
+			}else if(data.length==1){
+				$(".tabs-widget").hide();
+			}else{
+				var tab_1_name=data[0].userName;
+				var tab_2_name=data[1].userName;
+				var tab_1_value=data[0].commentContent;
+				var tab_2_value=data[1].commentContent;
+				$("#tab-1-name").text(tab_1_name);
+				$("#tab-2-name").text(tab_2_name);
+				$("#tab-1-value").text(tab_1_value);
+				$("#tab-2-value").text(tab_2_value);
+			}
+			
+			// data.forEach(element => {
+
+			// })
+			// data.forEach(function(val,index,data){
+			// 	if(index==2){
+			// 		return ;
+			// 	}
+			// 	nameLi = nameLi + "<li><a href='#tabs-"+ (index+1) +"'>"+ val.userName +"</a></li>";
+			// 	contentDiv = contentDiv + "<div id='tabs-"+ (index+1) +"' class='tab-content'>"+"<p>"+ val.commentContent +"</p>"+"</div>";
+			// });
+			// var htmlLiContent = nameLi;
+			// $(".tab-control").html(htmlLiContent);
+			// $(".tabs").append(contentDiv);
 		}
 
 		$("#submit-comment").on("click",function(){

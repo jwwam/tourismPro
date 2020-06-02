@@ -226,9 +226,13 @@ $(function() {
 			data:reqData,
 			success:function(result){
 				if(result.status==1){
-					$.session.set('userSession', result.data.id);
-					$.session.set('userName', result.data.userName);
-					window.location.href="index.html";
+					if(result.data.isAdmin=="true"){
+						window.location.href="http://localhost:8082/";
+					}else{
+						$.session.set('userSession', result.data.id);
+						$.session.set('userName', result.data.userName);
+						window.location.href="index.html";
+					}
 				}else{
 					$("#login_form").removeClass('shake_effect');
 					setTimeout(function(){

@@ -170,6 +170,27 @@
 					<div class="widget-content">
 						<div class="tabs">
 							<ul class="tab-control">
+								<li><a href="#tabs-1" id="tab-1-name">朱利尔</a></li>
+								<li><a href="#tabs-2" id="tab-2-name">朱利尔</a></li>
+							</ul>
+							<div id="tabs-1" class="tab-content">
+								<p id="tab-1-value">Morbic. Duis.</p>
+							</div>
+							<div id="tabs-2" class="tab-content">
+								<p id="tab-2-value">Morbic. Duis.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--widget -->
+				
+				<!-- <div class="widget tabs-widget">
+					<div class="h3 widget-title">
+						最新评论
+					</div>
+					<div class="widget-content">
+						<div class="tabs">
+							<ul class="tab-control">
 								<li><a href="#tabs-1">朱利尔</a></li>
 								<li><a href="#tabs-2">狗子</a></li>
 							</ul>
@@ -181,9 +202,8 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!--widget -->
-				
 				
 				<div class="widget accordion-widget">
 					<div class="h3 widget-title">
@@ -232,12 +252,12 @@
 					</div>
 					<div class="widget-content">
 						<div class="tag-cloud">
-							<a href="#">jquery</a>
-							<a href="#">camera slide</a>
-							<a href="#">minimal</a>
-							<a href="#">travel</a>
-							<a href="#">responsive</a>
-							<a href="#">html 5</a>
+							<a href="#">国内游</a>
+							<a href="#">五一欢乐游</a>
+							<a href="#">国庆七天乐</a>
+							<a href="#">欧洲</a>
+							<a href="#">东南亚</a>
+							<a href="#">家庭</a>
 						</div>
 					</div>
 				</div>
@@ -433,7 +453,7 @@
 						"<h2 class='post-title' style='text-align:center'><a href=''>"+ data.spotsName +"</a></h2>"+
 					"</div>"+
 					"<div class='image-place'>"+img+
-						"</br><p class='post-excerpt'>"+ data.spotsDescription +"</p></br>"+
+						"</br><p class='post-excerpt' style='padding:15px;'>"+ data.spotsDescription +"</p></br>"+
 					"</div>"+
 					// "<div class='post-meta'>"+
 					// 	"<span class='comment-count'>22 Comments</span>"+
@@ -509,6 +529,7 @@
 			success:function(result){
 				if(result.status==1){
 					setCommentList(result.data.commentList);
+					setRightCommentList(result.data.commentList);
 				}else{
 					alert(result.msg);
 				}
@@ -542,8 +563,40 @@
 			$(".comment-list").html(htmlContent);
 		}
 
+		function setRightCommentList(data){
+			if(data.length==0){
+				$(".tabs-widget").hide();
+			}
+			if(data.length>1){
+				var tab_1_name=data[0].userName;
+				var tab_2_name=data[1].userName;
+				var tab_1_value=data[0].commentContent;
+				var tab_2_value=data[1].commentContent;
+				$("#tab-1-name").text(tab_1_name);
+				$("#tab-2-name").text(tab_2_name);
+				$("#tab-1-value").text(tab_1_value);
+				$("#tab-2-value").text(tab_2_value);
+			}
+			
+			// data.forEach(element => {
+
+			// })
+			// data.forEach(function(val,index,data){
+			// 	if(index==2){
+			// 		return ;
+			// 	}
+			// 	nameLi = nameLi + "<li><a href='#tabs-"+ (index+1) +"'>"+ val.userName +"</a></li>";
+			// 	contentDiv = contentDiv + "<div id='tabs-"+ (index+1) +"' class='tab-content'>"+"<p>"+ val.commentContent +"</p>"+"</div>";
+			// });
+			// var htmlLiContent = nameLi;
+			// $(".tab-control").html(htmlLiContent);
+			// $(".tabs").append(contentDiv);
+		}
+
 		function getScore(data){
 			if(typeof(data) == "undefined"){
+				return 0;
+			}else if(data == null){
 				return 0;
 			}else{
 				return data;
