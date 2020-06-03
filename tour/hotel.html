@@ -561,6 +561,18 @@
                                         "<input id='star' name='star' type='text' placeholder='输入酒店星级' class='form-control input-md'> " +
                                     "</div> " +
                                 "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label'>优惠类型</label>"+
+                                        "<select class='form-control selectpicker' id='offerType'>"+
+                                            "<option value=''>请选择</option>"+
+                                            "<option value='1'>淡季特惠</option>"+
+                                            "<option value='2'>特价特荐</option>"+
+                                            "<option value='3'>店家优惠</option>"+
+                                            "<option value='4'>家庭优惠</option>"+
+                                        "</select>"+
+                                    "</div> " +
+                                "</div> " +
                             "</div> " +
                             "<div class='row'> " +
                                 "<div class='col-md-12'> " +
@@ -609,7 +621,8 @@
                                 var checkOutTime = $('#checkOutTime').val();
                                 var star = $('#star').val();
                                 var hotelDescription = $('#hotelDescription').val();
-                                var name = $('#name').val();
+                                var offerType = $('#offerType').val();
+
                                 var obj = new Object();
                                 obj.hotelName= hotelName;
                                 obj.hotelAddress=hotelAddress;
@@ -619,6 +632,7 @@
                                 obj.checkOutTime=checkOutTime;
                                 obj.star=star;
                                 obj.hotelDescription=hotelDescription;
+                                obj.offerType=offerType;
                                 obj.hotelImages=imgUrls;
                                 //var answer = $("input[name='awesomeness']:checked").val();
                                 $.ajax({

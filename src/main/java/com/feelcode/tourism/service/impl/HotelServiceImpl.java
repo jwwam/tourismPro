@@ -89,7 +89,7 @@ public class HotelServiceImpl implements HotelService {
                 }
                 if(StringUtils.isNotEmpty(keys.getCheckOutTime())){
                     predicate.getExpressions().add(
-                            cb.greaterThanOrEqualTo(r.get("checkOutTime").as(String.class), keys.getCheckOutTime())
+                            cb.lessThanOrEqualTo(r.get("checkOutTime").as(String.class), keys.getCheckOutTime())
                     );
                 }
                 if(StringUtils.isNotEmpty(keys.getHotelAddress())){
@@ -97,14 +97,27 @@ public class HotelServiceImpl implements HotelService {
                             cb.like(r.<String>get("hotelAddress"),"%" + StringUtils.trim(keys.getHotelAddress()) + "%")
                     );
                 }
-                if(StringUtils.isNotEmpty(keys.getHotelPrice())){
+                if(StringUtils.isNotEmpty(keys.getStar())){
                     predicate.getExpressions().add(
-                            cb.like(r.<String>get("hotelPrice"),"%" + StringUtils.trim(keys.getHotelPrice()) + "%")
+                            cb.equal(r.<String>get("star"), StringUtils.trim(keys.getStar()))
                     );
+                }
+                if (StringUtils.isNotEmpty(keys.getHotelPriceMin())) {
+                    predicate.getExpressions().add(
+                            cb.greaterThanOrEqualTo(r.get("hotelPrice").as(String.class), keys.getHotelPriceMin()));
+                }
+                if (StringUtils.isNotEmpty(keys.getHotelPriceMax())) {
+                    predicate.getExpressions().add(
+                            cb.lessThanOrEqualTo(r.get("hotelPrice").as(String.class), keys.getHotelPriceMax()));
                 }
                 if(StringUtils.isNotEmpty(keys.getBedType())){
                     predicate.getExpressions().add(
                             cb.like(r.<String>get("bedType"),"%" + StringUtils.trim(keys.getBedType()) + "%")
+                    );
+                }
+                if(StringUtils.isNotEmpty(keys.getOfferType())){
+                    predicate.getExpressions().add(
+                            cb.equal(r.<String>get("offerType"), StringUtils.trim(keys.getOfferType()))
                     );
                 }
                 return predicate;

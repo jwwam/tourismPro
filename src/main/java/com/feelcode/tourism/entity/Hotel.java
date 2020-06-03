@@ -51,4 +51,7 @@ public class Hotel extends BaseEntity{
     @Column(columnDefinition="text", name = "hotel_images")
     private String hotelImages;
 
+    @Column(name = "offer_type")
+    private String offerType;
+
 }

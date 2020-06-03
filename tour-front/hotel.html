@@ -109,6 +109,7 @@
 							<div class="field half">
 								<label for="flight-class">房间类型:</label>
 								<select id="bedType-input">
+									<option value="">请选择</option>
 									<option value="1">标准间</option>
 									<option value="2">大床房</option>
 									<option value="3">总统套房</option>
@@ -140,23 +141,23 @@
 						<h5>服务星级</h5>
 						<ul class="pointer">
 							<li>
-								<a href="#" class="sprite-stars star1">1 Star</a>
+								<a href="#" class="easy-search sprite-stars star1" data-key="star" data-val="1">1 Star</a>
 								<small>12 Places</small>							
 							</li>
 							<li>
-								<a href="#" class="sprite-stars star2">2 Star</a>
+								<a href="#" class="easy-search sprite-stars star2" data-key="star" data-val="2">2 Star</a>
 								<small>12 Places</small>							
 							</li>
 							<li>
-								<a href="#" class="sprite-stars star3">3 Star</a>
+								<a href="#" class="easy-search sprite-stars star3" data-key="star" data-val="3">3 Star</a>
 								<small>12 Places</small>							
 							</li>
 							<li>
-								<a href="#" class="sprite-stars star4">4 Star</a>
+								<a href="#" class="easy-search sprite-stars star4" data-key="star" data-val="4">4 Star</a>
 								<small>12 Places</small>							
 							</li>
 							<li>
-								<a href="#" class="sprite-stars star5">5 Star</a>
+								<a href="#" class="easy-search sprite-stars star5" data-key="star" data-val="5">5 Star</a>
 								<small>12 Places</small>							
 							</li>
 						</ul>
@@ -164,23 +165,23 @@
 						<h5>酒店价格 (￥)</h5>
 						<ul class="pointer">
 							<li>
-								<a href="#">10 - 20</a>
+								<a href="#" class="easy-search" data-key="hotelPrice" data-val="1,100">1 - 100</a>
 								<small>23 Places</small>							
 							</li>
 							<li>
-								<a href="#">20 - 30</a>
+								<a href="#" class="easy-search" data-key="hotelPrice" data-val="100,300">100 - 300</a>
 								<small>12 Places</small>							
 							</li>
 							<li>
-								<a href="#">30 - 40</a>
+								<a href="#" class="easy-search" data-key="hotelPrice" data-val="300,500">300 - 500</a>
 								<small>19 Places</small>							
 							</li>
 							<li>
-								<a href="#">40 - 50</a>
+								<a href="#" class="easy-search" data-key="hotelPrice" data-val="500,1000">500 - 1000</a>
 								<small>11 Places</small>							
 							</li>
 							<li>
-								<a href="#">&gt; 50</a>
+								<a href="#" class="easy-search" data-key="hotelPrice" data-val="1000,">&gt; 1000</a>
 								<small>15 Places</small>							
 							</li>
 						</ul>
@@ -188,19 +189,19 @@
 						<h5>优惠类型</h5>
 						<ul class="pointer">
 							<li>
-								<a href="#">淡季特惠</a>
+								<a href="#" class="easy-search" data-key="offerType" data-val="1">淡季特惠</a>
 								<small>23 Places</small>							
 							</li>
 							<li>
-								<a href="#">长期特荐</a>
+								<a href="#" class="easy-search" data-key="offerType" data-val="2">特价特荐</a>
 								<small>12 Places</small>							
 							</li>
 							<li>
-								<a href="#">店家优惠</a>
+								<a href="#" class="easy-search" data-key="offerType" data-val="3">店家优惠</a>
 								<small>19 Places</small>							
 							</li>
 							<li>
-								<a href="#">家庭优惠</a>
+								<a href="#" class="easy-search" data-key="offerType" data-val="4">家庭优惠</a>
 								<small>11 Places</small>							
 							</li>
 						</ul>
@@ -366,8 +367,9 @@
 				})
 			})
 
-			$("#checkInTime-input").val(getMyDate(new Date().getTime(),"MM/dd/yyyy"));
-			$("#checkOutTime-input").val(getMyDate(new Date().getTime(),"MM/dd/yyyy"));
+			//默认时间
+			//$("#checkInTime-input").val(getMyDate(new Date().getTime(),"MM/dd/yyyy"));
+			//$("#checkOutTime-input").val(getMyDate(new Date().getTime(),"MM/dd/yyyy"));
 			$("#hotel-search-a").on("click",function(){
 				var hotelName=$("#hotelName-input").val();
 				var hotelAddress=$("#hotelAddress-input").val();
@@ -381,8 +383,69 @@
 				obj.hotelAddress=hotelAddress;
 				obj.bedType=bedType;
 				//obj.hotelPerson=hotelPerson;
-				obj.checkInTime=getMyDate(checkInTime,"yyyy-MM-dd HH:mm:ss");
-				obj.checkOutTime=getMyDate(checkOutTime,"yyyy-MM-dd HH:mm:ss");
+				obj.checkInTime=getMyDate(checkInTime,"yyyy-MM-dd");
+				obj.checkOutTime=getMyDate(checkOutTime,"yyyy-MM-dd");
+				var reqData = JSON.stringify(obj);
+				console.log(reqData);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/hotel/list',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							setContent(result.data.hotelList);
+						}else{
+							alert(result.msg);
+						}
+					}
+				})
+			})
+
+
+			$(".easy-search").on("click",function(){
+				var key = $(this).attr("data-key");
+				var value = $(this).attr("data-val");
+
+				var star,hotelPriceMin,hotelPriceMax,offerType;
+				if(key=="star"){
+					star = value;
+				}
+				if(key=="hotelPrice"){
+					var prices=value.split(",");
+					hotelPriceMin=prices[0];
+					hotelPriceMax=prices[1];
+				}
+				if(key=="offerType"){
+					offerType = value;
+				}
+
+				var hotelName=$("#hotelName-input").val();
+				var hotelAddress=$("#hotelAddress-input").val();
+				//var hotelPrice=$("#hotelPrice-input").val();
+				var bedType=$("#bedType-input").val();
+				//var hotelPerson=$("#hotelPerson-input").val();
+				var checkInTime=$("#checkInTime-input").val();
+				var checkOutTime=$("#checkOutTime-input").val();
+				var checkOutTime=$("#checkOutTime-input").val();
+				var checkOutTime=$("#checkOutTime-input").val();
+				var checkOutTime=$("#checkOutTime-input").val();
+
+				var obj = {};
+				obj.hotelName=hotelName;
+				obj.hotelAddress=hotelAddress;
+				obj.bedType=bedType;
+				//obj.hotelPerson=hotelPerson;
+				obj.checkInTime=getMyDate(checkInTime,"yyyy-MM-dd");
+				obj.checkOutTime=getMyDate(checkOutTime,"yyyy-MM-dd");
+
+				obj.star=star;
+				obj.hotelPriceMin=hotelPriceMin;
+				obj.hotelPriceMax=hotelPriceMax;
+				obj.offerType=offerType;
+
 				var reqData = JSON.stringify(obj);
 				console.log(reqData);
 				$.ajax({
@@ -454,7 +517,8 @@
 			function getMyDate(time,pattern){  
                 if(typeof(time)=="undefined"){
                     return "";
-                }
+				}
+				var oTime = "";
                 var oDate = new Date(time),  
                 oYear = oDate.getFullYear(),  
                 oMonth = oDate.getMonth()+1,  

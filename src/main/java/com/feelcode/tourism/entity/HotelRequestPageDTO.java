@@ -15,12 +15,18 @@ import java.util.Date;
 public class HotelRequestPageDTO extends CommonRequestPageDTO{
     private String hotelName;
     private String hotelAddress;
-    private String hotelPrice;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private String hotelPriceMin;
+    private String hotelPriceMax;
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private String checkInTime;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private String checkOutTime;
     private String bedType;
     private String hotelPerson;
+    private String star;
+    /**
+     * 优惠类型
+     */
+    private String offerType;
 
 }
