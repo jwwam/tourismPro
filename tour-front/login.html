@@ -264,6 +264,7 @@ $(function() {
 					alert("注册成功");
 					$("#userName").val("");
 					$("#password").val("");
+					window.location.reload();
 				}else{
 					alert(result.msg);
 					$("#login_form").removeClass('shake_effect');  

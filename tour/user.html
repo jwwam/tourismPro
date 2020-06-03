@@ -340,22 +340,25 @@
                                 "data": 'id' ,
                                 "width":'10%',
                                 "render": function ( data, type, row ) {
-                                    return function(){
-                                        // status
-                                        //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
-                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
-
-                                        // log url
-                                        //var logHref = base_url +'/joblog?jobId='+ row.id;
-
-                                        // data
-                                        //tableData['key'+row.id] = row;
-
-                                        // opt
-                                        var html = start_stop_div;
-                                        return html;
-                                    };
+                                    return "";
                                 }
+                                // "render": function ( data, type, row ) {
+                                //     return function(){
+                                //         // status
+                                //         //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
+                                //         var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
+
+                                //         // log url
+                                //         //var logHref = base_url +'/joblog?jobId='+ row.id;
+
+                                //         // data
+                                //         //tableData['key'+row.id] = row;
+
+                                //         // opt
+                                //         var html = start_stop_div;
+                                //         return html;
+                                //     };
+                                // }
                             }
                         ],
                         "oLanguage": {//插件的汉化

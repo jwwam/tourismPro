@@ -424,6 +424,7 @@
 
 		$("#create-order").on("click",function(){
 			var userId=$.session.get('userSession');
+			var userName=$.session.get('userName');
 			var productId=$(this).attr('product-id');
 			var productName=$(this).attr('product-name');
 			var productType='1';
@@ -432,6 +433,7 @@
 			obj.productId=productId;
 			obj.productType=productType;
 			obj.productName=productName;
+			obj.userName=userName;
 			var reqData = JSON.stringify(obj);
 			$.ajax({
 				type:'post',

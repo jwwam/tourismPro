@@ -2,13 +2,12 @@ package com.feelcode.tourism.controller;
 
 import com.feelcode.tourism.base.constant.SystemConstant;
 import com.feelcode.tourism.base.controller.BaseController;
+import com.feelcode.tourism.base.utils.OrderNoGenerateUtils;
 import com.feelcode.tourism.base.utils.StateParameter;
-import com.feelcode.tourism.entity.Hotel;
-import com.feelcode.tourism.entity.Order;
-import com.feelcode.tourism.entity.OrderRequestPageDTO;
-import com.feelcode.tourism.entity.OrderResponsePageDTO;
+import com.feelcode.tourism.entity.*;
 import com.feelcode.tourism.service.HotelService;
 import com.feelcode.tourism.service.OrderService;
+import com.feelcode.tourism.service.PlaneService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.ModelMap;
@@ -17,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @Author: 朱利尔
@@ -34,6 +35,8 @@ public class OrderClientController extends BaseController {
     OrderService orderService;
     @Resource
     HotelService hotelService;
+    @Resource
+    PlaneService planeservice;
 
     /**
      * @auther: 朱利尔
@@ -56,9 +59,21 @@ public class OrderClientController extends BaseController {
                 if(oldOrder!=null && SystemConstant.OrderStatus.submit.equals(oldOrder.getOrderStatus())){
                     return getModelMap(StateParameter.FAULT, null, "不能重复提交订单");
                 }
-                Hotel hotel = hotelService.findById(order.getProductId());
-                order.setOrderAmount(hotel.getHotelPrice());
-                order.setPreviewImage((hotel.getHotelImages().split(","))[0]);
+                Map<String,String> va = new HashMap<>();
+                if(SystemConstant.ProductType.hotel.equals(order.getProductType())){
+                    Hotel hotel = hotelService.findById(order.getProductId());
+                    va.put("orderAmount",hotel.getHotelPrice());
+                    va.put("previewImage",hotel.getHotelImages());
+                }
+                if(SystemConstant.ProductType.plane.equals(order.getProductType())){
+                    Plane plane = planeservice.findById(order.getProductId());
+                    va.put("orderAmount",plane.getPlanePrice());
+                    va.put("previewImage",plane.getPlaneImages());
+                }
+                order.setUserName(order.getUserName());
+                order.setOrderNo(OrderNoGenerateUtils.getOrderNoNYR(String.valueOf(order.getProductType()), new Date()));
+                order.setOrderAmount(String.valueOf(va.get("orderAmount")));
+                order.setPreviewImage(String.valueOf(va.get("previewImage")).split(",")[0]);
                 order.setDealingTime(new Date());
                 order.setOrderStatus(SystemConstant.OrderStatus.submit);
             }
