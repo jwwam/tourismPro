@@ -9,12 +9,14 @@ package com.feelcode.tourism.base.constant;
 public interface SystemConstant {
 
     /**
-     * 1-已提交
-     * 2-已完成
+     * 1-已提交/审核中
+     * 2-已完成/审核通过
+     * 3-已完成/审核不通过
      */
     interface OrderStatus{
         Integer submit = 1;
-        Integer done = 2;
+        Integer pass = 2;
+        Integer refuse = 3;
     }
 
     /**

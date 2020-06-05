@@ -7,6 +7,7 @@ import com.feelcode.tourism.entity.OrderRequestPageDTO;
 import com.feelcode.tourism.entity.OrderResponsePageDTO;
 import com.feelcode.tourism.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
@@ -41,17 +42,21 @@ public class OrderController extends BaseController {
     @ResponseBody
     public ModelMap addOrder(@RequestBody Order order){
         try {
+            Order newOrder = new Order();
             if(StringUtils.isEmpty(order.getId())){
                 order.setId(getUuid());
+                BeanUtils.copyProperties(order,newOrder);
             }else{
-                order.setUpdateDate(new Date());
+                newOrder = orderService.findById(order.getId());
+                newOrder.setOrderStatus(order.getOrderStatus());
+                newOrder.setUpdateDate(new Date());
             }
-            orderService.save(order);
+            orderService.save(newOrder);
             log.info("保存成功");
-            return getModelMap(StateParameter.SUCCESS, null, "保存成功");
+            return getModelMap(StateParameter.SUCCESS, null, "操作成功");
         } catch (Exception e) {
             e.printStackTrace();
-            return getModelMap(StateParameter.FAULT, null, "保存失败");
+            return getModelMap(StateParameter.FAULT, null, "操作失败");
         }
     }
 
