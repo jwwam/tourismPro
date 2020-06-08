@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
+import java.util.List;
+
 /**
  * @Author: 朱利尔
  * @Description:
@@ -20,5 +22,9 @@ public interface OrderDao extends PagingAndSortingRepository<Order, Long>, JpaSp
     Page<Order> findByUserId(String userId, Pageable pageable);
 
     Order findByUserIdAndProductId(String userId, String productId);
+
+    List<Order> findByOrderStatus(String orderStatus);
+
+    Long countByOrOrderStatus(Integer orderStatus);
 
 }
