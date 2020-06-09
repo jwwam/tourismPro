@@ -1,7 +1,9 @@
 package com.feelcode.tourism.entity;
 
+import com.feelcode.tourism.entity.vo.OrderDateCountVO;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -12,6 +14,14 @@ import java.util.List;
  */
 @Data
 public class IndexResponseDTO {
+    /**
+     * 所有订单
+     */
+    private List<Order> orderList;
+    private BigDecimal hotelPercent;
+    private BigDecimal planePercent;
+    private BigDecimal linePercent;
+    private BigDecimal otherPercent;
     /**
      * 今日订单数
      */
@@ -72,5 +82,22 @@ public class IndexResponseDTO {
      * 留言前十
      */
     private List<Comment> TopTenCommentUser;
+
+    /**
+     * 所有订单-日期数组
+     */
+    private List<OrderDateCountVO> dateOrder;
+    /**
+     * 酒店订单-日期数组
+     */
+    private List<OrderDateCountVO> hotelDateOrder;
+    /**
+     * 机票订单-日期数组
+     */
+    private List<OrderDateCountVO> planeDateOrder;
+    /**
+     * 评论列表
+     */
+    List<Comment> commentList;
 
 }
