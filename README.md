@@ -131,10 +131,8 @@
 ![前台酒店预订](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_hotel_success.png)  
 
  * 前台旅线列表&详情：  
-![前台旅线列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/
-tourism_pro_line_list.png)  
-![前台旅线详情](https://github.com/jwwam/tourismPro/blob/master/页面预览/
-tourism_pro_line_detail.png)  
+![前台旅线列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_line_list.png)  
+![前台旅线详情](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_line_detail.png)  
 
  * 前台订单列表：  
 ![前台订单列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_order_list.png)  
