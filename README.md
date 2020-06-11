@@ -81,6 +81,32 @@
 # Project view Page-页面预览如下：
 注：看不到图片可能需要梯子(maybe u need VPN)  
 
+ * 前台登录&注册：  
+![前台登录](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_login.png)  
+![前台注册](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_login_2.png)  
+
+ * 前台首页：
+![前台首页](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_index.png)  
+
+ * 前台景点列表&详情： 
+![前台景点列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_spots.png)  
+![前台景点详情](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_spots_detail.png)  
+
+ * 前台景点推荐：  
+![前台景点推荐](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_spots_recommend.png)  
+
+ * 前台酒店列表&详情&预订：  
+![前台酒店列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_hotel_list.png)  
+![前台酒店详情](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_hotel_detail.png)  
+![前台酒店预订](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_hotel_success.png)  
+
+ * 前台旅线列表&详情：  
+![前台旅线列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_line_list.png)  
+![前台旅线详情](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_line_detail.png)  
+
+ * 前台订单列表：  
+![前台订单列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_order_list.png)  
+
 * 后台首页：  
 ![后台首页](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_backfront_index.png)   
 ![后台首页全屏](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_backfront_index_2.png)   
@@ -110,32 +136,6 @@
 
  * 后台用户列表：  
 ![后台用户列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_backfront_user_list.png)  
-
- * 前台登录&注册：  
-![前台登录](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_login.png)  
-![前台注册](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_login_2.png)  
-
- * 前台首页：
-![前台首页](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_index.png)  
-
- * 前台景点列表&详情： 
-![前台景点列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_spots.png)  
-![前台景点详情](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_spots_detail.png)  
-
- * 前台景点推荐：  
-![前台景点推荐](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_spots_recommend.png)  
-
- * 前台酒店列表&详情&预订：  
-![前台酒店列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_hotel_list.png)  
-![前台酒店详情](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_hotel_detail.png)  
-![前台酒店预订](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_hotel_success.png)  
-
- * 前台旅线列表&详情：  
-![前台旅线列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_line_list.png)  
-![前台旅线详情](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_line_detail.png)  
-
- * 前台订单列表：  
-![前台订单列表](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_order_list.png)  
 
 # Run-启动访问(本地部署)  
 1.启动Nginx  
