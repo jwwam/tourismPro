@@ -5,7 +5,6 @@ import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.entity.*;
 import com.feelcode.tourism.service.IndexService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
