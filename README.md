@@ -82,8 +82,9 @@
 注：看不到图片可能需要梯子(maybe u need VPN)  
 
 * 后台首页：  
-![后台首页](https://github.com/jwwam/tourismPro/blob/页面预览/tourism_pro_backfront_index.png)   
-![后台首页](https://github.com/jwwam/tourismPro/blob/页面预览/tourism_pro_backfront_index_2.png)   
+![后台首页](https://github.com/jwwam/tourismPro/blob/master/页面预览/tourism_pro_backfront_index.png)   
+![后台首页全屏](https://github.com/jwwam/tourismPro/blob/页面预览/tourism_pro_backfront_index_2.png)   
+
 
 * 后台景点列表&添加&更新&删除：  
 ![后台景点列表](https://github.com/jwwam/tourismPro/blob/页面预览/tourism_pro_backfront_spots_list.png)  
