@@ -131,7 +131,7 @@
                                         <table id="plane_list" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                                             <thead>
                                                 <tr>
-                                                    <th name="id">id</th>
+                                                    <!-- <th name="id">id</th> -->
                                                     <th name="planeName">航班名称</th>
                                                     <th name="planePhone">航班联系方式</th>
                                                     <th name="planeStartAddress">航班始发地</th>
@@ -267,10 +267,9 @@
         <script src="js/file/fileinput.js"></script>
         <script src="js/file/locales/zh.js"></script>
         <script src="themes/explorer-fa/theme.js"></script>
+        <script src="/js/global.js"></script>
         <script src="js/include.js"></script>
         <script>
-            //var base_url = 'http://10.127.127.1:8080/s/plane';
-            var base_url = 'http://localhost:8080/s/plane';
             // init date tables
             var planeTable = $("#plane_list").dataTable({
                 "deferRender": true,
@@ -281,7 +280,7 @@
                 "iDisplayLength": 10,
                 "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
                 "ajax": {
-                    url: base_url + "/list",
+                    url: base_url + "/plane/list",
                     type:"post",
                     dataType: "json",
                     async:false,
@@ -312,55 +311,55 @@
                 "ordering": false,
                 //"scrollX": true,	// scroll x，close self-adaption
                 "columns": [
-                            {
-                                "data": 'id',
-                                "bSortable": false,
-                                "visible" : true,
-                                "width":'10%'
-                            },
+                            // {
+                            //     "data": 'id',
+                            //     "bSortable": false,
+                            //     "visible" : true,
+                            //     //"width":'10%'
+                            // },
                             {
                                 "data": 'planeName',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'planePhone',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'planeStartAddress',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'planeEndAddress',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'planeStartTime',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'planeEndTime',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'planeDescription',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'planePrice',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'planeImages',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     if(data!=null){
@@ -374,7 +373,7 @@
                             },
                             { 
                                 "data": 'createDate', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     return getMyDate(data);
@@ -382,7 +381,7 @@
                             },
                             {
                                 "data": 'id' ,
-                                "width":'10%',
+                                //"width":'10%',
                                 "render": function ( data, type, row ) {
                                     return function(){
                                         // status
@@ -444,7 +443,7 @@
                     $.ajax({
                         type:'post',
                         async:false,
-                        url:base_url+'/deletePlane',
+                        url:base_url+'/plane/deletePlane',
                         contentType:'application/json;chart=utf-8',
                         dataType:'json',
                         data:deleteData,
@@ -611,7 +610,7 @@
                                 $.ajax({
                                     type:'post',
                                     async:false,
-                                    url:base_url+'/addPlane',
+                                    url:base_url+'/plane/addPlane',
                                     contentType:'application/json;chart=utf-8',
                                     dataType:'json',
                                     data:JSON.stringify(obj),
@@ -637,7 +636,7 @@
                 $('#file-0a').fileinput({
                     'theme':'explorer',
                     language:'zh',
-                    uploadUrl:'http://localhost:8081/uploadByMap',
+                    uploadUrl:file_upload_url,
                     showPreview:true,//是否显示预览
                     allowedPreviewTypes : ['image','html','text','video','audio','flash'],
                     maxFileCount :3,// 表示允许同时上传的最大文件个数

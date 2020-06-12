@@ -135,7 +135,7 @@
                                         <table id="hotel_list" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                                             <thead>
                                                 <tr>
-                                                    <th name="id">id</th>
+                                                    <!-- <th name="id">id</th> -->
                                                     <th name="hotelName">酒店名称</th>
                                                     <th name="hotelAddress">酒店地址</th>
                                                     <th name="hotelPhone">酒店联系方式</th>
@@ -270,14 +270,13 @@
         <script src="js/file/fileinput.js"></script>
         <script src="js/file/locales/zh.js"></script>
         <script src="themes/explorer-fa/theme.js"></script>
+        <script src="/js/global.js"></script>
         <script src="js/include.js"></script>
         <!--Bootstrap Timepicker [ OPTIONAL ]-->
         <script src="plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
         <!--Bootstrap Datepicker [ OPTIONAL ]-->
         <script src="plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
         <script>
-            //var base_url = 'http://10.127.127.1:8080/s/hotel';
-            var base_url = 'http://localhost:8080/s/hotel';
             // init date tables
             var hotelTable = $("#hotel_list").dataTable({
                 "deferRender": true,
@@ -288,7 +287,7 @@
                 "iDisplayLength": 10,
                 "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
                 "ajax": {
-                    url: base_url + "/list",
+                    url: base_url + "/hotel/list",
                     type:"post",
                     dataType: "json",
                     async:false,
@@ -319,50 +318,50 @@
                 "ordering": false,
                 //"scrollX": true,	// scroll x，close self-adaption
                 "columns": [
-                            {
-                                "data": 'id',
-                                "bSortable": false,
-                                "visible" : true,
-                                "width":'10%'
-                            },
+                            // {
+                            //     "data": 'id',
+                            //     "bSortable": false,
+                            //     "visible" : true,
+                            //     //"width":'10%'
+                            // },
                             {
                                 "data": 'hotelName',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'hotelAddress',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'hotelPhone',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'hotelPrice',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'checkInTime',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'checkOutTime',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'star',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             { 
                                 "data": 'createDate', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     return getMyDate(data);
@@ -370,11 +369,11 @@
                             },
                             { 
                                 "data": 'hotelDescription', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     if(data!=null){
-                                        var desc = data.substring(0,100);
+                                        var desc = data.substring(0,20);
                                         var descHtml = desc+"...";
                                         return descHtml;
                                     }
@@ -383,13 +382,13 @@
                             },
                             { 
                                 "data": 'hotelImages', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     if(data!=null){
                                         var img = data.split(',');
                                         //$("#a").text(arr[0]);
-                                        var imgHtml = "<img src='http://"+img[0]+"' width='150px' height='150px'>";
+                                        var imgHtml = "<img src='http://"+img[0]+"' width='50px' height='50px'>";
                                         return imgHtml;
                                     }
                                     return "";
@@ -397,12 +396,21 @@
                             },
                             {
                                 "data": 'id' ,
-                                "width":'10%',
+                                //"width":'15%',
                                 "render": function ( data, type, row ) {
                                     return function(){
                                         // status
                                         //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
-                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
+                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>"+
+                                        "<button class='btn btn-success' _id='"+ row.id +"' onclick=updateThisRowPapser('"+ row.id + "')>更新</button>"
+                                        // "<button class='btn btn-default btn-icon btn-circle icon-lg fa fa-user'></button>"+
+                                        // "<button class='btn btn-primary btn-icon btn-circle icon-lg fa fa-shopping-cart'></button>"+
+                                        //"<button class='btn btn-info btn-icon btn-circle icon-lg fa fa-trash'></button>"+
+                                        // "<button class='btn btn-success btn-icon btn-circle icon-lg fa fa-star'></button>"+
+                                        // "<button class='btn btn-mint btn-icon btn-circle icon-lg fa fa-thumbs-up'></button>"+
+                                        // "<button class='btn btn-warning btn-icon btn-circle icon-lg fa fa-exclamation-triangle'></button>"+
+                                        // "<button class='btn btn-danger btn-icon btn-circle icon-lg fa fa-times'></button></div>"
+                                        ;
 
                                         // log url
                                         //var logHref = base_url +'/joblog?jobId='+ row.id;
@@ -459,7 +467,7 @@
                         $.ajax({
                         type:'post',
                         async:false,
-                        url:base_url+'/deleteHotel',
+                        url:base_url+'/hotel/deleteHotel',
                         contentType:'application/json;chart=utf-8',
                         dataType:'json',
                         data:deleteData,
@@ -638,7 +646,7 @@
                                 $.ajax({
                                     type:'post',
                                     async:false,
-                                    url:base_url+'/addHotel',
+                                    url:base_url+'/hotel/addHotel',
                                     contentType:'application/json;chart=utf-8',
                                     dataType:'json',
                                     data:JSON.stringify(obj),
@@ -664,7 +672,7 @@
                 $('#file-0a').fileinput({
                     'theme':'explorer',
                     language:'zh',
-                    uploadUrl:'http://localhost:8081/uploadByMap',
+                    uploadUrl:file_upload_url,
                     showPreview:true,//是否显示预览
                     allowedPreviewTypes : ['image','html','text','video','audio','flash'],
                     maxFileCount :3,// 表示允许同时上传的最大文件个数
@@ -698,7 +706,239 @@
                     format: "yyyy-mm-dd"
                 })
 
-	        });
+            });
+            
+
+            function updateThisRowPapser(id){
+                $('#fileUrlDiv').empty();
+                var hotelId,hotelName,hotelAddress,hotelPhone,hotelPrice,checkInTime,checkOutTime,star,hotelDescription,offerType;
+
+                var obj = new Object();
+                obj.id=id;
+                var requestData = JSON.stringify(obj);
+                $.ajax({
+                    type:'post',
+                    async:false,
+                    url:base_url+'/hotel/detail',
+                    contentType:'application/json;chart=utf-8',
+                    dataType:'json',
+                    data:requestData,
+                    success:function(result){
+                        if(result.status==1){
+                            hotelName=result.data.hotelName;
+                            hotelAddress=result.data.hotelAddress;
+                            hotelPhone=result.data.hotelPhone;
+                            hotelPrice=result.data.hotelPrice;
+                            checkInTime=result.data.checkInTime;
+                            checkOutTime=result.data.checkOutTime;
+                            star=result.data.star;
+                            hotelDescription=result.data.hotelDescription;
+                            offerType=result.data.offerType;
+                            hotelId=result.data.id;
+                        }
+                        
+                    }
+                })
+
+                var htmlContent = "<div id='addContent'> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='hotelName'>酒店名称</label> " +
+                                        "<input id='hotelName' name='hotelName' type='text' placeholder='输入酒店名称' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='hotelPhone'>酒店联系方式</label> " +
+                                        "<input id='hotelPhone' name='hotelPhone' type='text' placeholder='输入酒店联系方式' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='hotelPrice'>酒店价格</label> " +
+                                        "<input id='hotelPrice' name='hotelPrice' type='text' placeholder='输入酒店地址' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='hotelAddress'>酒店地址</label> " +
+                                        "<input id='hotelAddress' name='hotelAddress' type='text' placeholder='输入酒店地址' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<label class='control-label' for='checkInTime'>入住时间-退房时间</label> " +
+                                    "<div id='demo-dp-range'>"+
+                                        "<div class='input-daterange input-group' id='datepicker'>"+
+                                            "<input type='text' class='form-control' id='checkInTime' name='checkInTime' placeholder='输入酒店入住时间'/>"+
+                                            "<span class='input-group-addon'> 至 </span>"+
+                                            "<input type='text' class='form-control' id='checkOutTime' name='checkOutTime' placeholder='输入酒店退房时间'/>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='star'>酒店星级</label> " +
+                                        "<input id='star' name='star' type='text' placeholder='输入酒店星级' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label'>优惠类型</label>"+
+                                        "<select class='form-control selectpicker' id='offerType'>"+
+                                            "<option value=''>请选择</option>"+
+                                            "<option value='1'>淡季特惠</option>"+
+                                            "<option value='2'>特价特荐</option>"+
+                                            "<option value='3'>店家优惠</option>"+
+                                            "<option value='4'>家庭优惠</option>"+
+                                        "</select>"+
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='hotelDescription'>酒店描述</label> " +
+                                        "<textarea id='hotelDescription' name='hotelDescription' type='text' placeholder='输入酒店描述' class='form-control input-md' style='height:100px'> </textarea>" +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='hotelpicture'>酒店图片 </label> " +
+
+                                        "<div class='container kv-main'>"+
+                                            "<div class='row'>"+
+                                                "<div style='margin:10px 20px 100px 20px;width:830px;height:300px'>"+
+                                                    "<form nctype='multipart/form-data'>"+
+                                                    "<input id='file-0a' class='file' name='file' type='file' multiple data-min-file-count='1'><br>"+
+                                                    "</form>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                        "</div>";
+        
+                //obj.hotelImages=imgUrls;
+                //var answer = $("input[name='awesomeness']:checked").val();
+                
+                bootbox.dialog({
+                    title: "更新酒店",
+                    size: "large",
+                    message:htmlContent,
+                    buttons: {
+                        success: {
+                            label: "更新酒店",
+                            className: "btn-danger",
+                            callback: function() {
+                                var imgUrls="";
+                                $(".fileUrl").each(function(index, el) {
+                                    if(index==0){
+                                        imgUrls = imgUrls + el.value;
+                                    }else{
+                                        imgUrls = imgUrls + "," + el.value;
+                                    }
+                                });
+                                var hotelName = $('#hotelName').val();
+                                var hotelAddress = $('#hotelAddress').val();
+                                var hotelPhone = $('#hotelPhone').val();
+                                var hotelPrice = $('#hotelPrice').val();
+                                var checkInTime = $('#checkInTime').val();
+                                var checkOutTime = $('#checkOutTime').val();
+                                var star = $('#star').val();
+                                var hotelDescription = $('#hotelDescription').val();
+                                var offerType = $('#offerType').val();
+
+                                var obj = new Object();
+                                obj.id= hotelId;
+                                obj.hotelName= hotelName;
+                                obj.hotelAddress=hotelAddress;
+                                obj.hotelPhone=hotelPhone;
+                                obj.hotelPrice=hotelPrice;
+                                obj.checkInTime=checkInTime;
+                                obj.checkOutTime=checkOutTime;
+                                obj.star=star;
+                                obj.hotelDescription=hotelDescription;
+                                obj.offerType=offerType;
+                                obj.hotelImages=imgUrls;
+                                //var answer = $("input[name='awesomeness']:checked").val();
+                                $.ajax({
+                                    type:'post',
+                                    async:false,
+                                    url:base_url+'/hotel/addHotel',
+                                    contentType:'application/json;chart=utf-8',
+                                    dataType:'json',
+                                    data:JSON.stringify(obj),
+                                    success:function(result){
+                                        hotelTable.fnClearTable(); //清空一下table
+                                        hotelTable.fnDestroy(); //还原初始化了的datatable
+                                        $('#demo-sm-modal').modal('hide');
+                                        
+                                    }
+                                })
+                                
+                            }
+                        },
+                        cancel: {
+                            label: "取消",
+                            className: "btn-default"
+                        }
+                    }
+                });
+
+                $('#hotelName').val(hotelName);
+                $('#hotelAddress').val(hotelAddress);
+                $('#hotelPhone').val(hotelPhone);
+                $('#hotelPrice').val(hotelPrice);
+                $('#checkInTime').val(checkInTime);
+                $('#checkOutTime').val(checkOutTime);
+                $('#star').val(star);
+                $('#hotelDescription').val(hotelDescription);
+                $('#offerType').val(offerType);
+
+
+                
+                $('#file-0a').fileinput({
+                    'theme':'explorer',
+                    language:'zh',
+                    uploadUrl:file_upload_url,
+                    showPreview:true,//是否显示预览
+                    allowedPreviewTypes : ['image','html','text','video','audio','flash'],
+                    maxFileCount :3,// 表示允许同时上传的最大文件个数
+                });
+                
+                $('#file-0a').on('fileerror',function(event, data) {
+                    console.log(data.id);
+                    console.log(data.index);
+                    console.log(data.file);
+                    console.log(data.reader);
+                    console.log(data.files);
+                });
+
+                $('#file-0a').on('fileuploaded',function(event, data, previewId, index) {
+                    var form = data.form,files = data.files,extra = data.extra,
+                    response = data.response,reader = data.reader;
+                    
+                    $('#fileUrlDiv').append("<input class='fileUrl' value='"+ response.imgUrl +"'/>");
+                    console.log('File uploaded triggered');
+                });
+
+                $('#datepicker').datepicker({
+                    language: "zh-CN",
+                    format: "yyyy-mm-dd"
+                })
+
+            };
+            
         </script>
         
     </body>

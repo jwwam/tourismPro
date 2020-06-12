@@ -131,12 +131,12 @@
                                         <table id="spots_list" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                                             <thead>
                                                 <tr>
-                                                    <th name="id">id</th>
+                                                    <!-- <th name="id">id</th> -->
                                                     <th name="spotsName">景点名称</th>
                                                     <th name="spotsAddress">景点地址</th>
-                                                    <th name="spotsPhone">景点联系方式</th>
                                                     <th name="spotsPrice">景点门票价格</th>
                                                     <th name="spotsOpenTime">景点开放时间</th>
+                                                    <th name="spotsPhone">景点联系方式</th>
                                                     <th name="createDate">创建时间</th>
                                                     <th name="spotsDescription">景点描述</th>
                                                     <th name="spotsImages">景点图片</th>
@@ -266,10 +266,9 @@
         <script src="js/file/fileinput.js"></script>
         <script src="js/file/locales/zh.js"></script>
         <script src="themes/explorer-fa/theme.js"></script>
+        <script src="/js/global.js"></script>
         <script src="js/include.js"></script>
         <script>
-            //var base_url = 'http://10.127.127.1:8080/s/spots';
-            var base_url = 'http://localhost:8080/s/spots';
             // init date tables
             var spotsTable = $("#spots_list").dataTable({
                 "deferRender": true,
@@ -280,7 +279,7 @@
                 "iDisplayLength": 10,
                 "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
                 "ajax": {
-                    url: base_url + "/list",
+                    url: base_url + "/spots/list",
                     type:"post",
                     dataType: "json",
                     async:false,
@@ -321,40 +320,40 @@
                 "ordering": false,
                 //"scrollX": true,	// scroll x，close self-adaption
                 "columns": [
-                            {
-                                "data": 'id',
-                                "bSortable": false,
-                                "visible" : true,
-                                "width":'10%'
-                            },
+                            // {
+                            //     "data": 'id',
+                            //     "bSortable": false,
+                            //     "visible" : true,
+                            //     //"width":'10%'
+                            // },
                             {
                                 "data": 'spotsName',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'spotsAddress',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'spotsPrice',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'spotsOpenTime',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'spotsPhone',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             { 
                                 "data": 'createDate', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     return getMyDate(data);
@@ -362,11 +361,11 @@
                             },
                             { 
                                 "data": 'spotsDescription', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     if(data!=null){
-                                        var desc = data.substring(0,100);
+                                        var desc = data.substring(0,20);
                                         var descHtml = desc+"...";
                                         return descHtml;
                                     }
@@ -375,13 +374,13 @@
                             },
                             { 
                                 "data": 'spotsImages', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     if(data!=null){
                                         var img = data.split(',');
                                         //$("#a").text(arr[0]);
-                                        var imgHtml = "<img src='http://"+img[0]+"' width='150px' height='150px'>";
+                                        var imgHtml = "<img src='http://"+img[0]+"' width='50px' height='50px'>";
                                         return imgHtml;
                                     }
                                     return "";
@@ -389,12 +388,13 @@
                             },
                             {
                                 "data": 'id' ,
-                                "width":'10%',
+                                //"width":'10%',
                                 "render": function ( data, type, row ) {
                                     return function(){
                                         // status
                                         //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
-                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
+                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>"+
+                                        "<button class='btn btn-success' _id='"+ row.id +"' onclick=updateThisRowPapser('"+ row.id + "')>更新</button>";
 
                                         // log url
                                         //var logHref = base_url +'/joblog?jobId='+ row.id;
@@ -451,7 +451,7 @@
                     $.ajax({
                         type:'post',
                         async:false,
-                        url:base_url+'/deleteSpots',
+                        url:base_url+'/spots/deleteSpots',
                         contentType:'application/json;chart=utf-8',
                         dataType:'json',
                         data:deleteData,
@@ -599,7 +599,7 @@
                                 $.ajax({
                                     type:'post',
                                     async:false,
-                                    url:base_url+'/addSpots',
+                                    url:base_url+'/spots/addSpots',
                                     contentType:'application/json;chart=utf-8',
                                     dataType:'json',
                                     data:JSON.stringify(obj),
@@ -623,7 +623,7 @@
                 $('#file-0a').fileinput({
                     'theme':'explorer',
                     language:'zh',
-                    uploadUrl:'http://localhost:8081/uploadByMap',
+                    uploadUrl:file_upload_url,
                     showPreview:true,//是否显示预览
                     allowedPreviewTypes : ['image','html','text','video','audio','flash'],
                     maxFileCount :3,// 表示允许同时上传的最大文件个数
@@ -654,6 +654,198 @@
 
 	        });
 
+
+            function updateThisRowPapser(id){
+                $('#fileUrlDiv').empty();
+                var spotsId,spotsName,spotsAddress,spotsPhone,spotsPrice,spotsOpenTime,spotsDescription;
+
+                var obj = new Object();
+                obj.id=id;
+                var requestData = JSON.stringify(obj);
+                $.ajax({
+                    type:'post',
+                    async:false,
+                    url:base_url+'/spots/detail',
+                    contentType:'application/json;chart=utf-8',
+                    dataType:'json',
+                    data:requestData,
+                    success:function(result){
+                        if(result.status==1){
+                            spotsName=result.data.spotsName;
+                            spotsAddress=result.data.spotsAddress;
+                            spotsPhone=result.data.spotsPhone;
+                            spotsPrice=result.data.spotsPrice;
+                            spotsOpenTime=result.data.spotsOpenTime;
+                            spotsDescription=result.data.spotsDescription;
+                            spotsId=result.data.id;
+                        }
+                        
+                    }
+                })
+
+                var htmlContent = "<div id='addContent'> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='spotsName'>景点名称</label> " +
+                                        "<input id='spotsName' name='spotsName' type='text' placeholder='输入景点名称' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='spotsPhone'>景点联系方式</label> " +
+                                        "<input id='spotsPhone' name='spotsPhone' type='text' placeholder='输入景点联系方式' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='spotsAddress'>景点地址</label> " +
+                                        "<input id='spotsAddress' name='spotsAddress' type='text' placeholder='输入景点地址' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='spotsPrice'>景点门票价格</label> " +
+                                        "<input id='spotsPrice' name='spotsPrice' type='text' placeholder='输入景点门票价格' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='spotsOpenTime'>景点开放时间</label> " +
+                                        "<input id='spotsOpenTime' name='spotsOpenTime' type='text' placeholder='输入景点开放时间' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='spotsDescription'>景点描述</label> " +
+                                        "<textarea id='spotsDescription' name='spotsDescription' type='text' placeholder='输入景点描述' class='form-control input-md' style='height:100px'> </textarea>" +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='spotspicture'>景点图片 </label> " +
+
+                                        "<div class='container kv-main'>"+
+                                            "<div class='row'>"+
+                                                "<div style='margin:10px 20px 100px 20px;width:830px;height:300px'>"+
+                                                    "<form nctype='multipart/form-data'>"+
+                                                    "<input id='file-0a' class='file' name='file' type='file' multiple data-min-file-count='1'><br>"+
+                                                    "</form>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                        "</div>";
+        
+                //obj.hotelImages=imgUrls;
+                //var answer = $("input[name='awesomeness']:checked").val();
+                
+                bootbox.dialog({
+                    title: "更新景点",
+                    size: "large",
+                    message:htmlContent,
+                    buttons: {
+                        success: {
+                            label: "更新景点",
+                            className: "btn-danger",
+                            callback: function() {
+                                var imgUrls="";
+                                $(".fileUrl").each(function(index, el) {
+                                    if(index==0){
+                                        imgUrls = imgUrls + el.value;
+                                    }else{
+                                        imgUrls = imgUrls + "," + el.value;
+                                    }
+                                });
+                                var spotsName = $('#spotsName').val();
+                                var spotsAddress = $('#spotsAddress').val();
+                                var spotsPhone = $('#spotsPhone').val();
+                                var spotsPrice = $('#spotsPrice').val();
+                                var spotsOpenTime = $('#spotsOpenTime').val();
+                                var spotsDescription = $('#spotsDescription').val();
+
+                                var obj = new Object();
+                                obj.id= spotsId;
+                                obj.spotsName= spotsName;
+                                obj.spotsAddress=spotsAddress;
+                                obj.spotsPhone=spotsPhone;
+                                obj.spotsPrice=spotsPrice;
+                                obj.spotsOpenTime=spotsOpenTime;
+                                obj.spotsDescription=spotsDescription;
+                                obj.spotsImages=imgUrls;
+                                //var answer = $("input[name='awesomeness']:checked").val();
+                                $.ajax({
+                                    type:'post',
+                                    async:false,
+                                    url:base_url+'/spots/addSpots',
+                                    contentType:'application/json;chart=utf-8',
+                                    dataType:'json',
+                                    data:JSON.stringify(obj),
+                                    success:function(result){
+                                        spotsTable.fnClearTable(); //清空一下table
+                                        spotsTable.fnDestroy(); //还原初始化了的datatable
+                                        $('#demo-sm-modal').modal('hide');
+                                        
+                                    }
+                                })
+                                
+                            }
+                        },
+                        cancel: {
+                            label: "取消",
+                            className: "btn-default"
+                        }
+                    }
+                });
+
+                $('#spotsName').val(spotsName);
+                $('#spotsAddress').val(spotsAddress);
+                $('#spotsPhone').val(spotsPhone);
+                $('#spotsPrice').val(spotsPrice);
+                $('#spotsOpenTime').val(spotsOpenTime);
+                $('#spotsDescription').val(spotsDescription);
+                
+                $('#file-0a').fileinput({
+                    'theme':'explorer',
+                    language:'zh',
+                    uploadUrl:file_upload_url,
+                    showPreview:true,//是否显示预览
+                    allowedPreviewTypes : ['image','html','text','video','audio','flash'],
+                    maxFileCount :3,// 表示允许同时上传的最大文件个数
+                });
+                
+                $('#file-0a').on('fileerror',function(event, data) {
+                    console.log(data.id);
+                    console.log(data.index);
+                    console.log(data.file);
+                    console.log(data.reader);
+                    console.log(data.files);
+                });
+
+                $('#file-0a').on('fileuploaded',function(event, data, previewId, index) {
+                    var form = data.form,files = data.files,extra = data.extra,
+                    response = data.response,reader = data.reader;
+                    
+                    $('#fileUrlDiv').append("<input class='fileUrl' value='"+ response.imgUrl +"'/>");
+                    console.log('File uploaded triggered');
+                });
+
+                $('#datepicker').datepicker({
+                    language: "zh-CN",
+                    format: "yyyy-mm-dd"
+                })
+
+            };
      
         </script>
     </body>

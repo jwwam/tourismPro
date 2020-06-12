@@ -131,7 +131,7 @@
                                         <table id="order_list" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                                             <thead>
                                                 <tr>
-                                                    <th name="id">id</th>
+                                                    <!-- <th name="id">id</th> -->
                                                     <th name="orderNo">订单编号</th>
                                                     <th name="productType">产品类型</th>
                                                     <th name="productId">产品id</th>
@@ -265,10 +265,9 @@
         <script src="js/file/fileinput.js"></script>
         <script src="js/file/locales/zh.js"></script>
         <script src="themes/explorer-fa/theme.js"></script>
+        <script src="/js/global.js"></script>
         <script src="js/include.js"></script>
         <script>
-            //var base_url = 'http://10.127.127.1:8080/s/order';
-            var base_url = 'http://localhost:8080/s/order';
             // init date tables
             var orderTable = $("#order_list").dataTable({
                 "deferRender": true,
@@ -279,7 +278,7 @@
                 "iDisplayLength": 10,
                 "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
                 "ajax": {
-                    url: base_url + "/list",
+                    url: base_url + "/order/list",
                     type:"post",
                     dataType: "json",
                     async:false,
@@ -320,21 +319,21 @@
                 "ordering": false,
                 //"scrollX": true,	// scroll x，close self-adaption
                 "columns": [
-                            {
-                                "data": 'id',
-                                "bSortable": false,
-                                "visible" : true,
-                                "width":'20%'
-                            },
+                            // {
+                            //     "data": 'id',
+                            //     "bSortable": false,
+                            //     "visible" : true,
+                            //     //"width":'20%'
+                            // },
                             {
                                 "data": 'orderNo',
                                 "visible" : true,
-                                "width":'20%'
+                                //"width":'20%'
                             },
                             {
                                 "data": 'productType',
                                 "visible" : true,
-                                "width":'20%',
+                                //"width":'20%',
                                 "render": function ( data, type, row ) {
                                     if(data===1){
                                         return "酒店";
@@ -352,27 +351,27 @@
                             },
                             {
                                 "data": 'productId',
-                                "width":'20%',
+                                //"width":'20%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'productName',
-                                "width":'20%',
+                                //"width":'20%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'userId',
-                                "width":'20%',
+                                //"width":'20%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'userName',
-                                "width":'20%',
+                                //"width":'20%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'dealingTime',
-                                "width":'20%',
+                                //"width":'20%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     return getMyDate(data);
@@ -380,12 +379,23 @@
                             },
                             {
                                 "data": 'orderStatus',
-                                "width":'20%',
+                                //"width":'20%',
                                 "visible" : true,
+                                "render": function ( data, type, row ) {
+                                    if(data===1){
+                                        return "<span class='label label-table label-dark'>审核中</span>";
+                                    }
+                                    if(data===2){
+                                        return "<span class='label label-table label-success'>已通过</span>";
+                                    }
+                                    if(data===3){
+                                        return "<span class='label label-table label-danger'>已拒绝</span>";
+                                    }
+                                }
                             },
                             { 
                                 "data": 'createDate', 
-                                "width":'20%',
+                               // "width":'20%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     return getMyDate(data);
@@ -393,27 +403,31 @@
                             },
                             {
                                 "data": 'id' ,
-                                "width":'10%',
-                                "render": function ( data, type, row ) {
-                                    return "";
-                                }
+                                //"width":'10%',
                                 // "render": function ( data, type, row ) {
-                                //     return function(){
-                                //         // status
-                                //         //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
-                                //         var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
-
-                                //         // log url
-                                //         //var logHref = base_url +'/joblog?jobId='+ row.id;
-
-                                //         // data
-                                //         //tableData['key'+row.id] = row;
-
-                                //         // opt
-                                //         var html = start_stop_div;
-                                //         return html;
-                                //     };
+                                //     return "";
                                 // }
+                                "render": function ( data, type, row ) {
+                                    return function(){
+                                        // status
+                                        //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
+                                        if(row.orderStatus===1){
+                                            var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-primary' _id='"+ row.id +"' onclick=approveThisRowPapser('"+ row.id + "')>审核</button>";
+                                        }
+                                        if(row.orderStatus===2 || row.orderStatus===3){
+                                            var start_stop_div = "<button class='btn btn-danger' disabled='disabled'>已审核</button>";
+                                        }
+                                        // log url
+                                        //var logHref = base_url +'/joblog?jobId='+ row.id;
+
+                                        // data
+                                        //tableData['key'+row.id] = row;
+
+                                        // opt
+                                        var html = start_stop_div;
+                                        return html;
+                                    };
+                                }
                             }
                         ],
                         "oLanguage": {//插件的汉化
@@ -454,7 +468,7 @@
                     $.ajax({
                         type:'post',
                         async:false,
-                        url:base_url+'/deleteOrder',
+                        url:base_url+'/order/deleteOrder',
                         contentType:'application/json;chart=utf-8',
                         dataType:'json',
                         data:function(){
@@ -474,6 +488,74 @@
 		        });
             }
 
+            function approveThisRowPapser(id){
+                var dialog = bootbox.dialog({
+                    title: '请选择',
+                    message: "<p>选择审核结果：</p>",
+                    size: 'large',//'small', 'sm'-'large', 'lg'-'extra-large', 'xl'
+                    buttons: {
+                        cancel: {
+                            label: "取消",
+                            className: 'btn-danger',
+                            callback: function(){
+                                console.log('取消');
+                            }
+                        },
+                        noclose: {
+                            label: "拒绝",
+                            className: 'btn-warning',
+                            callback: function(){
+                                console.log('拒绝');
+                                var obj = {};
+                                obj.id= id;
+                                obj.orderStatus="3";
+                                var requestData = JSON.stringify(obj);
+                                $.ajax({
+                                    type:'post',
+                                    async:false,
+                                    url:base_url+'/order/addOrder',
+                                    contentType:'application/json;chart=utf-8',
+                                    dataType:'json',
+                                    data:requestData,
+                                    success:function(result){
+                                        orderTable.fnClearTable(); //清空一下table
+                                        orderTable.fnDestroy(); //还原初始化了的datatable
+                                        $('#demo-sm-modal').modal('show');
+                                        $('#model-res').html(result.msg);
+                                    }
+                                })
+                                //return false;
+                            }
+                        },
+                        ok: {
+                            label: "通过",
+                            className: 'btn-info',
+                            callback: function(){
+                                console.log('通过');
+                                var obj = {};
+                                obj.id= id;
+                                obj.orderStatus="2";
+                                var requestData = JSON.stringify(obj);
+                                $.ajax({
+                                    type:'post',
+                                    async:false,
+                                    url:base_url+'/order/addOrder',
+                                    contentType:'application/json;chart=utf-8',
+                                    dataType:'json',
+                                    data:requestData,
+                                    success:function(result){
+                                        orderTable.fnClearTable(); //清空一下table
+                                        orderTable.fnDestroy(); //还原初始化了的datatable
+                                        $('#demo-sm-modal').modal('show');
+                                        $('#model-res').html(result.msg);
+                                    }
+                                })
+                            }
+                        }
+                    }
+                });
+            }
+
             //将时间戳格式化 
             function getMyDate(time){  
                 if(typeof(time)=="undefined"){
@@ -489,15 +571,15 @@
                 oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间  
                         
                 return oTime;  
-                };
+            };
                 
-                //补0操作,当时间数据小于10的时候，给该数据前面加一个0  
-                function getzf(num){  
-                    if(parseInt(num) < 10){  
-                        num = '0'+num;  
-                    }  
-                    return num;  
-                }
+            //补0操作,当时间数据小于10的时候，给该数据前面加一个0  
+            function getzf(num){  
+                if(parseInt(num) < 10){  
+                    num = '0'+num;  
+                }  
+                return num;  
+            }
 
 
             // BOOTBOX - CUSTOM HTML FORM
@@ -587,7 +669,7 @@
                                 $.ajax({
                                     type:'post',
                                     async:false,
-                                    url:base_url+'/addUser',
+                                    url:base_url+'/order/addOrder',
                                     contentType:'application/json;chart=utf-8',
                                     dataType:'json',
                                     data:JSON.stringify(obj),

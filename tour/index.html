@@ -70,16 +70,16 @@
                                     <!-- User dropdown menu -->
                                     <ul class="head-list">
                                         <li>
-                                            <a href="#"> <i class="fa fa-user fa-fw"></i> Profile </a>
+                                            <a href="#"> <i class="fa fa-user fa-fw"></i> 头像 </a>
                                         </li>
                                         <li>
-                                            <a href="#">  <i class="fa fa-envelope fa-fw"></i> Messages </a>
+                                            <a href="#">  <i class="fa fa-envelope fa-fw"></i> 消息 </a>
                                         </li>
                                         <li>
-                                            <a href="#">  <i class="fa fa-gear fa-fw"></i> Settings </a>
+                                            <a href="#">  <i class="fa fa-gear fa-fw"></i> 配置 </a>
                                         </li>
                                         <li>
-                                            <a href="#"> <i class="fa fa-sign-out fa-fw"></i> Logout </a>
+                                            <a href="#"> <i class="fa fa-sign-out fa-fw"></i> 注销 </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -117,24 +117,26 @@
                                     <div class="panel-heading">
                                         <h3 class="panel-title">欢迎您</h3>
                                     </div>
-                                    <div class="panel-body">
+                                    <div class="panel-body" style="text-align: center;">
                                         <!--Tooltip Example-->
-                                        <p class="muted" style="font-size: large;">欢迎来到Hi.嗨Bike旅游网站后台管理系统</p>
+                                        <p class="muted" style="font-size: 2.3em;color: #337ab7;">欢迎来到旅游网站后台管理系统</p>
                                         <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
                                     </div>
                                 </div>
-							</div>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4 eq-box-md grid">
                                 <div class="panel">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-9 col-sm-9 col-xs-10">
-                                                <h3 class="mar-no"> <span class="counter">50</span></h3>
-                                                <p class="mar-ver-5">今日订单总数</p>
+                                                <h1 class="mar-no"> <span class="counter" id="todayOrder">50</span></h1>
+                                                <p class="mar-ver-5">今日订单数</p>
                                             </div>
                                             <div class="col-md-3 col-sm-3 col-xs-2" style="text-align: right;"> <i class="fa fa-calendar fa-5x text-primary"></i> </div>
                                         </div>
-                                        <p> 4% higher than last month </p>
+                                        <p id="todayOrder-detail">  </p>
                                     </div>
                                 </div>
                             </div>
@@ -144,12 +146,12 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-9 col-sm-9 col-xs-10">
-                                                <h3 class="mar-no"> <span class="counter">100</span></h3>
+                                                <h1 class="mar-no"> <span class="counter" id="totalOrder">100</span></h1>
                                                 <p class="mar-ver-5">订单总数</p>
                                             </div>
                                             <div class="col-md-3 col-sm-3 col-xs-2" style="text-align: right;"> <i class="fa fa-shopping-cart fa-5x text-primary"></i> </div>
                                         </div>
-                                        <p> 4% higher than last month </p>
+                                        <p id="totalOrder-detail"> 4% higher than last month </p>
                                     </div>
                                 </div>
                             </div>
@@ -158,110 +160,120 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-9 col-sm-9 col-xs-10">
-                                                <h3 class="mar-no"> <span class="counter">50</span></h3>
-                                                <p class="mar-ver-5">产品总数</p>
+                                                <h1 class="mar-no"> <span class="counter"id="totalProduct">50</span></h1>
+                                                <p class="mar-ver-5">记录总数</p>
                                             </div>
                                             <div class="col-md-3 col-sm-3 col-xs-2" style="text-align: right;"> <i class="fa fa-server fa-5x text-primary"></i> </div>
                                         </div>
-                                        <p> 4% higher than last month </p>
+                                        <p id="totalProduct-detail"> 4% higher than last month </p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-4">
                                 <div class="panel">
                                     <div class="panel-body">
-                                        <div id="carousel-example-vertical" class="carousel vertical slide" data-ride="carousel">
-                                            <div class="carousel-inner" role="listbox">
-                                                <div class="item active">
-                                                    <div class="ticker-headline">
-                                                        <div class="media">
-                                                            <span class="pull-left"><i class="fa fa-twitter fa-4x text-azure"></i></span>
-                                                            <div class="media-body">
-                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur.Suspendisse id nunc sed massa cursus efficitur.  
-                                                                </p>
-                                                            </div>
-                                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-9 col-sm-9 col-xs-10">
+                                                <div id="carousel-example-vertical" class="carousel vertical slide" data-ride="carousel">
+                                                    <div class="carousel-inner" role="listbox" id="three-comment">
+                                                    
                                                     </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="ticker-headline">
-                                                        <div class="media">
-                                                            <span class="pull-left"><i class="fa fa-facebook fa-4x text-primary"></i></span>
-                                                            <div class="media-body">
-                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur. Suspendisse id nunc sed massa cursus efficitur. 
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="ticker-headline">
-                                                        <div class="media">
-                                                            <span class="pull-left"><i class="fa fa-google-plus fa-4x text-danger"></i></span>
-                                                            <div class="media-body">
-                                                                <div class="h4"><strong>Semantha Schwarz</strong> <small>1 hour ago</small></div>
-                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam id quam elementum odio tristique euismod. Suspendisse id nunc sed massa cursus efficitur. Suspendisse id nunc sed massa cursus efficitur. 
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <!-- Controls -->
+                                                    <a class="up carousel-control" href="#carousel-example-vertical" role="button" data-slide="prev">
+                                                    <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="down carousel-control" href="#carousel-example-vertical" role="button" data-slide="next">
+                                                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                    </a>
                                                 </div>
                                             </div>
-                                            <!-- Controls -->
-                                            <a class="up carousel-control" href="#carousel-example-vertical" role="button" data-slide="prev">
-                                            <span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="down carousel-control" href="#carousel-example-vertical" role="button" data-slide="next">
-                                            <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8 eq-box-md grid">
-                                
-                                <div class="bg-light">
-                                    <ul class="nav nav-section nav-justified">
-                                        <li>
-                                            <div class="section">
-                                                <h4 class="text-left"> HDD 1 <i class="fa fa-caret-up text-success"></i></h4>
-                                                <p class="text-left"> Traffic this month </p>
-                                                <div class="progress progress-striped progress-xs">
-                                                    <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
-                                                </div>
-                                                <p class="text-left">Health: <span class="text-success">Good</span></p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="section">
-                                                <h4 class="text-left"> HDD 2 <i class="fa fa-caret-down text-danger"></i></h4>
-                                                <p class="text-left"> Traffic this month </p>
-                                                <div class="progress progress-striped progress-xs">
-                                                    <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
-                                                </div>
-                                                <p class="text-left">Health: <span class="text-danger">Bad</span></p>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="section">
-                                                <h4 class="text-left"> HDD 3 <i class="fa fa-caret-up text-success"></i></h4>
-                                                <p class="text-left"> Traffic this month </p>
-                                                <div class="progress progress-striped progress-xs">
-                                                    <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
-                                                </div>
-                                                <p class="text-left">Health: <span class="text-success">Good</span></p>
-                                            </div>
-                                        </li>
-                                    </ul>
+                            <div class="col-md-8">
+                                <div class="panel">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <ul class="nav nav-section nav-justified">
+                                                <li>
+                                                    <div class="section">
+                                                        <!-- <h1 class="mar-no"> <span class="counter" id="totalComment">50</span></h1> -->
+                                                        <p class="text-left" id="totalComment" style="font-size: 2em;"> 200 </p>
+                                                        <hr style="margin-bottom:0px;">
+                                                        <h4 class="text-left"> 总留言条数 
+                                                            <!-- <i class="fa fa-caret-up text-success"></i> -->
+                                                        </h4>
+                                                        <!-- <div class="progress progress-striped progress-xs">
+                                                            <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
+                                                        </div> -->
+                                                        <!-- <p class="text-left">Health: <span class="text-success">Good</span></p> -->
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="section">
+                                                        <p class="text-left" id="totalUser" style="font-size: 2em;"> 300 </p>
+                                                        <hr style="margin-bottom:0px;">
+                                                        <h4 class="text-left"> 总用户量 
+                                                            <!-- <i class="fa fa-caret-down text-danger"></i> -->
+                                                        </h4>
+                                                        <!-- <div class="progress progress-striped progress-xs">
+                                                            <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
+                                                        </div> -->
+                                                        <!-- <p class="text-left">Health: <span class="text-danger">Bad</span></p> -->
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="section">
+                                                        <p class="text-left" id="" style="font-size: 2em;"> 120 </p>
+                                                        <hr style="margin-bottom:0px;">
+                                                        <h4 class="text-left"> 访问量 
+                                                            <!-- <i class="fa fa-caret-up text-success"></i> -->
+                                                        </h4>
+                                                        <!-- <div class="progress progress-striped progress-xs">
+                                                            <div style="width: 60%;" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar"> <span class="sr-only">60% Complete</span> </div>
+                                                        </div> -->
+                                                        <!-- <p class="text-left">Health: <span class="text-success">Good</span></p> -->
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-
-                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"> 订单总量统计-饼图 </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <!--Flot Spline Chart placeholder -->
+                                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                        <div id="container1"></div>
+                                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="col-md-6">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title"> 每日订单量统计-折线图 </h3>
+                                    </div>
+                                    <div class="panel-body">
+                                        <!--Flot Spline Chart placeholder -->
+                                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                        <div id="container2"></div>
+                                        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+                                    </div>
+                                </div>  
+                            </div>
+                        </div>
                     <!--===================================================-->
                     <!--End page content-->
                 </div>
@@ -358,6 +370,287 @@
         <!--Form Wizard [ SAMPLE ]-->
         <script src="js/demo/form-wizard.js"></script>
         <script src="js/demo/dashboard-v2.js"></script>
+        <script src="/js/highcharts/highcharts.js"></script>
+        <script src="/js/highcharts/exporting.js"></script>
+        <script src="/js/highcharts/highcharts-zh_CN.js"></script>
+        <script src="/js/global.js"></script>
+        <script>
+            var objArrDateOrder = [];
+            var objArrHotelDateOrder = [];
+            var objArrPlaneDateOrder = [];
+            var orderPercent = [];
+            var obj = new Object();
+            $.ajax({
+                type:'post',
+                async:false,
+                url:base_url+'/index/indexData',
+                contentType:'application/json;chart=utf-8',
+                dataType:'json',
+                data:JSON.stringify(obj),
+                success:function(result){
+                   $("#todayOrder").text(result.data.todayOrder);
+                   $("#todayOrder-detail").text("截至 " + getMyDate(new Date));
+                   $("#totalOrder").text(result.data.totalOrder);
+                   var orderDetail = "审核中：" + result.data.totalSubmitOrder + " 笔，已通过：" + result.data.totalPassOrder + " 笔，已拒绝：" + result.data.totalRefuseOrder + " 笔。"
+                   $("#totalOrder-detail").text(orderDetail);
+                   var totalProduct = result.data.totalSpots + result.data.totalHotel + result.data.totalLine + result.data.totalGroup + result.data.totalPlane;
+                   $("#totalProduct").text(totalProduct);
+                   var productDetail = "景点：" + result.data.totalSpots + " 条，酒店：" + result.data.totalHotel + " 条，旅线：" + result.data.totalLine + " 条，旅团："+ result.data.totalGroup + " 条，航班："+ result.data.totalPlane + " 条。"
+                   $("#totalProduct-detail").text(productDetail);
+                   $("#totalComment").text(result.data.totalComment);
+                   $("#totalUser").text(result.data.totalUser);
+                    
+                   //set charts dateOrder
+                   if(typeof(result.data.dateOrder)!="undefined" && result.data.dateOrder.length>0){
+                        for (var i = 0; i < result.data.dateOrder.length; i++) {
+                            var obj = [];
+                            obj[0] = new Date(result.data.dateOrder[i].dealDate).getTime();
+                            obj[1] = result.data.dateOrder[i].dealNum;
+                            objArrDateOrder.push(obj);
+                        }
+                   }
+                   console.log(objArrDateOrder);
+                    //set charts hotelDateOrder
+                    if(typeof(result.data.hotelDateOrder)!="undefined" && result.data.hotelDateOrder.length>0){
+                        for (var j = 0; j < result.data.hotelDateOrder.length; j++) {
+                            var obj = [];
+                            obj[0] = new Date(result.data.hotelDateOrder[j].dealDate).getTime();
+                            obj[1] = result.data.hotelDateOrder[j].dealNum;
+                            objArrHotelDateOrder.push(obj);
+                        }
+                    }
+                    console.log(objArrHotelDateOrder);
+                    //set charts planeDateOrder
+                    if(typeof(result.data.planeDateOrder)!="undefined" && result.data.planeDateOrder.length>0){
+                        for (var k = 0; k < result.data.planeDateOrder.length; k++) {
+                            var obj = [];
+                            obj[0] = new Date(result.data.planeDateOrder[k].dealDate).getTime();
+                            obj[1] = result.data.planeDateOrder[k].dealNum;
+                            objArrPlaneDateOrder.push(obj);
+                        }
+                    }
+                    console.log(objArrPlaneDateOrder);
+
+                    //set charts orderPercent
+                    for (var m = 0; m < 4; m++) {
+                            var obj = [];
+                            if(m===0){
+                                obj[0]="酒店";
+                                obj[1] = result.data.hotelPercent;
+                            }else if(m===1){
+                                obj[0]="机票";
+                                obj[1] = result.data.planePercent;
+                            }else if(m===2){
+                                obj[0]="旅线";
+                                obj[1] = result.data.linePercent;
+                            }else{
+                                obj[0]="其他";
+                                obj[1] = result.data.otherPercent;
+                            }
+                            orderPercent.push(obj);
+                    }
+                    console.log(orderPercent);
+
+                    //set three comment
+                    var htmlContent = "";
+                    var commentList = result.data.commentList;
+                    commentList.forEach(function(val,index,data){
+                        var active = "";
+                    	if(index==0){
+                    		active="active";
+                    	}
+                    	htmlContent = htmlContent + 
+                        "<div class='item "+ active +"'>"+
+                            "<div class='ticker-headline'>"+
+                                "<div class='media'>"+
+                                    "<span class='pull-left'><i class='fa fa-envelope fa-5x text-primary' style='font-size:6em;'></i></span>"+
+                                    "<div class='media-body'>"+
+                                        "<div class='h4'><strong>来自用户："+ val.userName +"  的留言</strong></div>"+
+                                        "<p>"+ val.commentContent +"</p>"+
+                                        "<small>评论时间："+ val.commentTime +"</small>"+
+                                    "</div>"+
+                                "</div>"+
+                            "</div>"+
+                        "</div>";
+                        $("#three-comment").html(htmlContent);
+                    });
+                }
+            })
+
+            //将时间戳格式化 
+            function getMyDate(time){  
+                if(typeof(time)=="undefined"){
+                    return "";
+                }
+                var oDate = new Date(time),  
+                oYear = oDate.getFullYear(),  
+                oMonth = oDate.getMonth()+1,  
+                oDay = oDate.getDate(),  
+                oHour = oDate.getHours(),  
+                oMin = oDate.getMinutes(),  
+                oSen = oDate.getSeconds(),  
+                oTime = oYear +'-'+ getzf(oMonth) +'-'+ getzf(oDay) +' '+ getzf(oHour) +':'+ getzf(oMin) +':'+getzf(oSen);//最后拼接时间  
+                        
+                return oTime;  
+            };
+                
+            //补0操作,当时间数据小于10的时候，给该数据前面加一个0  
+            function getzf(num){  
+                if(parseInt(num) < 10){  
+                    num = '0'+num;  
+                }  
+                return num;  
+            }
+
+
+            $('#container1').highcharts({
+                chart: {
+                    plotBackgroundColor: null,
+                    plotBorderWidth: null,
+                    plotShadow: false
+                },
+                title: {
+                    text: '订单总量统计-饼图'
+                },
+                tooltip: {
+                    headerFormat: '{series.name}<br>',
+                    pointFormat: '{point.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                            style: {
+                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                            }
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: '订单量',
+                    // data: [
+                    //     ['Firefox',   45.0],
+                    //     ['IE',       26.8],
+                    //     {
+                    //         name: 'Chrome',
+                    //         y: 12.8,
+                    //         sliced: true,
+                    //         selected: true
+                    //     },
+                    //     ['Safari',    8.5],
+                    //     ['Opera',     6.2],
+                    //     ['其他',   0.7]
+                    // ]
+                    data: orderPercent
+                }],
+                credits: {
+                    enabled: false     //不显示LOGO
+                }
+            });
+
+            $('#container2').highcharts({
+                title: {
+                    text: '每日订单量统计-折线图'
+                },
+                subtitle: {
+                    //text: '数据来源：thesolarfoundation.com'
+                },
+                tooltip: {
+                    dateTimeLabelFormats: {
+                        millisecond: '%H:%M:%S.%L',
+                        second: '%H:%M:%S',
+                        minute: '%H:%M',
+                        hour: '%H:%M',
+                        day: '%Y-%m-%d',
+                        week: '%m-%d',
+                        month: '%Y-%m',
+                        year: '%Y'
+                    }
+                },
+                xAxis: {
+                    type: 'datetime',
+                    dateTimeLabelFormats: {
+                        millisecond: '%H:%M:%S.%L',
+                        second: '%H:%M:%S',
+                        minute: '%H:%M',
+                        hour: '%H:%M',
+                        day: '%m-%d',
+                        week: '%m-%d',
+                        month: '%Y-%m',
+                        year: '%Y'
+                    }
+                },
+                yAxis: {
+                    title: {
+                        text: '订单量'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+                plotOptions: {
+                    // series: {
+                    //     cursor: 'pointer',
+                    //     point: {
+                    //         events: {
+                    //             // 数据点点击事件
+                    //             // 其中 e 变量为事件对象，this 为当前数据点对象
+                    //             click: function (e) {
+                    //                 $('.message').html( Highcharts.dateFormat('%Y-%m-%d', this.x) + ':<br/>  访问量：' +this.y );
+                    //             }
+                    //         }
+                    //     },
+                    //     marker: {
+                    //         lineWidth: 1
+                    //     }
+                    // }
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                        //pointStart: 2010
+                    }
+                },
+                series: [
+                    {
+                        //type: 'area',
+                        name: '全部订单',
+                        data: (objArrDateOrder)
+                    },{
+                        //type: 'area',
+                        name: '酒店',
+                        data: (objArrHotelDateOrder)
+                    },{
+                        //type: 'area',
+                        name: '机票',
+                        data: (objArrPlaneDateOrder)
+                    }
+                ],
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                },
+                credits: {
+                    enabled: false     //不显示LOGO
+                }
+            });
+        </script>
       
     </body>
 </html>

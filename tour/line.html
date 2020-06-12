@@ -131,7 +131,7 @@
                                         <table id="line_list" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                                             <thead>
                                                 <tr>
-                                                    <th name="id">id</th>
+                                                    <!-- <th name="id">id</th> -->
                                                     <th name="lineName">旅线名称</th>
                                                     <th name="lineAddress">旅线途径地址</th>
                                                     <th name="linePhone">旅线咨询电话</th>
@@ -263,12 +263,11 @@
         <script src="js/file/fileinput.js"></script>
         <script src="js/file/locales/zh.js"></script>
         <script src="themes/explorer-fa/theme.js"></script>
+        <script src="/js/global.js"></script>
         <script src="js/include.js"></script>
         <!--Bootstrap Select [ OPTIONAL ]-->
         <script src="plugins/bootstrap-select/bootstrap-select.min.js"></script>
         <script>
-            //var base_url = 'http://10.127.127.1:8080/s/user';
-            var base_url = 'http://localhost:8080/s';
             // init date tables
             var lineTable = $("#line_list").dataTable({
                 "deferRender": true,
@@ -320,40 +319,48 @@
                 "ordering": false,
                 //"scrollX": true,	// scroll x，close self-adaption
                 "columns": [
-                            {
-                                "data": 'id',
-                                "bSortable": false,
-                                "visible" : true,
-                                "width":'10%'
-                            },
+                            // {
+                            //     "data": 'id',
+                            //     "bSortable": false,
+                            //     "visible" : true,
+                            //     //"width":'10%'
+                            // },
                             {
                                 "data": 'lineName',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'lineAddress',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'linePhone',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'linePrice',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'lineDescription',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
+                                "render": function ( data, type, row ) {
+                                    if(data!=null){
+                                        var desc = data.substring(0,20);
+                                        var descHtml = desc+"...";
+                                        return descHtml;
+                                    }
+                                    return "";
+                                }
                             },
                             { 
                                 "data": 'createDate', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     return getMyDate(data);
@@ -361,13 +368,13 @@
                             },
                             {
                                 "data": 'lineImages',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     if(data!=null){
                                         var img = data.split(',');
                                         //$("#a").text(arr[0]);
-                                        var imgHtml = "<img src='http://"+img[0]+"' width='150px' height='150px'>";
+                                        var imgHtml = "<img src='http://"+img[0]+"' width='50px' height='50px'>";
                                         return imgHtml;
                                     }
                                     return "";
@@ -375,12 +382,13 @@
                             },
                             {
                                 "data": 'id' ,
-                                "width":'10%',
+                                //"width":'10%',
                                 "render": function ( data, type, row ) {
                                     return function(){
                                         // status
                                         //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
-                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
+                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>"+
+                                        "<button class='btn btn-success' _id='"+ row.id +"' onclick=updateThisRowPapser('"+ row.id + "')>更新</button>";
 
                                         // log url
                                         //var logHref = base_url +'/joblog?jobId='+ row.id;
@@ -629,7 +637,7 @@
                     $('#file-0a').fileinput({
                         'theme':'explorer',
                         language:'zh',
-                        uploadUrl:'http://localhost:8081/uploadByMap',
+                        uploadUrl:file_upload_url,
                         showPreview:true,//是否显示预览
                         allowedPreviewTypes : ['image','html','text','video','audio','flash'],
                         maxFileCount :3,// 表示允许同时上传的最大文件个数
@@ -688,10 +696,8 @@
 
                 });
 
-     
 
-
-            //显示多选框
+                 //显示多选框
             function show(t) {
                 //设置多选框显示的位置，在选择框的中间
                 var left = t.offsetLeft;
@@ -748,6 +754,266 @@
                 $("#txt").val(name);
                 $("#groupIds").val(groupIds);
             }
+
+     
+                function updateThisRowPapser(id){
+                    $('#fileUrlDiv').empty();
+                    var lineId,lineName,lineAddress,linePhone,linePrice,lineDescription,lineGroupList;
+
+                    var obj = new Object();
+                    obj.id=id;
+                    var requestData = JSON.stringify(obj);
+                    $.ajax({
+                        type:'post',
+                        async:false,
+                        url:base_url+'/line/detail',
+                        contentType:'application/json;chart=utf-8',
+                        dataType:'json',
+                        data:requestData,
+                        success:function(result){
+                            if(result.status==1){
+                                lineName=result.data.line.lineName;
+                                lineAddress=result.data.line.lineAddress;
+                                linePhone=result.data.line.linePhone;
+                                linePrice=result.data.line.linePrice;
+                                lineDescription=result.data.line.lineDescription;
+                                lineGroupList=result.data.groupList;
+                                lineId=result.data.line.id;
+                            }
+                            
+                        }
+                    })
+
+                    var htmlContent = "<div id='addContent'> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='lineName'>旅线名称</label> " +
+                                        "<input id='lineName' name='lineName' type='text' placeholder='输入旅线名称' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='lineAddress'>旅线途径地址</label> " +
+                                        "<input id='lineAddress' name='lineAddress' type='text' placeholder='输入旅线途径地址' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='linePhone'>旅线咨询电话</label> " +
+                                        "<input id='linePhone' name='linePhone' type='text' placeholder='输入旅线咨询电话' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='linePrice'>旅线价格</label> " +
+                                        "<input id='linePrice' name='linePrice' type='text' placeholder='输入旅线价格' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'>"+
+                                        "<div class='input-group'>"+
+                                            "<div class='input-group-addon'>添加旅团</div>"+
+                                            "<input type='hidden' id='groupIds' />"+
+                                            "<input class='form-control' type='text' id='txt' onclick='show(this)' placeholder='选择旅团' readonly style='width:450px'>"+
+                                            "<div class='popover fade bottom in' id='panel-select' style='display:block;opacity:0'>"+ 
+                                                "<div class='arrow'></div>"+
+                                                "<div class='popover-title' style='height:35px;'>"+
+                                                    "<div class='checkbox' style='margin-top:0;margin-bottom:0px;'></div><label><input type='checkbox' onchange='CheckAll(this)' />全选</label>"+
+                                                    "<button type='button' class='close' onclick='hide()'>"+
+                                                        "<span aria-hidden='true'>&times;</span>"+
+                                                        "<span class='sr-only'>Close</span>"+
+                                                    "</button>"+
+                                                "</div>"+
+                                                "<div class='popover-content' style='overflow:auto;height:300px'>"+
+                                                    "<ul class='list-inline' id='ul-select' >"+
+                                                    "</ul>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</div>"+
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='lineDescription'>旅线描述</label> " +
+                                        "<textarea id='lineDescription' name='lineDescription' type='text' placeholder='输入旅线描述' class='form-control input-md' style='height:100px'> </textarea>" +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='lineImages'>旅线图片 </label> " +
+
+                                        "<div class='container kv-main'>"+
+                                            "<div class='row'>"+
+                                                "<div style='margin:10px 20px 100px 20px;width:830px;height:300px'>"+
+                                                    "<form nctype='multipart/form-data'>"+
+                                                    "<input id='file-0a' class='file' name='file' type='file' multiple data-min-file-count='1'><br>"+
+                                                    "</form>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                        "</div>";
+        
+                    //obj.hotelImages=imgUrls;
+                    //var answer = $("input[name='awesomeness']:checked").val();
+                
+                    bootbox.dialog({
+                        title: "更新旅线",
+                        size: "large",
+                        message:htmlContent,
+                        buttons: {
+                            success: {
+                                label: "更新旅线",
+                                className: "btn-danger",
+                                callback: function() {
+                                    var imgUrls="";
+                                    $(".fileUrl").each(function(index, el) {
+                                        if(index==0){
+                                            imgUrls = imgUrls + el.value;
+                                        }else{
+                                            imgUrls = imgUrls + "," + el.value;
+                                        }
+                                    });
+                                    var lineName = $('#lineName').val();
+                                    var lineAddress = $('#lineAddress').val();
+                                    var linePhone = $('#linePhone').val();
+                                    var linePrice = $('#linePrice').val();
+                                    var lineDescription = $('#lineDescription').val();
+                                    var groupIds = $("#groupIds").val();
+
+                                    var obj = new Object();
+                                    obj.id= lineId;
+                                    obj.lineName= lineName;
+                                    obj.lineAddress=lineAddress;
+                                    obj.linePhone=linePhone;
+                                    obj.linePrice=linePrice;
+                                    obj.lineDescription=lineDescription;
+                                    obj.lineImages=imgUrls;
+                                    obj.groupIds=groupIds;
+                                    //var answer = $("input[name='awesomeness']:checked").val();
+                                    $.ajax({
+                                        type:'post',
+                                        async:false,
+                                        url:base_url+'/line/addLine',
+                                        contentType:'application/json;chart=utf-8',
+                                        dataType:'json',
+                                        data:JSON.stringify(obj),
+                                        success:function(result){
+                                            lineTable.fnClearTable(); //清空一下table
+                                            lineTable.fnDestroy(); //还原初始化了的datatable
+                                            $('#demo-sm-modal').modal('hide');
+                                        }
+                                    })
+                                    
+                                }
+                            },
+                            cancel: {
+                                label: "取消",
+                                className: "btn-default"
+                            }
+                        }
+                    });
+
+                    $('#lineName').val(lineName);
+                    $('#lineAddress').val(lineAddress);
+                    $('#linePhone').val(linePhone);
+                    $('#linePrice').val(linePrice);
+                    $('#lineDescription').val(lineDescription);
+                    var groupData = {};
+                    $.ajax({
+                        type:'post',
+                        async:false,
+                        url:base_url+'/group/list',
+                        contentType:'application/json;chart=utf-8',
+                        dataType:'json',
+                        data:JSON.stringify(groupData),
+                        success:function(result){
+                            var objArr = [];
+                            for (var i = 0; i < result.data.groupList.length; i++) {
+                                var obj = new Object();
+                                obj.id = result.data.groupList[i].id;
+                                obj.value=result.data.groupList[i].groupName;
+                                if(typeof(lineGroupList)!="undefined" && lineGroupList.length>0){
+                                    for (var j = 0; j < lineGroupList.length; j++) {
+                                        if(lineGroupList[j].id===result.data.groupList[i].id){
+                                            obj.checked="checked";
+                                        }
+                                    }
+                                }
+                                objArr.push(obj);
+                            }
+                            //加载多选框的数据
+                            var ul = $("#ul-select");
+                            for (var i = 0; i < objArr.length; i++) {
+                                ul.append("<li style='width:300px;'><div class='checkbox'></div><label><input type='checkbox' value=" + objArr[i].id + " onclick='Choose(this)' "+ objArr[i].checked +"/>" + objArr[i].value + "</label></li>");
+                                if(objArr[i].hasOwnProperty('checked')){
+                                    //Choose(this);
+                                    var oldName = $("#txt").val();
+                                    var name = oldName == "" ? "," + $("#txt").val() : "," + $("#txt").val() + ",";
+                                    var groupIds = oldName == "" ? "," + $("#groupIds").val() : "," + $("#groupIds").val() + ",";
+                                    var newName = objArr[i].value;
+                                    var newid = objArr[i].id;
+                                    //选中的操作
+                                    $("#txt").val(name += newName + ",");
+                                    $("#groupIds").val(groupIds += newid + ",");
+
+                                    name = name.substr(1, name.length - 2);
+                                    groupIds = groupIds.substr(1, groupIds.length - 2);
+                                    $("#txt").val(name);
+                                    $("#groupIds").val(groupIds);
+                                }
+                            }
+                            
+                        }
+                    })
+
+
+                    
+                    $('#file-0a').fileinput({
+                        'theme':'explorer',
+                        language:'zh',
+                        uploadUrl:file_upload_url,
+                        showPreview:true,//是否显示预览
+                        allowedPreviewTypes : ['image','html','text','video','audio','flash'],
+                        maxFileCount :3,// 表示允许同时上传的最大文件个数
+                    });
+                    
+                    $('#file-0a').on('fileerror',function(event, data) {
+                        console.log(data.id);
+                        console.log(data.index);
+                        console.log(data.file);
+                        console.log(data.reader);
+                        console.log(data.files);
+                    });
+
+                    $('#file-0a').on('fileuploaded',function(event, data, previewId, index) {
+                        var form = data.form,files = data.files,extra = data.extra,
+                        response = data.response,reader = data.reader;
+                        
+                        $('#fileUrlDiv').append("<input class='fileUrl' value='"+ response.imgUrl +"'/>");
+                        console.log('File uploaded triggered');
+                    });
+
+                    // $('#datepicker').datepicker({
+                    //     language: "zh-CN",
+                    //     format: "yyyy-mm-dd"
+                    // })
+
+                };
+
+
+           
 
 
             

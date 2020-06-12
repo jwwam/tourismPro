@@ -131,7 +131,7 @@
                                         <table id="group_list" class="table table-bordered table-hover toggle-circle" data-page-size="7">
                                             <thead>
                                                 <tr>
-                                                    <th name="id">id</th>
+                                                    <!-- <th name="id">id</th> -->
                                                     <th name="groupName">旅团名称</th>
                                                     <th name="groupAddress">旅团途径地址</th>
                                                     <th name="groupPhone">旅团咨询电话</th>
@@ -264,10 +264,9 @@
         <script src="js/file/fileinput.js"></script>
         <script src="js/file/locales/zh.js"></script>
         <script src="themes/explorer-fa/theme.js"></script>
+        <script src="/js/global.js"></script>
         <script src="js/include.js"></script>
         <script>
-            //var base_url = 'http://10.127.127.1:8080/s/user';
-            var base_url = 'http://localhost:8080/s/group';
             // init date tables
             var groupTable = $("#group_list").dataTable({
                 "deferRender": true,
@@ -278,7 +277,7 @@
                 "iDisplayLength": 10,
                 "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
                 "ajax": {
-                    url: base_url + "/list",
+                    url: base_url + "/group/list",
                     type:"post",
                     dataType: "json",
                     async:false,
@@ -319,40 +318,48 @@
                 "ordering": false,
                 //"scrollX": true,	// scroll x，close self-adaption
                 "columns": [
-                            {
-                                "data": 'id',
-                                "bSortable": false,
-                                "visible" : true,
-                                "width":'10%'
-                            },
+                            // {
+                            //     "data": 'id',
+                            //     "bSortable": false,
+                            //     "visible" : true,
+                            //    // "width":'10%'
+                            // },
                             {
                                 "data": 'groupName',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'groupAddress',
                                 "visible" : true,
-                                "width":'10%'
+                                //"width":'10%'
                             },
                             {
                                 "data": 'groupPhone',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'groupMember',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                             },
                             {
                                 "data": 'groupDescription',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
+                                "render": function ( data, type, row ) {
+                                    if(data!=null){
+                                        var desc = data.substring(0,20);
+                                        var descHtml = desc+"...";
+                                        return descHtml;
+                                    }
+                                    return "";
+                                }
                             },
                             { 
                                 "data": 'createDate', 
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     return getMyDate(data);
@@ -360,13 +367,13 @@
                             },
                             {
                                 "data": 'groupImages',
-                                "width":'10%',
+                                //"width":'10%',
                                 "visible" : true,
                                 "render": function ( data, type, row ) {
                                     if(data!=null){
                                         var img = data.split(',');
                                         //$("#a").text(arr[0]);
-                                        var imgHtml = "<img src='http://"+img[0]+"' width='150px' height='150px'>";
+                                        var imgHtml = "<img src='http://"+img[0]+"' width='50px' height='50px'>";
                                         return imgHtml;
                                     }
                                     return "";
@@ -374,12 +381,13 @@
                             },
                             {
                                 "data": 'id' ,
-                                "width":'10%',
+                                //"width":'10%',
                                 "render": function ( data, type, row ) {
                                     return function(){
                                         // status
                                         //var start_stop_div = '<a href="javascript:void(0);" class="btn btn-danger btn-sm" _type="job_resume" _id="'+ row.id +'">删除</a>\n';
-                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>";
+                                        var start_stop_div = "<button id='demo-bootbox-confirm' class='btn btn-danger' _id='"+ row.id +"' onclick=deleteThisRowPapser('"+ row.id + "')>删除</button>"+
+                                        "<button class='btn btn-success' _id='"+ row.id +"' onclick=updateThisRowPapser('"+ row.id + "')>更新</button>";
 
                                         // log url
                                         //var logHref = base_url +'/joblog?jobId='+ row.id;
@@ -436,7 +444,7 @@
                         $.ajax({
                         type:'post',
                         async:false,
-                        url:base_url+'/deleteGroup',
+                        url:base_url+'/group/deleteGroup',
                         contentType:'application/json;chart=utf-8',
                         dataType:'json',
                         data:deleteData,
@@ -577,7 +585,7 @@
                                 $.ajax({
                                     type:'post',
                                     async:false,
-                                    url:base_url+'/addGroup',
+                                    url:base_url+'/group/addGroup',
                                     contentType:'application/json;chart=utf-8',
                                     dataType:'json',
                                     data:JSON.stringify(obj),
@@ -603,7 +611,7 @@
                 $('#file-0a').fileinput({
                     'theme':'explorer',
                     language:'zh',
-                    uploadUrl:'http://localhost:8081/uploadByMap',
+                    uploadUrl:file_upload_url,
                     showPreview:true,//是否显示预览
                     allowedPreviewTypes : ['image','html','text','video','audio','flash'],
                     maxFileCount :3,// 表示允许同时上传的最大文件个数
@@ -634,6 +642,190 @@
 
 	        });
 
+
+            function updateThisRowPapser(id){
+                $('#fileUrlDiv').empty();
+                var groupId,groupName,groupAddress,groupPhone,groupMember,groupPrice,groupDescription;
+
+                var obj = new Object();
+                obj.id=id;
+                var requestData = JSON.stringify(obj);
+                $.ajax({
+                    type:'post',
+                    async:false,
+                    url:base_url+'/group/detail',
+                    contentType:'application/json;chart=utf-8',
+                    dataType:'json',
+                    data:requestData,
+                    success:function(result){
+                        if(result.status==1){
+                            groupName=result.data.groupName;
+                            groupAddress=result.data.groupAddress;
+                            groupPhone=result.data.groupPhone;
+                            groupMember=result.data.groupMember;
+                            groupPrice=result.data.groupPrice;
+                            groupDescription=result.data.groupDescription;
+                            groupId=result.data.id;
+                        }
+                        
+                    }
+                })
+
+                var htmlContent = "<div id='addContent'> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='groupName'>旅团名称</label> " +
+                                        "<input id='groupName' name='groupName' type='text' placeholder='输入旅团名称' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='groupAddress'>旅团地址</label> " +
+                                        "<input id='groupAddress' name='groupAddress' type='text' placeholder='输入旅团地址' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='groupPhone'>旅团咨询电话</label> " +
+                                        "<input id='groupPhone' name='groupPhone' type='text' placeholder='输入旅团咨询电话' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                                "<div class='col-md-6'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='groupMember'>旅团成员</label> " +
+                                        "<input id='groupMember' name='groupMember' type='text' placeholder='输入旅团成员' class='form-control input-md'> " +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='groupDescription'>旅团描述</label> " +
+                                        "<textarea id='groupDescription' name='groupDescription' type='text' placeholder='输入旅团描述' class='form-control input-md' style='height:100px'> </textarea>" +
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                            "<div class='row'> " +
+                                "<div class='col-md-12'> " +
+                                    "<div class='form-group'> " +
+                                        "<label class='control-label' for='groupImages'>旅团图片 </label> " +
+
+                                        "<div class='container kv-main'>"+
+                                            "<div class='row'>"+
+                                                "<div style='margin:10px 20px 100px 20px;width:830px;height:300px'>"+
+                                                    "<form nctype='multipart/form-data'>"+
+                                                    "<input id='file-0a' class='file' name='file' type='file' multiple data-min-file-count='1'><br>"+
+                                                    "</form>"+
+                                                "</div>"+
+                                            "</div>"+
+                                        "</div>"+
+                                    "</div> " +
+                                "</div> " +
+                            "</div> " +
+                        "</div>";
+        
+                //obj.hotelImages=imgUrls;
+                //var answer = $("input[name='awesomeness']:checked").val();
+                
+                bootbox.dialog({
+                    title: "更新旅团",
+                    size: "large",
+                    message:htmlContent,
+                    buttons: {
+                        success: {
+                            label: "更新旅团",
+                            className: "btn-danger",
+                            callback: function() {
+                                var imgUrls="";
+                                $(".fileUrl").each(function(index, el) {
+                                    if(index==0){
+                                        imgUrls = imgUrls + el.value;
+                                    }else{
+                                        imgUrls = imgUrls + "," + el.value;
+                                    }
+                                });
+                                var groupName = $('#groupName').val();
+                                var groupAddress = $('#groupAddress').val();
+                                var groupPhone = $('#groupPhone').val();
+                                var groupMember = $('#groupMember').val();
+                                var groupPrice = $('#groupPrice').val();
+                                var groupDescription = $('#groupDescription').val();
+
+                                var obj = new Object();
+                                obj.id= groupId;
+                                obj.groupName= groupName;
+                                obj.groupAddress=groupAddress;
+                                obj.groupPhone=groupPhone;
+                                obj.groupMember=groupMember;
+                                obj.groupPrice=groupPrice;
+                                obj.groupDescription=groupDescription;
+                                obj.groupImages=imgUrls;
+                                //var answer = $("input[name='awesomeness']:checked").val();
+                                $.ajax({
+                                    type:'post',
+                                    async:false,
+                                    url:base_url+'/group/addGroup',
+                                    contentType:'application/json;chart=utf-8',
+                                    dataType:'json',
+                                    data:JSON.stringify(obj),
+                                    success:function(result){
+                                        groupTable.fnClearTable(); //清空一下table
+                                        groupTable.fnDestroy(); //还原初始化了的datatable
+                                        $('#demo-sm-modal').modal('hide');
+                                        
+                                    }
+                                })
+                                
+                            }
+                        },
+                        cancel: {
+                            label: "取消",
+                            className: "btn-default"
+                        }
+                    }
+                });
+
+                $('#groupName').val(groupName);
+                $('#groupAddress').val(groupAddress);
+                $('#groupPhone').val(groupPhone);
+                $('#groupMember').val(groupMember);
+                $('#groupPrice').val(groupPrice);
+                $('#groupDescription').val(groupDescription);
+                
+                $('#file-0a').fileinput({
+                    'theme':'explorer',
+                    language:'zh',
+                    uploadUrl:file_upload_url,
+                    showPreview:true,//是否显示预览
+                    allowedPreviewTypes : ['image','html','text','video','audio','flash'],
+                    maxFileCount :3,// 表示允许同时上传的最大文件个数
+                });
+                
+                $('#file-0a').on('fileerror',function(event, data) {
+                    console.log(data.id);
+                    console.log(data.index);
+                    console.log(data.file);
+                    console.log(data.reader);
+                    console.log(data.files);
+                });
+
+                $('#file-0a').on('fileuploaded',function(event, data, previewId, index) {
+                    var form = data.form,files = data.files,extra = data.extra,
+                    response = data.response,reader = data.reader;
+                    
+                    $('#fileUrlDiv').append("<input class='fileUrl' value='"+ response.imgUrl +"'/>");
+                    console.log('File uploaded triggered');
+                });
+
+                // $('#datepicker').datepicker({
+                //     language: "zh-CN",
+                //     format: "yyyy-mm-dd"
+                // })
+
+            };
      
         </script>
     </body>

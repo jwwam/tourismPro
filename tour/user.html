@@ -252,10 +252,9 @@
         <script src="js/dataTables.bootstrap.min.js"></script>
         <!--Bootbox Modals [ OPTIONAL ]-->
         <script src="plugins/bootbox/bootbox.min.js"></script>
+        <script src="/js/global.js"></script>
         <script src="js/include.js"></script>
         <script>
-            //var base_url = 'http://10.127.127.1:8080/s/user';
-            var base_url = 'http://localhost:8080/s/user';
             // init date tables
             var userTable = $("#user_list").dataTable({
                 "deferRender": true,
@@ -266,7 +265,7 @@
                 "iDisplayLength": 10,
                 "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
                 "ajax": {
-                    url: base_url + "/list",
+                    url: base_url + "/user/list",
                     type:"post",
                     dataType: "json",
                     async:false,
@@ -399,7 +398,7 @@
                     $.ajax({
                         type:'post',
                         async:false,
-                        url:base_url+'/deleteUser',
+                        url:base_url+'/user/deleteUser',
                         contentType:'application/json;chart=utf-8',
                         dataType:'json',
                         data:function(){
@@ -532,7 +531,7 @@
                         $.ajax({
                             type:'post',
                             async:false,
-                            url:base_url+'/addUser',
+                            url:base_url+'/user/addUser',
                             contentType:'application/json;chart=utf-8',
                             dataType:'json',
                             data:JSON.stringify(obj),

@@ -38,7 +38,7 @@
 		<!--start header -->
 		<header id="header">
 			<div id="logo">
-				<a href="index.html"><strong>Hi.</strong>嗨Bike</a>
+				<a href="index.html"><strong>Travel.</strong>旅游网站</a>
 				<label id="session"></label>
 			</div>	
 			<div id="searchbox">
@@ -217,12 +217,11 @@
 <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyB3tShW1hLlV2lYW8_sCVln6TLF2bWvgU8"></script>-->
 <script type="text/javascript" src="js/jquery.googlemaps.1.01.min.js"></script>
 <script type="text/javascript" src="js/theme.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
 <script type="text/javascript" src="js/jquerysession.js"></script>
 <script type="text/javascript" src="js/include.js"></script>
 <script>
 	$(function() {
-
-		var base_url = 'http://localhost:8080/c';
 		var userId=$.session.get('userSession');
 		var obj = {};
 		obj.id=userId;
@@ -403,7 +402,7 @@
 				// "<div id='gmap' class='widget side-map'></div>"+
 				"<div>"+
 					"<h2>预定须知</h2>"+
-					"<p style='color: green;font-size:15px;line-height:30px'>网上的酒店介绍、图片、房态、价格、等信息只作参考，预定是否成功以最终电话或短信确认为准。</br>付款方式：前台支付（ 现金/信用卡）。 </br>房费包含酒店服务费，不包括酒店其他费用、税收及客人额外要求的费用。</br>通常酒店的入店时间为13：00以后，离店时间为中午12：00整前。如提前入住或推迟离店，酒店均可酌情加收一定费用。</br> 会员及非会员预订酒店无须支付任何费用。 非会员预订也享受优惠价，会员预定可享受积分奖励</br> 信 用 卡 担 保</br>当节假日期间或举办大型会展期间、旅游旺季等酒店房间紧张的情况下，部分酒店需要您提供信用卡担保，以保证您的预订能够顺利的获得确定。如您的信用卡信息有效，酒店会优先给予房间确认且延长保留时间。需要信用卡担保的酒店，订单一经确认将不可取消或修改。因此请在填写担保订单前慎重考虑您是否会修改行程，以免给您造成不必要的损失。如您未按订单上约定的时间或房间数量入住，酒店将按国际惯例扣除相应的房费。</br>保 密 承 诺</br>嗨Bike旅行网很了解在您进行网上浏览、交易时，保密性和安全性的重要性。我们会将保护您私人信息的保密和安全放在最优先解决的位置，这些信息包括您的信用卡信息、姓名、电话、地址、email等。为了保护您私人信息的机密性，我们采取了安全技术以确保您私人信息的保密性。在您注册成为嗨Bike旅行网会员时，我们会收集您的姓名、电话、地址、email等私人信息，以便于与您联系。当您预订的产品需要信用卡担保或您选择网上支付时，我们会收集您的相关信用卡信息。您提供给嗨Bike旅行网的这些相关私人信息，会被储存在我们的安全系统中，并采用加密手段传输，不会被嗨Bike旅行网公开、出卖或未经授权用于其它商业目的。</p>"+
+					"<p style='color: green;font-size:15px;line-height:30px'>网上的酒店介绍、图片、房态、价格、等信息只作参考，预定是否成功以最终电话或短信确认为准。</br>付款方式：前台支付（ 现金/信用卡）。 </br>房费包含酒店服务费，不包括酒店其他费用、税收及客人额外要求的费用。</br>通常酒店的入店时间为13：00以后，离店时间为中午12：00整前。如提前入住或推迟离店，酒店均可酌情加收一定费用。</br> 会员及非会员预订酒店无须支付任何费用。 非会员预订也享受优惠价，会员预定可享受积分奖励</br> 信 用 卡 担 保</br>当节假日期间或举办大型会展期间、旅游旺季等酒店房间紧张的情况下，部分酒店需要您提供信用卡担保，以保证您的预订能够顺利的获得确定。如您的信用卡信息有效，酒店会优先给予房间确认且延长保留时间。需要信用卡担保的酒店，订单一经确认将不可取消或修改。因此请在填写担保订单前慎重考虑您是否会修改行程，以免给您造成不必要的损失。如您未按订单上约定的时间或房间数量入住，酒店将按国际惯例扣除相应的房费。</br>保 密 承 诺</br>Travel旅行网很了解在您进行网上浏览、交易时，保密性和安全性的重要性。我们会将保护您私人信息的保密和安全放在最优先解决的位置，这些信息包括您的信用卡信息、姓名、电话、地址、email等。为了保护您私人信息的机密性，我们采取了安全技术以确保您私人信息的保密性。在您注册成为Travel旅行网会员时，我们会收集您的姓名、电话、地址、email等私人信息，以便于与您联系。当您预订的产品需要信用卡担保或您选择网上支付时，我们会收集您的相关信用卡信息。您提供给Travel旅行网的这些相关私人信息，会被储存在我们的安全系统中，并采用加密手段传输，不会被Travel旅行网公开、出卖或未经授权用于其它商业目的。</p>"+
 				"</div>"+
 				"<div class='one-half submit-order'>"+
 					"<a class='button medium red submit-button' id='create-order' product-id='"+ hotel.id +"' product-name='"+ hotel.hotelName +"' order-amount='"+ hotel.hotelPrice +"'>立即预订</a>"+
