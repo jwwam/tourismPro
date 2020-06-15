@@ -198,7 +198,7 @@ nginx.exe -s reload
 ```  
 4.启动项目  
 * 本地启动  
-打开idea选择import project，选择tourismPro或者mongodb-file-server导入，然后等待相关依赖加载完成  
+打开idea选择import project，选择tourismPro导入，然后等待相关依赖加载完成  
 修改tourismPro项目中application.properties配置文件，将你自己的MySQL账号和密码替换写入  
 ```
 #数据源
@@ -207,12 +207,16 @@ spring.datasource.username=你自己的MySQL账号
 spring.datasource.password=你自己的MySQL密码
 spring.datasource.driver-class-name=com.mysql.jdbc.Driver
 ```
-修改mongodb-file-server项目中application.properties配置文件，将你自己本地创建的数据库替换写入，这里在mongodb中创建了名为tourismPro的数据库
+* 在mongodb中创建名为tourismPro的数据库
+
+以下命令启动根目录下的mongodb-file-server.jar  
 ```
-spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
+java -jar mongodb-file-server.jar
 ```
-如图启动main方法(mongodb-file-server同理)  
+
+* 如图启动main方法来启动tourismPro
 ![idea启动项目](https://github.com/jwwam/tourismPro/blob/master/src/main/resources/static/20200530140655.png)  
+
 5.view address访问地址  
 ``` 
 前台：http://localhost  
@@ -236,7 +240,7 @@ spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
 * 务必保证系统的80端口、8082端口不被占用  
 * 解压nginx-1.18.0-tourismPro.rar  
 * 双击解压后nginx-1.18.0-tourismPro目录中的nginx.exe  
-* 打开浏览器，输入localhost，再打开新标签输入localhost:8082  
+* 打开浏览器，输入localhost
 * 页面正常显示则前端部署完成  
 
 3.后端部署：  
@@ -244,8 +248,9 @@ spring.data.mongodb.uri=mongodb://localhost:27017/tourismPro
 * 务必保证系统已经正确配置了JDK1.8环境变量  
 * 务必保证系统正确安装且启动了Redis且未修改默认端口、未设置密码  
 * 务必保证系统正确安装且启动了Mongodb且新建了一个名为tourismPro的数据库  
-* 务必保证系统安装的是Mysql5.X版本（本项目暂不支持8.X系列的MySQL数据库）且新建了一个名为tourismPro的数据库  
-* 安装数据库时设置初始化账号为root，密码为1234  
+* 务必保证系统安装的是Mysql5.X版本（本项目暂不支持8.X系列的MySQL数据库）
+* 务必保证Mysql已经新建了一个名为tourismPro的数据库  
+* 安装数据库时设置初始化账号为root，密码为1234(也可自行修改相应的配置)  
 * 打开cmd或者powershell输入以下命令：     
 ```
 java -jar tourismPro.jar
