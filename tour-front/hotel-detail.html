@@ -357,7 +357,7 @@
 			var htmlContent=
 				"<h2 style='color:#2b4d7f;margin-top:20px;margin-left:5px'>您当前查看的酒店是：</h2>"+
 				"<div class='image-place'>"+
-					"<img src='http://"+ hotel.hotelImages.split(',')[0]+"' alt='image'  width='200px' height='200px'/>"+
+					"<img src='"+ file_view_url + hotel.hotelImages.split(',')[0]+"' alt='image'  width='200px' height='200px'/>"+
 				"</div>"+
 				"<div class='post-content'>"+
 					"<h1 class='post-title' style='font-size:25px;'>"+ hotel.hotelName +"</h1>"+
@@ -384,8 +384,8 @@
 			var imgs = hotel.hotelImages.split(',');
 			var img="";
 			imgs.forEach(element => {
-				//img = img + "<li><a href=''><img src='http://"+ element +"' width='116px' height='87px' alt='image' /></a></li>"					
-				img = img + "<div class='image-place'><img src='http://"+ element +"' width='100%' height='560px' alt='image' /></div>"					
+				//img = img + "<li><a href=''><img src='"+ file_view_url + element +"' width='116px' height='87px' alt='image' /></a></li>"					
+				img = img + "<div class='image-place'><img src='"+ file_view_url + element +"' width='100%' height='560px' alt='image' /></div>"					
 			});
 			var htmlContent=
 			"<div class='module-box'>"+

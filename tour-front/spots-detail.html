@@ -445,7 +445,7 @@
 			var imgs = data.spotsImages.split(',');
 			var img="";
 			imgs.forEach(element => {
-				img = img + "<img src='http://"+ element +"' width='620px' height='420px' alt='image' /><p style='text-align:center'>"+ data.spotsName +"图片预览</p>"					
+				img = img + "<img src='"+ file_view_url + element +"' width='620px' height='420px' alt='image' /><p style='text-align:center'>"+ data.spotsName +"图片预览</p>"					
 			});
 			var htmlContent = 
 				"<div class='post-item post-blog'>"+

@@ -392,7 +392,7 @@
 			var imgs = data.lineImages.split(',');
 			var img="";
 			imgs.forEach(element => {
-				img = img + "<img src='http://"+ element +"' width='620px' height='420px' alt='image' /><p style='text-align:center'>"+ data.lineName +"图片预览</p>"					
+				img = img + "<img src='"+ file_view_url + element +"' width='620px' height='420px' alt='image' /><p style='text-align:center'>"+ data.lineName +"图片预览</p>"					
 			});
 			var htmlContent = 
 				"<div class='post-item post-blog'>"+
@@ -460,7 +460,7 @@
 				htmlContent = htmlContent + 
 				"<li class='link-thumb'>"+
 					"<div class='link-image'>"+
-						"<a href='#'><img src='http://"+ getGroupFirstImage(element) +"' width='50px' height='50px' alt='image' /></a>"+
+						"<a href='#'><img src='"+ file_view_url + getGroupFirstImage(element) +"' width='50px' height='50px' alt='image' /></a>"+
 					"</div>"+
 					"<div class='link-text'>"+
 						"<h4><a href='#'>"+ element.groupName +"</a></h4>"+
