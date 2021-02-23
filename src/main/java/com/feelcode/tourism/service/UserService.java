@@ -22,4 +22,6 @@ public interface UserService {
     Page<User> findAllByPage(UserRequestPageDTO request);
 
     Long findAllByCount();
+
+    Integer changePassword(String userId, String password);
 }

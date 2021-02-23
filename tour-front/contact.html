@@ -8,7 +8,7 @@
 <!-- Basic Page Needs
 ================================================== -->
 <meta charset="utf-8">
-<title>TravelSite Theme</title>
+<title>账号管理</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
 
@@ -20,20 +20,6 @@
 ================================================== -->
 <link rel="stylesheet" href="css/style.css" />
 <link rel="stylesheet" href="css/responsive.css" />
-
-<!-- Java Script
-================================================== -->
-<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
-<script type="text/javascript" src="js/jquery.mobile.customized.min.js"></script>
-<script type="text/javascript" src="js/jquery.easing.1.3.js"></script> 
-<script type="text/javascript" src="js/camera.min.js"></script> 
-<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
-<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
-<script type="text/javascript" src="js/selectnav.min.js"></script>
-<!-- <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyB3tShW1hLlV2lYW8_sCVln6TLF2bWvgU8"></script> -->
-<script type="text/javascript" src="js/jquery.googlemaps.1.01.min.js"></script>
-<script type="text/javascript" src="js/theme.js"></script>
 
 <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -51,26 +37,33 @@
 		<!--start header -->
 		<header id="header">
 			<div id="logo">
-				<a href="index.html"><strong>Travel</strong>Site</a>
+				<a href="index.html"><strong>Travel.</strong>旅游网站</a>
+				<label id="session"></label>
 			</div>	
 			<div id="searchbox">
 				<form action="#">
-					<input type="text" id="search" placeholder="Search" />
-					<button type="submit"></button>
+					<input type="text" id="userName" class="user-offline-title user-input" placeholder="账号" value=""/>
+					<input type="password" id="password" class="user-offline-title user-input" placeholder="密码" value=""/>
+					<button type="submit" class="user-offline-title user-login">登录</button>
+					<button type="submit" class="user-offline-title user-regist">注册</button>
+					<button type="submit" class="user-online-title user-logout">注销</button>
 				</form>
 			</div>
 			<div id="navigation">
 				<ul id="nav">
-					<li><a href="index.html">Home</a></li>
-					<li><a href="browse.html">Browse</a>
-						<ul>
+					<li><a href="index.html">首页</a></li>
+					<li><a href="spots.html">景点</a>
+					<li><a href="spots-recommend.html">景点推荐</a>
+						<!-- <ul>
 							<li><a href="browse-result.html">Browse Result</a></li>
 							<li><a href="browse-detail.html">Browse Detail</a></li>
-						</ul>
+						</ul> -->
 					</li>
-					<li><a href="blog.html">Blog</a></li>
-					<li class="selected"><a href="contact.html">Contact</a></li>
-					<li><a href="element.html">Element</a></li>
+					<li><a href="hotel.html">酒店</a></li>
+					<!-- <li><a href="plane.html">航班</a></li> -->
+					<li><a href="line.html">旅线</a></li>
+					<li><a href="order.html">我的订单</a></li>
+					<!-- <li><a href="#">关于我们</a></li> -->
 				</ul>
 			</div>
 		</header>
@@ -79,8 +72,8 @@
 		
 		<div class="subheader">
 			<div class="left">
-				<span class="page-title">Contact</span>
-				<span class="page-desc">Lorem ipsum dolor sit amet consectuer adisplicing</span>			
+				<span class="page-title">账号管理</span>
+				<span class="page-desc">Account Center</span>			
 			</div>
 		</div>
 		<!--subheader -->
@@ -88,41 +81,44 @@
 		<!--start content -->
 		<div id="content">
 			
-			<div class="row">
-				<div id="map-canvas"></div>
-			</div>
-			
-			<div class="one-third">
+			<!-- <div class="one-third">
 				<h3>Ask us anything</h3>
 				<p>Please dont hesitate to contact us regarding any question about our services</p>
 				<p>We also have extensive amount of frequently asked question (FAQ) that you can access from our support page</p>
 				<p>Any email requiring support will be answered not longer than 24 hours</p>
-			</div>
+			</div> -->
 			<!--one third -->
-			
 			<div class="one-third">
-				<h3>Your Message</h3>
+				<h3>请输入修改信息</h3>
 				<form action="#" method="post">
 					<p class="form-row">
-						<input type="text" id="name" name="name" class="input-text" placeholder="Your name" />
+						<label for="name">账号：</label>
+						<input type="text" id="name" name="name" class="input-text" placeholder="账号"  disabled="disabled"/>
 					</p>
 					<p class="form-row">
-						<input type="text" id="email" name="email" class="input-text" placeholder="Your email" />
+						<label for="old-password">原密码：</label>
+						<input type="password" id="old-password" name="old-password" class="input-text" placeholder="输入原密码" />
 					</p>
 					<p class="form-row">
-						<input type="text" id="subject" name="subject" class="input-text" placeholder="Subject" />
+						<label for="new-password">新密码：</label>
+						<input type="password" id="new-password" name="new-password" class="input-text" placeholder="输入新密码" />
 					</p>
 					<p class="form-row">
+						<label for="repassword">新密码：</label>
+						<input type="password" id="repassword" name="repassword" class="input-text" placeholder="再次输入新密码" />
+					</p>
+					<!-- <p class="form-row">
+						<label for="password"></label>
 						<textarea id="message" name="message" class="input-text" placeholder="Message"></textarea>
-					</p>
+					</p> -->
 					<p class="form-row">
-						<input type="submit" class="button" id="contact-submit" value="Submit" />
+						<a class="button medium red submit-button" name="submit" id="submit-comment">确认修改</a>
 					</p>
 				</form>
 			</div>
 			<!--one third -->
 			
-			<div class="one-third last">
+			<!-- <div class="one-third last">
 				<h3>Our Office</h3>
 				<ul>
 					<li class="glyph-home">Sudirman Kav.52-53
@@ -131,7 +127,7 @@
 					<li class="glyph-briefcase">Phone : +621 760 4020</li>
 					<li class="glyph-envelope">Email : info@domain.com</li>
 				</ul>
-			</div>
+			</div> -->
 			<!--one third -->
 			
 			<br class="clear" />	
@@ -141,69 +137,175 @@
 	</div>
 	<!--container -->
 	
-	<!--start footer -->
-	<footer id="footer">
-		<div class="wrap">
-			<div class="one-fourth">
-				<div class="theme-logo"><strong>Travel</strong>Site</div>
-				<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
-				<p>Integer hendrerit bibendum luctus. Nam vel porttitor leo</p>
-			</div>
-			
-			<div class="one-fourth">
-				<h3>Quick Links</h3>
-				<ul>
-					<li><a href="#">Browse Cheap Holidays</a></li>
-					<li><a href="#">Holiday Travel Guide</a></li>
-					<li><a href="#">Holiday Travel Blog</a></li>
-					<li><a href="#">Compares Holidays Packets</a></li>
-				</ul>
-			</div>
-			
-			<div class="one-fourth">
-				<h3>Our Office</h3>
-				<ul>
-					<li class="glyph-home">Sudirman Kav.52-53<br>Central Business Distric<br>South Jakarta 12040</li>
-					<li class="glyph-briefcase">Phone : +621 760 4020</li>
-					<li class="glyph-envelope">Email : info@domain.com</li>
-				</ul>
-			</div>
-			
-			<div class="one-fourth last">
-				<h3>Flickr Galleries</h3>
-				<!-- Start of Flickr Badge -->
-				<div id="flickr_badge_uber_wrapper">
-					<div id="flickr_badge_wrapper">
-					</div>
-				</div>
-				<!-- End of Flickr Badge -->
-			</div>
-			
-			<br class="clear" />
-		</div>
-		<!--footer wrap -->
-	</footer>
-	<!--end footer -->
-	
-	<section id="subfooter">
-		<div class="wrap">
-			<div class="left">
-				Copyright &copy; 2014.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-			</div>
-			
-			<div class="foot-links right">
-				<a href="#">Terms and Condition</a>
-				<a href="#">Privacy Policy</a>
-				<a href="#">Sitemap</a>
-			</div>
-			
-			<br class="clear" />
-		</div>
-	</section>
-	<!--subfooter -->
-	
+	<include src="common-footer.html"></include>
+
 </div>
-<!--wrapper -->
-<div style="display:none"><script src='http://v7.cnzz.com/stat.php?id=155540&web_id=155540' language='JavaScript' charset='gb2312'></script></div>
+
+	<!-- Java Script
+	================================================== -->
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile.customized.min.js"></script>
+	<script type="text/javascript" src="js/jquery.easing.1.3.js"></script> 
+	<script type="text/javascript" src="js/camera.min.js"></script> 
+	<script type="text/javascript" src="js/jquery.isotope.min.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="js/selectnav.min.js"></script>
+	<!--<script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=false&amp;key=AIzaSyB3tShW1hLlV2lYW8_sCVln6TLF2bWvgU8"></script>-->
+	<script type="text/javascript" src="js/jquery.googlemaps.1.01.min.js"></script>
+	<script type="text/javascript" src="js/theme.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/jquerysession.js"></script>
+	<script type="text/javascript" src="js/include.js"></script>
+	<script>
+		$(function() {
+			var userId=$.session.get('userSession');
+			var obj = {};
+			obj.id=userId;
+			var reqData = JSON.stringify(obj);
+			$.ajax({
+				type:'post',
+				async:false,
+				url:base_url+'/user/getSession',
+				contentType:'application/json;chart=utf-8',
+				dataType:'json',
+				data: reqData,
+				success:function(result){
+					if(result.status==1){
+						$("#session").text("-欢迎您："+result.data.userInfo.userName);
+						$(".user-offline-title").hide();
+						$(".user-online-title").show();
+						$.session.set('userSession', result.data.id);
+						$.session.set('userName', result.data.userName);
+						$("#session").show();
+						$("#name").val(result.data.userInfo.userName);
+					}else{
+						$("#session").val("");
+						$("#session").hide();
+						//$(".user-offline-title").show();
+						//$(".user-online-title").hide();
+						$.session.remove('userSession');
+						$.session.remove('userName');
+						window.location.href="login.html";
+					}
+				}
+			})
+
+
+			$(".user-login").on("click",function(){
+				var userName=$("#userName").val();
+				var password=$("#password").val();
+				var obj = {};
+				obj.userName=userName;
+				obj.password=password;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/login',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							$("#session").text("——欢迎您："+result.data.userInfo.userName);
+							$(".user-offline-title").hide();
+							$(".user-online-title").show();
+							$("#session").show();
+							$.session.set('userSession', result.data.id);
+							$.session.set('userName', result.data.userName)
+						}
+					}
+				})
+			})
+
+
+			$(".user-regist").on("click",function(){
+				var userName=$("#userName").val();
+				var password=$("#password").val();
+				var obj = {};
+				obj.userName=userName;
+				obj.password=password;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/logon',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							alert("注册成功");
+						}else{
+							alert(result.msg);
+						}
+					}
+				})
+			})
+
+			$(".user-logout").on("click",function(){
+				var userName=$.session.get('userName');
+				$.session.clear();
+				var obj = {};
+				obj.userName=userName;
+				var reqData = JSON.stringify(obj);
+				$.ajax({
+					type:'post',
+					async:false,
+					url:base_url+'/user/logout',
+					contentType:'application/json;chart=utf-8',
+					dataType:'json',
+					data:reqData,
+					success:function(result){
+						if(result.status==1){
+							window.location.reload();
+						}else{
+							alert(result.msg);
+						}
+					}
+				})
+			})
+
+			$("#submit-comment").on("click",function(){
+				var userId=$.session.get('userSession');
+				var name=$("#name").val();
+				var oldpassword=$("#old-password").val();
+				var newpassword=$("#new-password").val();
+				var repassword=$("#repassword").val();
+				//console.log("newpassword="+newpassword+", repassword="+repassword);
+				if(newpassword === repassword){
+					var obj = {};
+					obj.userId=userId;
+					obj.userName=name;
+					obj.oldpassword=oldpassword;
+					obj.newpassword=newpassword;
+					var reqData = JSON.stringify(obj);
+					console.log(reqData);
+					$.ajax({
+						type:'post',
+						async:false,
+						url:base_url+'/user/changePassword',
+						contentType:'application/json;chart=utf-8',
+						dataType:'json',
+						data:reqData,
+						success:function(result){
+							if(result.status==1){
+								alert(result.msg);
+								window.location.reload();
+							}else{
+								alert(result.msg);
+							}
+							
+						}
+					})
+				}else{
+					alert("新密码两次输入不一致，请重试！ please try again");
+					window.location.reload();
+				}
+			})
+
+		});
+	</script>
 </body>
 </html>

@@ -68,4 +68,9 @@ public class UserServiceImpl implements UserService{
         return userDao.count();
     }
 
+    @Override
+    public Integer changePassword(String userId, String password) {
+        return userDao.changePassword(userId,password);
+    }
+
 }

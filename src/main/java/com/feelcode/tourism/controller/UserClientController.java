@@ -6,6 +6,7 @@ import com.feelcode.tourism.base.controller.BaseController;
 import com.feelcode.tourism.base.utils.RedisConstants;
 import com.feelcode.tourism.base.utils.RedisUtil;
 import com.feelcode.tourism.base.utils.StateParameter;
+import com.feelcode.tourism.entity.ChangePasswordEntity;
 import com.feelcode.tourism.entity.User;
 import com.feelcode.tourism.entity.UserSessionEntity;
 import com.feelcode.tourism.service.UserService;
@@ -144,6 +145,36 @@ public class UserClientController extends BaseController {
         } catch (Exception e) {
             e.printStackTrace();
             return getModelMap(StateParameter.FAULT, null, "登录态检测失败");
+        }
+    }
+
+    /**
+     * @Author: zhangyingqi
+     * @Date: 21:28 2021/2/23
+     * @Param: [user]
+     * @Return: org.springframework.ui.ModelMap
+     * @Description: 用户修改密码
+     */
+    @RequestMapping(value="/changePassword", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ModelMap changePassword(@RequestBody ChangePasswordEntity param){
+        try {
+            User us = userService.findById(param.getUserId());
+            if(us!=null && us.getPassword().equals(param.getOldpassword())){
+                Integer res = userService.changePassword(us.getId(),param.getNewpassword());
+                if(res != 1){
+                    log.info("数据库密码修改失败");
+                    return getModelMap(StateParameter.FAULT, null, "修改失败");
+                }
+                redisUtil.del(RedisConstants.datebase1, "user_session_"+us.getId());
+                return getModelMap(StateParameter.SUCCESS, us, "修改成功，请重新登录");
+            }else {
+                log.info("找不到用户或原密码错误");
+                return getModelMap(StateParameter.FAULT, null, "修改失败");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getModelMap(StateParameter.FAULT, null, "修改失败");
         }
     }
 
