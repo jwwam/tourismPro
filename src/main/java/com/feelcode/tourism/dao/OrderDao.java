@@ -40,6 +40,6 @@ public interface OrderDao extends PagingAndSortingRepository<Order, Long>, JpaSp
 
     @Query(value = "select new com.feelcode.tourism.entity.vo.OrderDateCountVO(o.dealingTime, count(o.dealingTime))" +
             " from Order o where o.productType='2' group by DATE_FORMAT(o.dealingTime,'%Y-%m-%d')")
-    List<OrderDateCountVO> getPlaneDateOrder();
+    List<OrderDateCountVO> getFlightDateOrder();
 
 }

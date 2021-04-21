@@ -2,10 +2,10 @@ package com.feelcode.tourism.controller;
 
 import com.feelcode.tourism.base.controller.BaseController;
 import com.feelcode.tourism.base.utils.StateParameter;
-import com.feelcode.tourism.entity.Plane;
-import com.feelcode.tourism.entity.PlaneRequestPageDTO;
-import com.feelcode.tourism.entity.PlaneResponsePageDTO;
-import com.feelcode.tourism.service.PlaneService;
+import com.feelcode.tourism.entity.Flight;
+import com.feelcode.tourism.entity.FlightRequestPageDTO;
+import com.feelcode.tourism.entity.FlightResponsePageDTO;
+import com.feelcode.tourism.service.FlightService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.ModelMap;
@@ -18,35 +18,35 @@ import java.util.Date;
 /**
  * @Author: 朱利尔
  * @Description:
- * @Date: Created in 23:36 2020/5/7
+ * @Date: Created in 23:36 2021/4/7
  * @Modified By:
  */
 @RestController
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping(value="/c/plane")
+@RequestMapping(value="/s/flight")
 @Slf4j
-public class PlaneClientController extends BaseController {
+public class FlightController extends BaseController {
 
     @Resource
-    PlaneService planeService;
+    FlightService flightService;
 
     /**
      * @auther: 朱利尔
      * @Description: 航班保存&更新
-     * @date: 22:21 2020/5/7
-     * @param: [plane]
+     * @date: 22:21 2021/4/7
+     * @param: [flight]
      * @return: org.springframework.ui.ModelMap
      */
-    @RequestMapping(value="/addPlane", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/addFlight", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelMap addPlane(@RequestBody Plane plane){
+    public ModelMap addFlight(@RequestBody Flight flight){
         try {
-            if(StringUtils.isEmpty(plane.getId())){
-                plane.setId(getUuid());
+            if(StringUtils.isEmpty(flight.getId())){
+                flight.setId(getUuid());
             }else{
-                plane.setUpdateDate(new Date());
+                flight.setUpdateDate(new Date());
             }
-            planeService.save(plane);
+            flightService.save(flight);
             log.info("保存成功");
             return getModelMap(StateParameter.SUCCESS, null, "保存成功");
         } catch (Exception e) {
@@ -58,19 +58,19 @@ public class PlaneClientController extends BaseController {
     /**
      * @auther: 朱利尔
      * @Description: 航班删除
-     * @date: 22:22 2020/5/7
+     * @date: 22:22 2021/4/7
      * @param: [request]
      * @return: org.springframework.ui.ModelMap
      */
-    @RequestMapping(value="/deletePlane", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @RequestMapping(value="/deleteFlight", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelMap deletePlane(@RequestBody Plane request){
+    public ModelMap deleteFlight(@RequestBody Flight request){
         try {
-            Plane plane = planeService.findById(request.getId());
-            if(plane==null){
+            Flight flight = flightService.findById(request.getId());
+            if(flight ==null){
                 return getModelMap(StateParameter.FAULT, request, "找不到该航班信息");
             }
-            planeService.delete(plane);
+            flightService.delete(flight);
             return getModelMap(StateParameter.SUCCESS, null, "删除成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,19 +81,19 @@ public class PlaneClientController extends BaseController {
     /**
      * @auther: 朱利尔
      * @Description: 航班列表
-     * @date: 22:23 2020/5/7
+     * @date: 22:23 2021/4/7
      * @param: [request]
      * @return: org.springframework.ui.ModelMap
      */
     @RequestMapping(value="/list", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
-    public ModelMap list(PlaneRequestPageDTO request){
-        PlaneResponsePageDTO resList = new PlaneResponsePageDTO();
-        Long count = planeService.findAllByCount();
-        Page<Plane> planePage = planeService.findAllByPage(request);
+    public ModelMap list(@RequestBody FlightRequestPageDTO request){
+        FlightResponsePageDTO resList = new FlightResponsePageDTO();
+        Long count = flightService.findAllByCount();
+        Page<Flight> flightPage = flightService.findAllByPage(request);
         resList.setRecordsTotal(count);
         resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
-        resList.setPlaneList(planePage.getContent());
+        resList.setFlightList(flightPage.getContent());
         log.info("返回航班列表：{}", resList);
         return getModelMap(StateParameter.SUCCESS, resList, "获取航班列表成功");
     }

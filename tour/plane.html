@@ -280,7 +280,7 @@
                 "iDisplayLength": 10,
                 "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
                 "ajax": {
-                    url: base_url + "/plane/list",
+                    url: base_url + "/flight/list",
                     type:"post",
                     dataType: "json",
                     async:false,
@@ -443,7 +443,7 @@
                     $.ajax({
                         type:'post',
                         async:false,
-                        url:base_url+'/plane/deletePlane',
+                        url:base_url+'/flight/deletePlane',
                         contentType:'application/json;chart=utf-8',
                         dataType:'json',
                         data:deleteData,
@@ -610,7 +610,7 @@
                                 $.ajax({
                                     type:'post',
                                     async:false,
-                                    url:base_url+'/plane/addPlane',
+                                    url:base_url+'/flight/addPlane',
                                     contentType:'application/json;chart=utf-8',
                                     dataType:'json',
                                     data:JSON.stringify(obj),

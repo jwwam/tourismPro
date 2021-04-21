@@ -1,6 +1,5 @@
 package com.feelcode.tourism.service.impl;
 
-import com.feelcode.tourism.dao.PlaneDao;
 import com.feelcode.tourism.dao.ScoreDao;
 import com.feelcode.tourism.entity.Score;
 import com.feelcode.tourism.service.ScoreService;

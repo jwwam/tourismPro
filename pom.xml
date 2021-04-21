@@ -111,6 +111,12 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.2.38</version>
 		</dependency>
+		<!-- https://www.KuMaPai.com/open/es.nitaur.markdown/txtmark -->
+		<dependency>
+			<groupId>es.nitaur.markdown</groupId>
+			<artifactId>txtmark</artifactId>
+			<version>0.16</version>
+		</dependency>
 	</dependencies>
 
 	<build>

@@ -7,7 +7,7 @@ import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.entity.*;
 import com.feelcode.tourism.service.HotelService;
 import com.feelcode.tourism.service.OrderService;
-import com.feelcode.tourism.service.PlaneService;
+import com.feelcode.tourism.service.FlightService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.ModelMap;
@@ -36,7 +36,7 @@ public class OrderClientController extends BaseController {
     @Resource
     HotelService hotelService;
     @Resource
-    PlaneService planeservice;
+    FlightService flightservice;
 
     /**
      * @auther: 朱利尔
@@ -65,10 +65,10 @@ public class OrderClientController extends BaseController {
                     va.put("orderAmount",hotel.getHotelPrice());
                     va.put("previewImage",hotel.getHotelImages());
                 }
-                if(SystemConstant.ProductType.plane.equals(order.getProductType())){
-                    Plane plane = planeservice.findById(order.getProductId());
-                    va.put("orderAmount",plane.getPlanePrice());
-                    va.put("previewImage",plane.getPlaneImages());
+                if(SystemConstant.ProductType.flight.equals(order.getProductType())){
+                    Flight flight = flightservice.findById(order.getProductId());
+                    va.put("orderAmount", flight.getFlightPrice());
+                    va.put("previewImage", flight.getFlightImages());
                 }
                 order.setUserName(order.getUserName());
                 order.setOrderNo(OrderNoGenerateUtils.getOrderNoNYR(String.valueOf(order.getProductType()), new Date()));

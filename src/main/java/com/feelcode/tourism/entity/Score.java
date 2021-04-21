@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class Score extends BaseEntity{
 
     @Column(name= "grade")
-    private  String grade;
+    private String grade;
 
     @Column(name="user_id")
     private String userId;

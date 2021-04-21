@@ -19,7 +19,7 @@ public class IndexResponseDTO {
      */
     private List<Order> orderList;
     private BigDecimal hotelPercent;
-    private BigDecimal planePercent;
+    private BigDecimal flightPercent;
     private BigDecimal linePercent;
     private BigDecimal otherPercent;
     /**
@@ -61,7 +61,7 @@ public class IndexResponseDTO {
     /**
      * 航班总数
      */
-    private  Long totalPlane=0L;
+    private  Long totalFlight=0L;
     /**
      * 总留言条数
      */
@@ -94,7 +94,7 @@ public class IndexResponseDTO {
     /**
      * 机票订单-日期数组
      */
-    private List<OrderDateCountVO> planeDateOrder;
+    private List<OrderDateCountVO> flightDateOrder;
     /**
      * 评论列表
      */

@@ -15,29 +15,29 @@ import java.util.Date;
  * @Modified By:
  */
 @Data
-public class PlaneUser{
+public class FlightUser {
 
-    private String planeId;
+    private String flightId;
 
-    private String planeName;
+    private String flightName;
 
-    private String planePhone;
+    private String flightPhone;
 
-    private String planeStartAddress;
+    private String flightStartAddress;
 
-    private String planeEndAddress;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date planeStartTime;
+    private String flightEndAddress;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date planeEndTime;
+    private Date flightStartTime;
 
-    private String planeDescription;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date flightEndTime;
 
-    private String planePrice;
+    private String flightDescription;
 
-    private String planeImages;
+    private String flightPrice;
+
+    private String flightImages;
 
     private String userId;
 

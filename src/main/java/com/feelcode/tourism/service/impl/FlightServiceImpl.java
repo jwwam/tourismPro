@@ -1,9 +1,9 @@
 package com.feelcode.tourism.service.impl;
 
-import com.feelcode.tourism.dao.PlaneDao;
-import com.feelcode.tourism.entity.Plane;
-import com.feelcode.tourism.entity.PlaneRequestPageDTO;
-import com.feelcode.tourism.service.PlaneService;
+import com.feelcode.tourism.dao.FlightDao;
+import com.feelcode.tourism.entity.Flight;
+import com.feelcode.tourism.entity.FlightRequestPageDTO;
+import com.feelcode.tourism.service.FlightService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -19,42 +19,42 @@ import java.util.List;
  * @Date: Created in 22:17 2020/5/7
  * @Modified By:
  */
-@Service(value = "planeService")
-public class PlaneServiceImpl implements PlaneService {
+@Service(value = "flightService")
+public class FlightServiceImpl implements FlightService {
 
     @Resource
-    PlaneDao planeDao;
+    FlightDao flighteDao;
 
     @Override
-    public Plane save(Plane plane) {
-        return planeDao.save(plane);
+    public Flight save(Flight flight) {
+        return flighteDao.save(flight);
     }
 
     @Override
-    public Plane findById(String id) {
-        return planeDao.findById(id);
+    public Flight findById(String id) {
+        return flighteDao.findById(id);
     }
 
     @Override
-    public void delete(Plane plane) {
-        planeDao.delete(plane);
+    public void delete(Flight flight) {
+        flighteDao.delete(flight);
     }
 
     @Override
-    public List<Plane> findAll() {
-        return planeDao.findAll();
+    public List<Flight> findAll() {
+        return flighteDao.findAll();
     }
 
     @Override
-    public Page<Plane> findAllByPage(PlaneRequestPageDTO request) {
+    public Page<Flight> findAllByPage(FlightRequestPageDTO request) {
         // 排序方式，这里是以“recordNo”为标准进行降序
         Sort sort = new Sort(Sort.Direction.DESC, "createDate");  // 这里的"recordNo"是实体类的主键，记住一定要是实体类的属性，而不能是数据库的字段
         Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort); // （当前页， 每页记录数， 排序方式）
-        return planeDao.findAll(pageable);
+        return flighteDao.findAll(pageable);
     }
 
     @Override
     public Long findAllByCount() {
-        return planeDao.count();
+        return flighteDao.count();
     }
 }

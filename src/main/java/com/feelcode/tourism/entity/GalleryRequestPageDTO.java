@@ -9,5 +9,11 @@ import lombok.Data;
  * @Modified By:
  */
 @Data
-public class PlaneRequestPageDTO extends CommonRequestPageDTO{
+public class GalleryRequestPageDTO extends CommonRequestPageDTO{
+    private String title;
+    /**
+     * 图片类型
+     */
+    private String imgType;
+
 }

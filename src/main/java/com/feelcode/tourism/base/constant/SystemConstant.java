@@ -27,7 +27,7 @@ public interface SystemConstant {
      */
     interface ProductType{
         Integer hotel = 1;
-        Integer plane = 2;
+        Integer flight = 2;
         Integer line = 3;
         Integer spots = 4;
     }

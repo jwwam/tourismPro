@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Author: 朱利尔
@@ -33,7 +32,7 @@ public class IndexServiceImpl implements IndexService {
     @Resource
     LineDao lineDao;
     @Resource
-    PlaneDao planeDao;
+    FlightDao flighteDao;
     @Resource
     ScoreDao scoreDao;
     @Resource
@@ -50,14 +49,14 @@ public class IndexServiceImpl implements IndexService {
         List<Order> orderList = orderDao.findAll();
         indexResponseDTO.setOrderList(orderList);
         Long hotelNum = 0L;
-        Long planeNum = 0L;
+        Long flightNum = 0L;
         Long lineNum = 0L;
         for (Order order:orderList){
             if(SystemConstant.ProductType.hotel.equals(order.getProductType())){
                 hotelNum++;
             }
-            if(SystemConstant.ProductType.plane.equals(order.getProductType())){
-                planeNum++;
+            if(SystemConstant.ProductType.flight.equals(order.getProductType())){
+                flightNum++;
             }
             if(SystemConstant.ProductType.line.equals(order.getProductType())){
                 lineNum++;
@@ -65,15 +64,15 @@ public class IndexServiceImpl implements IndexService {
         }
         BigDecimal totalSum = new BigDecimal(orderList.size());
         BigDecimal hotelSum = new BigDecimal(hotelNum);
-        BigDecimal planeSum = new BigDecimal(planeNum);
+        BigDecimal flightSum = new BigDecimal(flightNum);
         BigDecimal lineSum = new BigDecimal(lineNum);
         BigDecimal hotelPercent = hotelSum.divide(totalSum,2,BigDecimal.ROUND_DOWN).multiply(BigDecimal.valueOf(100));
         indexResponseDTO.setHotelPercent(hotelPercent);
-        BigDecimal planePercent = planeSum.divide(totalSum,2,BigDecimal.ROUND_DOWN).multiply(BigDecimal.valueOf(100));
-        indexResponseDTO.setPlanePercent(planePercent);
+        BigDecimal flightPercent = flightSum.divide(totalSum,2,BigDecimal.ROUND_DOWN).multiply(BigDecimal.valueOf(100));
+        indexResponseDTO.setFlightPercent(flightPercent);
         BigDecimal linePercent = lineSum.divide(totalSum,2,BigDecimal.ROUND_DOWN).multiply(BigDecimal.valueOf(100));
         indexResponseDTO.setLinePercent(linePercent);
-        BigDecimal otherPercent = BigDecimal.valueOf(100).subtract(hotelPercent).subtract(planePercent).subtract(linePercent);
+        BigDecimal otherPercent = BigDecimal.valueOf(100).subtract(hotelPercent).subtract(flightPercent).subtract(linePercent);
         indexResponseDTO.setOtherPercent(otherPercent);
 
         //Long todayOrder = orderDao.countByDealingTimeLike();
@@ -89,7 +88,7 @@ public class IndexServiceImpl implements IndexService {
         Long totalHotel = hotelDao.count();
         Long totalLine = lineDao.count();
         Long totalGroup = groupDao.count();
-        Long totalPlane = planeDao.count();
+        Long totalFlight = flighteDao.count();
         Long totalComment = commentDao.count();
         Long totalUser = userDao.count();
 
@@ -104,7 +103,7 @@ public class IndexServiceImpl implements IndexService {
         indexResponseDTO.setTotalHotel(totalHotel);
         indexResponseDTO.setTotalLine(totalLine);
         indexResponseDTO.setTotalGroup(totalGroup);
-        indexResponseDTO.setTotalPlane(totalPlane);
+        indexResponseDTO.setTotalFlight(totalFlight);
         indexResponseDTO.setTotalComment(totalComment);
         indexResponseDTO.setTotalUser(totalUser);
         indexResponseDTO.setTopTenSpots(topTenSpots);
@@ -118,8 +117,8 @@ public class IndexServiceImpl implements IndexService {
         List<OrderDateCountVO> hotelDateOrder = orderDao.getHotelDateOrder();
         indexResponseDTO.setHotelDateOrder(hotelDateOrder);
         //机票订单-日期折线图数据
-        List<OrderDateCountVO> planeDateOrder = orderDao.getPlaneDateOrder();
-        indexResponseDTO.setPlaneDateOrder(planeDateOrder);
+        List<OrderDateCountVO> flightDateOrder = orderDao.getFlightDateOrder();
+        indexResponseDTO.setFlightDateOrder(flightDateOrder);
 
         //获取最新的评论
         Sort sort = new Sort(Sort.Direction.DESC,"commentTime");

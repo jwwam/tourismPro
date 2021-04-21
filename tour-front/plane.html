@@ -61,7 +61,7 @@
 						</ul> -->
 					</li>
 					<li><a href="hotel.html">酒店</a></li>
-					<li class="selected"><a href="plane.html">航班</a></li>
+					<li class="selected"><a href="flight.html">航班</a></li>
 					<li><a href="line.html">旅线</a></li>
 					<li><a href="order.html">我的订单</a></li>
 					<!-- <li><a href="#">关于我们</a></li> -->
@@ -371,7 +371,7 @@
 		$.ajax({
 			type:'post',
 			async:false,
-			url:base_url+'/plane/list',
+			url:base_url+'/flight/list',
 			contentType:'application/json;chart=utf-8',
 			dataType:'json',
 			data:function(){
@@ -411,7 +411,7 @@
 				"<div class='post-meta'>"+
 					"<span class='icon-place'>"+ element.planeName +"</span>"+
 					"<span class='offer-type'>全包</span>"+
-					"<a class='read-more' href='plane-detail.html'>立即预定</a>"+					
+					"<a class='read-more' href='flight-detail.html'>立即预定</a>"+
 				"</div>"+
 			"</div></br>"
 			});
