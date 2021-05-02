@@ -100,7 +100,7 @@ public class SpotsClientController extends BaseController {
         if(!StringUtils.isEmpty(request.getSpotsName())){
             Sort sort = new Sort(Sort.Direction.DESC,"createDate");
             Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
-            spotsPage = spotsService.findAllByKeys(request.getSpotsName(), pageable);
+            spotsPage = spotsService.findAllByKeys(request, pageable);
         }else{
             spotsPage = spotsService.findAllByPage(request);
         }
@@ -121,12 +121,11 @@ public class SpotsClientController extends BaseController {
     @RequestMapping(value="/recommendList", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ModelMap recommendList(@RequestBody SpotsRequestPageDTO request){
-        //C端分页暂时均未实现
         SpotsRecommendListResponsePageDTO resList = new SpotsRecommendListResponsePageDTO();
         Long count = spotsService.findAllByCount();
         Sort sort = new Sort(Sort.Direction.DESC,"createDate");
         Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
-        Page<Spots> spotsPage = spotsService.findAllByKeys(request.getSpotsName(), pageable);
+        Page<Spots> spotsPage = spotsService.findAllByKeys(request, pageable);
         if(spotsPage.getContent().size()!=0){
             resList.setRecordsTotal(count);
             resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));

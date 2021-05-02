@@ -99,8 +99,8 @@ public class SpotsServiceImpl implements SpotsService {
     }
 
     @Override
-    public Page<Spots> findAllByKeys(String spotsName, Pageable pageable) {
-        return spotsDao.findAll(Specifications.where(getWhereClause(spotsName)),pageable);
+    public Page<Spots> findAllByKeys(SpotsRequestPageDTO param, Pageable pageable) {
+        return spotsDao.findAll(Specifications.where(getWhereClause(param)),pageable);
     }
 
     @Override
@@ -108,30 +108,29 @@ public class SpotsServiceImpl implements SpotsService {
         return spotsDao.count();
     }
 
-    public Specification<Spots> getWhereClause(final String spotsName) {
+    public Specification<Spots> getWhereClause(final SpotsRequestPageDTO param) {
         return new Specification<Spots>() {
             @Override
             public Predicate toPredicate(Root<Spots> r, CriteriaQuery<?> q, CriteriaBuilder cb) {
                 Predicate predicate = cb.conjunction();
-                if(StringUtils.isNotEmpty(spotsName)){
+                if (StringUtils.isNotEmpty(param.getSpotsName())) {
                     predicate.getExpressions().add(
-                            cb.like(r.<String>get("spotsName"), "%" + StringUtils.trim(spotsName) + "%")
+                            cb.like(r.<String>get("spotsName"), "%" + StringUtils.trim(param.getSpotsName()) + "%")
                     );
                 }
-                /*if(StringUtils.isNotEmpty(sPrice)&&StringUtils.isNotEmpty(ePrice)){
+                if (StringUtils.isNotEmpty(param.getId())) {
                     predicate.getExpressions().add(
-                            cb.between(r.<String>get("price"), sPrice, ePrice)
+                            cb.equal(r.<String>get("id"), StringUtils.trim(param.getId()))
                     );
                 }
-                if(StringUtils.isNotEmpty(star)){
-                    predicate.getExpressions().add(
-                            cb.like(r.<String>get("star"),"%" + StringUtils.trim(star) + "%")
-                    );
-                }*/
+//                if(StringUtils.isNotEmpty(star)){
+//                    predicate.getExpressions().add(
+//                            cb.like(r.<String>get("star"),"%" + StringUtils.trim(star) + "%")
+//                    );
+//                }
                 return predicate;
             }
         };
-
     }
 
 }

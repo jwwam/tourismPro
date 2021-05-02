@@ -49,6 +49,9 @@ public class CommentClientController extends BaseController {
     @RequestMapping(value="/addComment", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ModelMap addComment(@RequestBody Comment comment){
+        if(StringUtils.isEmpty(comment.getUserId())){
+            return getModelMap(StateParameter.FAULT, null, "评论提交失败，请登录！");
+        }
         try {
             if(StringUtils.isEmpty(comment.getId())){
                 comment.setId(getUuid());

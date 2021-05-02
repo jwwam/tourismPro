@@ -5,6 +5,7 @@ import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.base.utils.UUIDUtils;
 import com.feelcode.tourism.entity.*;
 import com.feelcode.tourism.service.BlogService;
+import com.feelcode.tourism.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,6 +32,8 @@ public class BlogController extends BaseController {
 
     @Resource
     BlogService blogService;
+    @Resource
+    UserService userService;
 
     /**
      * 保存博客
@@ -42,12 +45,15 @@ public class BlogController extends BaseController {
     @ResponseBody
     public ModelMap saveBlog(@RequestBody Blog blog) {
         //session校验
+        if(StringUtils.isEmpty(blog.getUserId())){
+            return getModelMap(StateParameter.FAULT, null,"发布失败，请登录！");
+        }
         try {
             //if(StringUtils.isEmpty(blog.getId())){
                 //新增博客文章
                 log.info("新增博客文章");
-//                User user = (User)userService.findByName(username);
-                //blog.setUser(user);
+                User user = userService.findById(blog.getUserId());
+                blog.setUser(user);
                 blog.setId(UUIDUtils.getUuid());
                 blogService.saveBlog(blog);
 //            }else{

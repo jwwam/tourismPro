@@ -26,7 +26,7 @@ public interface SpotsService {
 
     Page<Spots> findAllByPage(SpotsRequestPageDTO request);
 
-    Page<Spots> findAllByKeys(String spotsName, Pageable pageable);
-
     Long findAllByCount();
+
+    Page<Spots> findAllByKeys(SpotsRequestPageDTO spotsRequestPageDTO, Pageable pageable);
 }
