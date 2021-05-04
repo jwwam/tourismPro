@@ -14,6 +14,7 @@ import org.springframework.data.jpa.domain.Specifications;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -26,10 +27,10 @@ import java.util.List;
  * @Date: 2021/4/7 01:29
  * @Description:
  */
-@Service
+@Service(value = "blogService")
 public class BlogServiceImpl implements BlogService {
 
-    @Autowired
+    @Resource
     private BlogDao blogDao;
 
     @Transactional

@@ -26,13 +26,7 @@ public class IndexServiceImpl implements IndexService {
     @Resource
     CommentDao commentDao;
     @Resource
-    GroupDao groupDao;
-    @Resource
     HotelDao hotelDao;
-    @Resource
-    LineDao lineDao;
-    @Resource
-    FlightDao flighteDao;
     @Resource
     ScoreDao scoreDao;
     @Resource
@@ -86,9 +80,6 @@ public class IndexServiceImpl implements IndexService {
 
         Long totalSpots = spotsDao.count();
         Long totalHotel = hotelDao.count();
-        Long totalLine = lineDao.count();
-        Long totalGroup = groupDao.count();
-        Long totalFlight = flighteDao.count();
         Long totalComment = commentDao.count();
         Long totalUser = userDao.count();
 
@@ -101,9 +92,6 @@ public class IndexServiceImpl implements IndexService {
         indexResponseDTO.setTotalRefuseOrder(totalRefuseOrder);
         indexResponseDTO.setTotalSpots(totalSpots);
         indexResponseDTO.setTotalHotel(totalHotel);
-        indexResponseDTO.setTotalLine(totalLine);
-        indexResponseDTO.setTotalGroup(totalGroup);
-        indexResponseDTO.setTotalFlight(totalFlight);
         indexResponseDTO.setTotalComment(totalComment);
         indexResponseDTO.setTotalUser(totalUser);
         indexResponseDTO.setTopTenSpots(topTenSpots);

@@ -7,7 +7,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.transaction.annotation.Transactional;
 
+@Transactional
 public interface BlogDao extends PagingAndSortingRepository<Blog, Long>,JpaSpecificationExecutor<Blog>,JpaRepository<Blog,Long> {
 
     Blog findById(String id);
