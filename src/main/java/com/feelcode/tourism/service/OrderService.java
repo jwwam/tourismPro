@@ -3,6 +3,7 @@ package com.feelcode.tourism.service;
 import com.feelcode.tourism.entity.Order;
 import com.feelcode.tourism.entity.OrderRequestPageDTO;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -17,11 +18,15 @@ public interface OrderService {
 
     Order findById(String id);
 
+    Order findByOrderNo(String orderNo);
+
     void delete(Order order);
 
     List<Order> findAll();
 
     Page<Order> findAllByPage(OrderRequestPageDTO request);
+
+    Page<Order> findAllByKeys(OrderRequestPageDTO request, Pageable pageable);
 
     Order findByUserIdAndProductId(String userId, String productId);
 

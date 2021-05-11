@@ -82,7 +82,7 @@ public class IndexServiceImpl implements IndexService {
         indexResponseDTO.setTotalOrder(totalOrder);
         Long totalSubmitOrder = orderDao.countByOrOrderStatus(SystemConstant.OrderStatus.submit);
         Long totalPassOrder = orderDao.countByOrOrderStatus(SystemConstant.OrderStatus.pass);
-        Long totalRefuseOrder = orderDao.countByOrOrderStatus(SystemConstant.OrderStatus.refuse);
+        Long totalRefuseOrder = orderDao.countByOrOrderStatus(SystemConstant.OrderStatus.finish);
 
         Long totalSpots = spotsDao.count();
         Long totalHotel = hotelDao.count();

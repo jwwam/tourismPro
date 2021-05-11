@@ -22,7 +22,7 @@ import java.util.Date;
 /**
  * @Author: 朱利尔
  * @Description:
- * @Date: Created in 21:59 2020/5/7
+ * @Date: Created in 21:59 2021/5/7
  * @Modified By:
  */
 @RestController
@@ -37,7 +37,7 @@ public class HotelClientController extends BaseController {
     /**
      * @auther: 朱利尔
      * @Description: 酒店保存&更新
-     * @date: 22:21 2020/5/7
+     * @date: 22:21 2021/5/7
      * @param: [hotel]
      * @return: org.springframework.ui.ModelMap
      */
@@ -63,7 +63,7 @@ public class HotelClientController extends BaseController {
     /**
      * @auther: 朱利尔
      * @Description: 酒店删除
-     * @date: 22:22 2020/5/7
+     * @date: 22:22 2021/5/7
      * @param: [request]
      * @return: org.springframework.ui.ModelMap
      */
@@ -86,7 +86,7 @@ public class HotelClientController extends BaseController {
     /**
      * @auther: 朱利尔
      * @Description: 酒店列表
-     * @date: 22:23 2020/5/7
+     * @date: 22:23 2021/5/7
      * @param: [request]
      * @return: org.springframework.ui.ModelMap
      */
@@ -108,7 +108,7 @@ public class HotelClientController extends BaseController {
     /**
      * @auther: 朱利尔
      * @Description: 酒店详情
-     * @date: 22:23 2020/5/7
+     * @date: 22:23 2021/5/7
      * @param: [request]
      * @return: org.springframework.ui.ModelMap
      */

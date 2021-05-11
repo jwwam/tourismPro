@@ -5,6 +5,7 @@ import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.base.utils.UUIDUtils;
 import com.feelcode.tourism.entity.*;
 import com.feelcode.tourism.service.BlogService;
+import com.feelcode.tourism.service.CommentService;
 import com.feelcode.tourism.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -34,6 +35,8 @@ public class BlogController extends BaseController {
     BlogService blogService;
     @Resource
     UserService userService;
+    @Resource
+    CommentService commentService;
 
     /**
      * 保存博客
@@ -75,30 +78,31 @@ public class BlogController extends BaseController {
         return getModelMap(StateParameter.SUCCESS, redirectUrl,"发布成功");
     }
 
+
     /**
-     * @auther: 朱利尔
+     * @Author: 朱利尔
+     * @Date: 14:11 2021/5/6
+     * @Param: [request]
+     * @Return: org.springframework.ui.ModelMap
      * @Description: 游记列表
-     * @date: 22:23 2021/4/7
-     * @param: [request]
-     * @return: org.springframework.ui.ModelMap
      */
     @RequestMapping(value="/list", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
     @ResponseBody
     public ModelMap list(@RequestBody BlogRequestPageDTO request){
-        //C端分页暂时均未实现
         BlogResponsePageDTO resList = new BlogResponsePageDTO();
-        Long count = blogService.findAllByCount();
-        Page<Blog> blogPage = null;
-        if(!StringUtils.isEmpty(request.getTitle())){
-            Sort sort = new Sort(Sort.Direction.DESC,"createDate");
-            Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
-            blogPage = blogService.findAllByKeys(request.getTitle(), pageable);
-        }else{
-            blogPage = blogService.findAllByPage(request);
+        Sort sort = new Sort(Sort.Direction.DESC,"createDate");
+        Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
+        Page<Blog> blogPage = blogService.findAllByKeys(request, pageable);
+        if(blogPage.getTotalElements()==0){
+            return getModelMap(StateParameter.FAULT, resList, "游记为空");
         }
-        resList.setRecordsTotal(count);
-        resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
+        blogPage.getContent().forEach(s->{
+            s.setComments(Long.parseLong(String.valueOf(commentService.findByUserIdAndProductId(s.getUserId(),s.getId()).size())));
+        });
+        resList.setRecordsTotal(blogPage.getTotalElements());
+        resList.setRecordsFiltered(blogPage.getSize());
         resList.setBlogList(blogPage.getContent());
+        resList.setTotalPages(blogPage.getTotalPages());
         log.info("返回游记列表：{}", resList);
         return getModelMap(StateParameter.SUCCESS, resList, "获取游记列表成功");
     }
@@ -117,6 +121,29 @@ public class BlogController extends BaseController {
         Blog blog = blogService.getBlogById(request.getId());
         log.info("返回游记详情：{}", blog);
         return getModelMap(StateParameter.SUCCESS, blog, "获取游记详情成功");
+    }
+
+    /**
+     * @Author: zhangyingqi
+     * @Date: 17:16 2021/5/7
+     * @Param: [request]
+     * @Return: org.springframework.ui.ModelMap
+     * @Description: 删除游记
+     */
+    @RequestMapping(value="/deleteBlog", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
+    @ResponseBody
+    public ModelMap deleteBlog(@RequestBody Blog request){
+        try {
+            Blog blog = blogService.getBlogById(request.getId());
+            if(blog==null){
+                return getModelMap(StateParameter.FAULT, request, "找不到该游记信息");
+            }
+            blogService.delete(blog);
+            return getModelMap(StateParameter.SUCCESS, null, "删除成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            return getModelMap(StateParameter.FAULT, null, "删除失败");
+        }
     }
 
 }

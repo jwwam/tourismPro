@@ -85,6 +85,11 @@ public class GalleryServiceImpl implements GalleryService {
                             cb.like(r.<String>get("imgType"),"%" + StringUtils.trim(keys.getImgType()) + "%")
                     );
                 }
+                if (StringUtils.isNotEmpty(keys.getUserId())) {
+                    predicate.getExpressions().add(
+                            cb.equal(r.<String>get("userId"), StringUtils.trim(keys.getUserId()))
+                    );
+                }
                 return predicate;
             }
         };

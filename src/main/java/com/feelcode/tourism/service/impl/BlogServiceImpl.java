@@ -44,6 +44,11 @@ public class BlogServiceImpl implements BlogService {
         blogDao.delete(blogDao.findById(id));
     }
 
+    @Override
+    public void delete(Blog blog) {
+        blogDao.delete(blog);
+    }
+
     @Transactional
     @Override
     public Blog updateBlog(Blog blog) {
@@ -97,8 +102,8 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public Page<Blog> findAllByKeys(String title, Pageable pageable) {
-        return blogDao.findAll(Specifications.where(getWhereClause(title)),pageable);
+    public Page<Blog> findAllByKeys(BlogRequestPageDTO request, Pageable pageable) {
+        return blogDao.findAll(Specifications.where(getWhereClause(request)),pageable);
     }
 
     @Override
@@ -106,14 +111,19 @@ public class BlogServiceImpl implements BlogService {
         return blogDao.count();
     }
 
-    public Specification<Blog> getWhereClause(final String title) {
+    public Specification<Blog> getWhereClause(final BlogRequestPageDTO request) {
         return new Specification<Blog>() {
             @Override
             public Predicate toPredicate(Root<Blog> r, CriteriaQuery<?> q, CriteriaBuilder cb) {
                 Predicate predicate = cb.conjunction();
-                if(StringUtils.isNotEmpty(title)){
+                if(StringUtils.isNotEmpty(request.getTitle())){
                     predicate.getExpressions().add(
-                            cb.like(r.<String>get("title"), "%" + StringUtils.trim(title) + "%")
+                            cb.like(r.<String>get("title"), "%" + StringUtils.trim(request.getTitle()) + "%")
+                    );
+                }
+                if (StringUtils.isNotEmpty(request.getUserId())) {
+                    predicate.getExpressions().add(
+                            cb.equal(r.<User>get("user").<Long>get("id"), request.getUserId())
                     );
                 }
                 /*if(StringUtils.isNotEmpty(sPrice)&&StringUtils.isNotEmpty(ePrice)){

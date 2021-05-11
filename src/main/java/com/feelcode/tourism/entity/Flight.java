@@ -31,11 +31,11 @@ public class Flight extends BaseEntity{
     private String flightEndAddress;
 
     @Column(name = "flight_start_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date flightStartTime;
 
     @Column(name = "flight_end_time")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+//    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date flightEndTime;
 
     @Column(columnDefinition="text", name = "flight_description")

@@ -5,6 +5,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.github.rjeschke.txtmark.Processor;
 import lombok.Data;
 
@@ -17,6 +18,7 @@ import lombok.Data;
 @Entity
 @Table(name = "tourism_blog")
 @Data
+@JsonIgnoreProperties(value = { "hibernateLazyInitializer","handler"})
 public class Blog extends BaseEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

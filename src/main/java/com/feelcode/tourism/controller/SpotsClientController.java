@@ -96,14 +96,9 @@ public class SpotsClientController extends BaseController {
         //C端分页暂时均未实现
         SpotsResponsePageDTO resList = new SpotsResponsePageDTO();
         Long count = spotsService.findAllByCount();
-        Page<Spots> spotsPage = null;
-        if(!StringUtils.isEmpty(request.getSpotsName())){
-            Sort sort = new Sort(Sort.Direction.DESC,"createDate");
-            Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
-            spotsPage = spotsService.findAllByKeys(request, pageable);
-        }else{
-            spotsPage = spotsService.findAllByPage(request);
-        }
+        Sort sort = new Sort(Sort.Direction.DESC,"createDate");
+        Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
+        Page<Spots> spotsPage = spotsService.findAllByKeys(request, pageable);
         resList.setRecordsTotal(count);
         resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
         resList.setSpotsList(spotsPage.getContent());

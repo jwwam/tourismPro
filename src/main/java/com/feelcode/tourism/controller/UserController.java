@@ -104,24 +104,6 @@ public class UserController extends BaseController {
         }
     }
 
-    /**
-     * @auther: 朱利尔
-     * @date: 17:47 2020/4/30
-     * @param: [request]
-     * @return: java.lang.String
-     * @Description: 查询用户列表
-     */
-    @RequestMapping(value="/list", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-    @ResponseBody
-    public ModelMap view(@RequestBody UserRequestPageDTO request){
-        UserResponsePageDTO resList = new UserResponsePageDTO();
-        Long count = userService.findAllByCount();
-        Page<User> userPage = userService.findAllByPage(request);
-        resList.setRecordsTotal(count);
-        resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
-        resList.setUserList(userPage.getContent());
-        log.info("返回用户列表");
-        return getModelMap(StateParameter.SUCCESS, resList, "获取用户列表成功");
-    }
+
 
 }

@@ -2,6 +2,8 @@ package com.feelcode.tourism.controller;
 
 import com.alibaba.fastjson.JSONArray;
 import com.feelcode.tourism.base.controller.BaseController;
+import com.feelcode.tourism.base.utils.RedisConstants;
+import com.feelcode.tourism.base.utils.RedisUtil;
 import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.entity.Gallery;
 import com.feelcode.tourism.entity.GalleryRequestPageDTO;
@@ -10,6 +12,9 @@ import com.feelcode.tourism.entity.vo.Images;
 import com.feelcode.tourism.service.GalleryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -33,6 +38,8 @@ public class GalleryController extends BaseController {
 
     @Resource
     GalleryService galleryService;
+    @Resource
+    RedisUtil redisUtil;
 
     /**
      * @auther: 朱利尔
@@ -45,6 +52,13 @@ public class GalleryController extends BaseController {
     @ResponseBody
     public ModelMap addGallery(@RequestBody Gallery gallery){
         try {
+            if(StringUtils.isEmpty(gallery.getUserId())){
+                return getModelMap(StateParameter.FAULT, null, "参数校验失败，请登录userId is empty");
+            }
+            Object obj = redisUtil.get("user_session_"+ gallery.getUserId(), RedisConstants.datebase1);
+            if(obj==null){
+                return getModelMap(StateParameter.FAULT, null, "上传失败，请重新登录后上传");
+            }
             if(StringUtils.isEmpty(gallery.getId())){
                 gallery.setId(getUuid());
             }else{
@@ -94,7 +108,9 @@ public class GalleryController extends BaseController {
     public ModelMap list(@RequestBody GalleryRequestPageDTO request){
         GalleryResponsePageDTO resList = new GalleryResponsePageDTO();
         Long count = galleryService.findAllByCount();
-        Page<Gallery> galleryPage = galleryService.findAllByPage(request);
+        Sort sort = new Sort(Sort.Direction.DESC,"createDate");
+        Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
+        Page<Gallery> galleryPage = galleryService.findAllByKeys(request, pageable);
         resList.setRecordsTotal(count);
         resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
         galleryPage.getContent().forEach((Gallery gallery)->{

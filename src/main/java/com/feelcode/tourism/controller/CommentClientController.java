@@ -100,10 +100,10 @@ public class CommentClientController extends BaseController {
         Long count = commentService.findAllByCount();
         Sort sort = new Sort(Sort.Direction.DESC,"commentTime");
         Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort);
-        List<Comment> commentList = commentService.findByProductId(request.getProductId());
+        Page<Comment> page = commentService.findAllByKeys(request, pageable);
         resList.setRecordsTotal(count);
         resList.setRecordsFiltered(Integer.parseInt(String.valueOf(count)));
-        resList.setCommentList(commentList);
+        resList.setCommentList(page.getContent());
         log.info("返回评论列表：{}", resList);
         return getModelMap(StateParameter.SUCCESS, resList, "获取评论列表成功");
     }

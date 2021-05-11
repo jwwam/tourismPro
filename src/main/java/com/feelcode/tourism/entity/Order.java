@@ -5,13 +5,14 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import java.util.Date;
 
 /**
  * @Author: 朱利尔
  * @Description:
- * @Date: Created in 23:44 2020/5/7
+ * @Date: Created in 23:44 2021/5/7
  * @Modified By:
  */
 @Entity
@@ -44,9 +45,13 @@ public class Order extends BaseEntity{
     private Integer orderStatus;
 
     @Column(columnDefinition="text", name = "preview_images")
-    private String previewImage;
+    private String previewImages;
 
     @Column(name = "order_amount")
     private String orderAmount;
+
+    @Column(name = "order_content")
+    @Lob
+    private String orderContent;
 
 }

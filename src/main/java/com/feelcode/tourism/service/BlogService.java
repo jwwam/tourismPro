@@ -22,6 +22,8 @@ public interface BlogService {
      */
     void removeBlog(String id);
 
+    void delete(Blog blog);
+
     /**
      * 更新Blog
      * @param blog
@@ -70,7 +72,7 @@ public interface BlogService {
 
     Page<Blog> findAllByPage(BlogRequestPageDTO request);
 
-    Page<Blog> findAllByKeys(String blogName, Pageable pageable);
+    Page<Blog> findAllByKeys(BlogRequestPageDTO request, Pageable pageable);
 
     Long findAllByCount();
 

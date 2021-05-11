@@ -24,6 +24,8 @@ public interface OrderDao extends PagingAndSortingRepository<Order, Long>, JpaSp
 
     Page<Order> findByUserId(String userId, Pageable pageable);
 
+    Order findByOrderNo(String orderNo);
+
     Order findByUserIdAndProductId(String userId, String productId);
 
     List<Order> findByOrderStatus(String orderStatus);
