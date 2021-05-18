@@ -16,7 +16,7 @@ import lombok.Data;
  * @Description:
  */
 @Entity
-@Table(name = "tourism_blog")
+@Table(name = "cars_blog")
 @Data
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer","handler"})
 public class Blog extends BaseEntity implements Serializable {

@@ -1,10 +1,9 @@
 package com.feelcode.tourism.service.impl;
 
-import com.feelcode.tourism.dao.HotelDao;
-import com.feelcode.tourism.entity.Hotel;
-import com.feelcode.tourism.entity.HotelRequestPageDTO;
-import com.feelcode.tourism.entity.Spots;
-import com.feelcode.tourism.service.HotelService;
+import com.feelcode.tourism.dao.CarDao;
+import com.feelcode.tourism.entity.Car;
+import com.feelcode.tourism.entity.CarRequestPageDTO;
+import com.feelcode.tourism.service.CarService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,7 +18,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,58 +26,58 @@ import java.util.List;
  * @Date: Created in 22:17 2020/5/7
  * @Modified By:
  */
-@Service(value = "hotelService")
-public class HotelServiceImpl implements HotelService {
+@Service(value = "carService")
+public class CarServiceImpl implements CarService {
 
     @Resource
-    HotelDao hotelDao;
+    CarDao carDao;
 
     @Override
-    public Hotel save(Hotel hotel) {
-        return hotelDao.save(hotel);
+    public Car save(Car car) {
+        return carDao.save(car);
     }
 
     @Override
-    public Hotel findById(String id) {
-        return hotelDao.findById(id);
+    public Car findById(String id) {
+        return carDao.findById(id);
     }
 
     @Override
-    public void delete(Hotel hotel) {
-        hotelDao.delete(hotel);
+    public void delete(Car car) {
+        carDao.delete(car);
     }
 
     @Override
-    public List<Hotel> findAll() {
-        return hotelDao.findAll();
+    public List<Car> findAll() {
+        return carDao.findAll();
     }
 
     @Override
-    public Page<Hotel> findAllByPage(HotelRequestPageDTO request) {
+    public Page<Car> findAllByPage(CarRequestPageDTO request) {
         // 排序方式，这里是以“recordNo”为标准进行降序
         Sort sort = new Sort(Sort.Direction.DESC, "createDate");  // 这里的"recordNo"是实体类的主键，记住一定要是实体类的属性，而不能是数据库的字段
         Pageable pageable = new PageRequest(request.getStart(), request.getLength(), sort); // （当前页， 每页记录数， 排序方式）
-        return hotelDao.findAll(pageable);
+        return carDao.findAll(pageable);
     }
 
     @Override
-    public Page<Hotel> findAllByKeys(HotelRequestPageDTO request,Pageable pageable) {
-        return hotelDao.findAll(Specifications.where(getWhereClause(request)),pageable);
+    public Page<Car> findAllByKeys(CarRequestPageDTO request, Pageable pageable) {
+        return carDao.findAll(Specifications.where(getWhereClause(request)),pageable);
     }
 
     @Override
     public Long findAllByCount() {
-        return hotelDao.count();
+        return carDao.count();
     }
 
-    public Specification<Hotel> getWhereClause(final HotelRequestPageDTO keys) {
-        return new Specification<Hotel>() {
+    public Specification<Car> getWhereClause(final CarRequestPageDTO keys) {
+        return new Specification<Car>() {
             @Override
-            public Predicate toPredicate(Root<Hotel> r, CriteriaQuery<?> q, CriteriaBuilder cb) {
+            public Predicate toPredicate(Root<Car> r, CriteriaQuery<?> q, CriteriaBuilder cb) {
                 Predicate predicate = cb.conjunction();
-                if(StringUtils.isNotEmpty(keys.getHotelName())){
+                if(StringUtils.isNotEmpty(keys.getCarName())){
                     predicate.getExpressions().add(
-                            cb.like(r.<String>get("hotelName"), "%" + StringUtils.trim(keys.getHotelName()) + "%")
+                            cb.like(r.<String>get("carName"), "%" + StringUtils.trim(keys.getCarName()) + "%")
                     );
                 }
                 if(StringUtils.isNotEmpty(keys.getCheckInTime())){
@@ -92,9 +90,9 @@ public class HotelServiceImpl implements HotelService {
                             cb.lessThanOrEqualTo(r.get("checkOutTime").as(String.class), keys.getCheckOutTime())
                     );
                 }
-                if(StringUtils.isNotEmpty(keys.getHotelAddress())){
+                if(StringUtils.isNotEmpty(keys.getCarAddress())){
                     predicate.getExpressions().add(
-                            cb.like(r.<String>get("hotelAddress"),"%" + StringUtils.trim(keys.getHotelAddress()) + "%")
+                            cb.like(r.<String>get("carAddress"),"%" + StringUtils.trim(keys.getCarAddress()) + "%")
                     );
                 }
                 if(StringUtils.isNotEmpty(keys.getStar())){
@@ -102,13 +100,13 @@ public class HotelServiceImpl implements HotelService {
                             cb.equal(r.<String>get("star"), StringUtils.trim(keys.getStar()))
                     );
                 }
-                if (StringUtils.isNotEmpty(keys.getHotelPriceMin())) {
+                if (StringUtils.isNotEmpty(keys.getCarPriceMin())) {
                     predicate.getExpressions().add(
-                            cb.greaterThanOrEqualTo(r.get("hotelPrice").as(String.class), keys.getHotelPriceMin()));
+                            cb.greaterThanOrEqualTo(r.get("carPrice").as(String.class), keys.getCarPriceMin()));
                 }
-                if (StringUtils.isNotEmpty(keys.getHotelPriceMax())) {
+                if (StringUtils.isNotEmpty(keys.getCarPriceMax())) {
                     predicate.getExpressions().add(
-                            cb.lessThanOrEqualTo(r.get("hotelPrice").as(String.class), keys.getHotelPriceMax()));
+                            cb.lessThanOrEqualTo(r.get("carPrice").as(String.class), keys.getCarPriceMax()));
                 }
                 if(StringUtils.isNotEmpty(keys.getBedType())){
                     predicate.getExpressions().add(

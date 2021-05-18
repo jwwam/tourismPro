@@ -59,7 +59,7 @@
 							<li><a href="browse-detail.html">Browse Detail</a></li>
 						</ul> -->
 					</li>
-					<li class="selected"><a href="hotel.html">酒店</a></li>
+					<li class="selected"><a href="car.html">酒店</a></li>
 					<!-- <li><a href="plane.html">航班</a></li> -->
 					<li><a href="line.html">旅线</a></li>
 					<li><a href="order.html">我的订单</a></li>
@@ -88,7 +88,7 @@
 							<a id="#">酒店查询</a>
 						</li>
 					</ul>					
-					<div id="hotel-search" class="tab-content">
+					<div id="car-search" class="tab-content">
 						<form action="#">
 							<div class="field half">
 								<label for="hotelName-input">酒店名称:</label>
@@ -125,11 +125,11 @@
 									<option value="5">5</option>
 								</select>
 							</div> -->
-							<button type="submit" class="submit" id="hotel-search-a">查询</button>
+							<button type="submit" class="submit" id="car-search-a">查询</button>
 							<br class="clear" />
 						</form>
 					</div>
-					<!--hotel search -->
+					<!--car search -->
 				</div>
 				<!--searchmodule -->				
 				
@@ -369,7 +369,7 @@
 			//默认时间
 			//$("#checkInTime-input").val(getMyDate(new Date().getTime(),"MM/dd/yyyy"));
 			//$("#checkOutTime-input").val(getMyDate(new Date().getTime(),"MM/dd/yyyy"));
-			$("#hotel-search-a").on("click",function(){
+			$("#car-search-a").on("click",function(){
 				var hotelName=$("#hotelName-input").val();
 				var hotelAddress=$("#hotelAddress-input").val();
 				//var hotelPrice=$("#hotelPrice-input").val();
@@ -389,7 +389,7 @@
 				$.ajax({
 					type:'post',
 					async:false,
-					url:base_url+'/hotel/list',
+					url:base_url+'/car/list',
 					contentType:'application/json;chart=utf-8',
 					dataType:'json',
 					data:reqData,
@@ -450,7 +450,7 @@
 				$.ajax({
 					type:'post',
 					async:false,
-					url:base_url+'/hotel/list',
+					url:base_url+'/car/list',
 					contentType:'application/json;chart=utf-8',
 					dataType:'json',
 					data:reqData,
@@ -471,7 +471,7 @@
 			$.ajax({
 				type:'post',
 				async:false,
-				url:base_url+'/hotel/list',
+				url:base_url+'/car/list',
 				contentType:'application/json;chart=utf-8',
 				dataType:'json',
 				data:requestDataAllHotelObj,
@@ -505,7 +505,7 @@
 					"<div class='post-meta'>"+
 						"<span class='icon-place'>"+ element.hotelName +"</span>"+
 						"<span class='offer-type'>全包</span>"+
-						"<a class='read-more' href='hotel-detail.html?id="+ element.id +"'>立即预定</a>"+					
+						"<a class='read-more' href='car-detail.html?id="+ element.id +"'>立即预定</a>"+
 					"</div>"+
 				"</div></br>"
 				});

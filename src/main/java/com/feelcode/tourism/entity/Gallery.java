@@ -16,7 +16,7 @@ import java.util.List;
  * @Modified By:
  */
 @Entity
-@Table(name = "tourism_gallery")
+@Table(name = "cars_gallery")
 @Data
 public class Gallery extends BaseEntity{
     @Column(name = "user_id", length = 100)

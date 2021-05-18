@@ -15,21 +15,21 @@ import java.util.Date;
  * @Modified By:
  */
 @Entity
-@Table(name = "tourism_hotel")
+@Table(name = "cars_car")
 @Data
-public class Hotel extends BaseEntity{
+public class Car extends BaseEntity{
 
-    @Column(name = "hotel_name", length = 100)
-    private String hotelName;
+    @Column(name = "car_name", length = 100)
+    private String carName;
 
-    @Column(name = "hotel_address", length = 100)
-    private String hotelAddress;
+    @Column(name = "car_address", length = 100)
+    private String carAddress;
 
-    @Column(name = "hotel_phone")
-    private String hotelPhone;
+    @Column(name = "car_phone")
+    private String carPhone;
 
-    @Column(name = "hotel_price")
-    private String hotelPrice;
+    @Column(name = "car_price")
+    private String carPrice;
 
     @Column(name = "check_in_time")
     @JsonFormat(pattern = "yyyy-MM-dd")
@@ -45,11 +45,11 @@ public class Hotel extends BaseEntity{
     @Column(name = "star")
     private String star;
 
-    @Column(columnDefinition="text", name = "hotel_description")
-    private String hotelDescription;
+    @Column(columnDefinition="text", name = "car_description")
+    private String carDescription;
 
-    @Column(columnDefinition="text", name = "hotel_images")
-    private String hotelImages;
+    @Column(columnDefinition="text", name = "car_images")
+    private String carImages;
 
     @Column(name = "offer_type")
     private String offerType;

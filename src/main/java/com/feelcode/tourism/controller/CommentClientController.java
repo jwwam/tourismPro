@@ -4,7 +4,6 @@ import com.feelcode.tourism.base.controller.BaseController;
 import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.entity.*;
 import com.feelcode.tourism.service.CommentService;
-import com.feelcode.tourism.service.HotelService;
 import com.feelcode.tourism.service.ScoreService;
 import com.feelcode.tourism.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.Date;
-import java.util.List;
 
 /**
  * @Author: 朱利尔

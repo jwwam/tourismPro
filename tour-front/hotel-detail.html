@@ -60,7 +60,7 @@
 							<li><a href="browse-detail.html">Browse Detail</a></li>
 						</ul> -->
 					</li>
-					<li class="selected"><a href="hotel.html">酒店</a></li>
+					<li class="selected"><a href="car.html">酒店</a></li>
 					<!-- <li><a href="plane.html">航班</a></li> -->
 					<li><a href="line.html">旅线</a></li>
 					<li><a href="order.html">我的订单</a></li>
@@ -82,7 +82,7 @@
 		
 		<div id="content">
 		
-			<div class="post-item post-thumb-hor" id="hotel-detail-title">
+			<div class="post-item post-thumb-hor" id="car-detail-title">
 				
 			</div>
 			<!--post item -->
@@ -92,21 +92,21 @@
 				
 				<div id="searchmodule">
 					<ul class="tab-control">
-						<li class="ui-tabs-selected"><a href="#hotel-search">酒店查询</a></li>
+						<li class="ui-tabs-selected"><a href="#car-search">酒店查询</a></li>
 					</ul>					
-					<div id="hotel-search" class="tab-content">
+					<div id="car-search" class="tab-content">
 						<form action="#">
 							<div class="field">
-								<label for="hotel-to">城市:</label>
-								<input type="text" id="hotel-to" class="input-text" placeholder="输入地址" autocomplete="off" />
+								<label for="car-to">城市:</label>
+								<input type="text" id="car-to" class="input-text" placeholder="输入地址" autocomplete="off" />
 							</div>
 							<div class="field half">
-								<label for="hotel-depart">入住日期:</label>
-								<input type="text" id="hotel-depart" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+								<label for="car-depart">入住日期:</label>
+								<input type="text" id="car-depart" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
 							</div>
 							<div class="field half even">
-								<label for="hotel-return">离店日期:</label>
-								<input type="text" id="hotel-return" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+								<label for="car-return">离店日期:</label>
+								<input type="text" id="car-return" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
 							</div>
 							<div class="field half">
 								<label for="flight-class">类型:</label>
@@ -117,8 +117,8 @@
 								</select>
 							</div>
 							<div class="field half even">
-								<label for="hotel-room">人数:</label>
-								<select id="hotel-room">
+								<label for="car-room">人数:</label>
+								<select id="car-room">
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -180,7 +180,7 @@
 			</div> -->
 			<!--one third -->
 			
-			<div class="" id="hotel-detail-content">
+			<div class="" id="car-detail-content">
 				<!-- <div class="module-box">
 					<div class="flexslider">
 						<ul class="slides">
@@ -343,7 +343,7 @@
 		$.ajax({
 			type:'post',
 			async:false,
-			url:base_url+'/hotel/detail',
+			url:base_url+'/car/detail',
 			contentType:'application/json;chart=utf-8',
 			dataType:'json',
 			data:detailData,
@@ -353,35 +353,35 @@
 			}
 		})
 
-		function setSearchHotelDetail(hotel){
+		function setSearchHotelDetail(car){
 			var htmlContent=
 				"<h2 style='color:#2b4d7f;margin-top:20px;margin-left:5px'>您当前查看的酒店是：</h2>"+
 				"<div class='image-place'>"+
-					"<img src='"+ file_view_url + hotel.hotelImages.split(',')[0]+"' alt='image'  width='200px' height='200px'/>"+
+					"<img src='"+ file_view_url + car.hotelImages.split(',')[0]+"' alt='image'  width='200px' height='200px'/>"+
 				"</div>"+
 				"<div class='post-content'>"+
-					"<h1 class='post-title' style='font-size:25px;'>"+ hotel.hotelName +"</h1>"+
-					"<p class='post-excerpt'>"+ hotel.hotelDescription +"</p>"+
+					"<h1 class='post-title' style='font-size:25px;'>"+ car.hotelName +"</h1>"+
+					"<p class='post-excerpt'>"+ car.hotelDescription +"</p>"+
 					"<ul class='post-content-detail'>"+
 						"<li>"+
 							"<span>星级</span>"+
-							"<strong class='sprite-stars star"+ hotel.star +"'>"+ hotel.star +"</strong>"+							
+							"<strong class='sprite-stars star"+ car.star +"'>"+ car.star +"</strong>"+
 						"</li>"+
 						"<li>"+
 							"<span>最低价</span>"+
-							"<strong class='price'>￥ "+ hotel.hotelPrice +"</strong>"+							
+							"<strong class='price'>￥ "+ car.hotelPrice +"</strong>"+
 						"</li>"+
 					"</ul>"+
 				"</div>"+
 				"<div class='post-meta'>"+
-					"<span class='icon-place'>"+ hotel.hotelAddress +"</span>"+
+					"<span class='icon-place'>"+ car.hotelAddress +"</span>"+
 					"<span class='offer-type'>全包</span>"+
 				"</div>";
-			$("#hotel-detail-title").html(htmlContent);
+			$("#car-detail-title").html(htmlContent);
 		}
 
-		function setHotelDetailContent(hotel){
-			var imgs = hotel.hotelImages.split(',');
+		function setHotelDetailContent(car){
+			var imgs = car.hotelImages.split(',');
 			var img="";
 			imgs.forEach(element => {
 				//img = img + "<li><a href=''><img src='"+ file_view_url + element +"' width='116px' height='87px' alt='image' /></a></li>"					
@@ -405,17 +405,17 @@
 					"<p style='color: green;font-size:15px;line-height:30px'>网上的酒店介绍、图片、房态、价格、等信息只作参考，预定是否成功以最终电话或短信确认为准。</br>付款方式：前台支付（ 现金/信用卡）。 </br>房费包含酒店服务费，不包括酒店其他费用、税收及客人额外要求的费用。</br>通常酒店的入店时间为13：00以后，离店时间为中午12：00整前。如提前入住或推迟离店，酒店均可酌情加收一定费用。</br> 会员及非会员预订酒店无须支付任何费用。 非会员预订也享受优惠价，会员预定可享受积分奖励</br> 信 用 卡 担 保</br>当节假日期间或举办大型会展期间、旅游旺季等酒店房间紧张的情况下，部分酒店需要您提供信用卡担保，以保证您的预订能够顺利的获得确定。如您的信用卡信息有效，酒店会优先给予房间确认且延长保留时间。需要信用卡担保的酒店，订单一经确认将不可取消或修改。因此请在填写担保订单前慎重考虑您是否会修改行程，以免给您造成不必要的损失。如您未按订单上约定的时间或房间数量入住，酒店将按国际惯例扣除相应的房费。</br>保 密 承 诺</br>Travel旅行网很了解在您进行网上浏览、交易时，保密性和安全性的重要性。我们会将保护您私人信息的保密和安全放在最优先解决的位置，这些信息包括您的信用卡信息、姓名、电话、地址、email等。为了保护您私人信息的机密性，我们采取了安全技术以确保您私人信息的保密性。在您注册成为Travel旅行网会员时，我们会收集您的姓名、电话、地址、email等私人信息，以便于与您联系。当您预订的产品需要信用卡担保或您选择网上支付时，我们会收集您的相关信用卡信息。您提供给Travel旅行网的这些相关私人信息，会被储存在我们的安全系统中，并采用加密手段传输，不会被Travel旅行网公开、出卖或未经授权用于其它商业目的。</p>"+
 				"</div>"+
 				"<div class='one-half submit-order'>"+
-					"<a class='button medium red submit-button' id='create-order' product-id='"+ hotel.id +"' product-name='"+ hotel.hotelName +"' order-amount='"+ hotel.hotelPrice +"'>立即预订</a>"+
+					"<a class='button medium red submit-button' id='create-order' product-id='"+ car.id +"' product-name='"+ car.hotelName +"' order-amount='"+ car.hotelPrice +"'>立即预订</a>"+
 				"</div>"+
 				"<br class='clear' />"+
 			"</div>";
-			$("#hotel-detail-content").html(htmlContent);
+			$("#car-detail-content").html(htmlContent);
 			//$(".slides").html(htmlContent);
 			//$.parser.parse();
-			//$.parser.parse($("#hotel-detail-content").parent());
-			//$("#hotel-detail-content").append(obj);  // 用append 方式添加拼接的标签
-			//$("#hotel-slider-ul").listview('refresh');   //在使用'ul'标签时才使用，作用:刷新列表
-			//$("#hotel-slider-ul").trigger("create");
+			//$.parser.parse($("#car-detail-content").parent());
+			//$("#car-detail-content").append(obj);  // 用append 方式添加拼接的标签
+			//$("#car-slider-ul").listview('refresh');   //在使用'ul'标签时才使用，作用:刷新列表
+			//$("#car-slider-ul").trigger("create");
 			// $(".flexslider").flexslider({
 			// 	directionNav:false
 			// });
@@ -457,7 +457,7 @@
 				"<div class='image-place' style='text-align:center'><img src='images/submit-success.png' width='100' height='100px' alt='image' /></div>"+
 				"<h1 style='text-align:center;color:#006db8;'>恭喜，提交成功</h1>"+
 			"</div>";
-			$("#hotel-detail-content").html(htmlContent);
+			$("#car-detail-content").html(htmlContent);
 		}
 
 	});

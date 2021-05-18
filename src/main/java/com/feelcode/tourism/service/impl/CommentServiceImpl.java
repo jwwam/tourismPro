@@ -1,11 +1,8 @@
 package com.feelcode.tourism.service.impl;
 
 import com.feelcode.tourism.dao.CommentDao;
-import com.feelcode.tourism.dao.GroupDao;
 import com.feelcode.tourism.entity.Comment;
 import com.feelcode.tourism.entity.CommentRequestPageDTO;
-import com.feelcode.tourism.entity.Spots;
-import com.feelcode.tourism.entity.SpotsRequestPageDTO;
 import com.feelcode.tourism.service.CommentService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;

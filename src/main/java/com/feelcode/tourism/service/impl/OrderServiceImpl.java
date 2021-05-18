@@ -1,8 +1,6 @@
 package com.feelcode.tourism.service.impl;
 
 import com.feelcode.tourism.dao.OrderDao;
-import com.feelcode.tourism.entity.Hotel;
-import com.feelcode.tourism.entity.HotelRequestPageDTO;
 import com.feelcode.tourism.entity.Order;
 import com.feelcode.tourism.entity.OrderRequestPageDTO;
 import com.feelcode.tourism.service.OrderService;

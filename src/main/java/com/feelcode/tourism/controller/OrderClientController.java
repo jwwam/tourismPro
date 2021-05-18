@@ -8,9 +8,8 @@ import com.feelcode.tourism.base.utils.RedisConstants;
 import com.feelcode.tourism.base.utils.RedisUtil;
 import com.feelcode.tourism.base.utils.StateParameter;
 import com.feelcode.tourism.entity.*;
-import com.feelcode.tourism.service.HotelService;
+import com.feelcode.tourism.service.CarService;
 import com.feelcode.tourism.service.OrderService;
-import com.feelcode.tourism.service.FlightService;
 import com.feelcode.tourism.service.SpotsService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -41,9 +40,7 @@ public class OrderClientController extends BaseController {
     @Resource
     OrderService orderService;
     @Resource
-    HotelService hotelService;
-    @Resource
-    FlightService flightservice;
+    CarService carService;
     @Resource
     SpotsService spotsService;
     @Resource
@@ -79,19 +76,19 @@ public class OrderClientController extends BaseController {
             }
             Map<String,String> va = new HashMap<>();
             if(SystemConstant.ProductType.hotel.equals(order.getProductType())){
-                Hotel hotel = hotelService.findById(order.getProductId());
-                va.put("orderAmount",hotel.getHotelPrice());
-                va.put("previewImages",hotel.getHotelImages());
-                va.put("productName",hotel.getHotelName());
+                Car car = carService.findById(order.getProductId());
+                va.put("orderAmount", car.getCarPrice());
+                va.put("previewImages", car.getCarImages());
+                va.put("productName", car.getCarName());
                 order.setOrderContent(order.getOrderContent());
             }
-            if(SystemConstant.ProductType.flight.equals(order.getProductType())){
-                Flight flight = flightservice.findById(order.getProductId());
-                va.put("orderAmount", flight.getFlightPrice());
-                va.put("previewImages", flight.getFlightImages());
-                va.put("productName",flight.getFlightName());
-                order.setOrderContent(JSON.toJSONString(flight));
-            }
+//            if(SystemConstant.ProductType.flight.equals(order.getProductType())){
+//                Flight flight = flightservice.findById(order.getProductId());
+//                va.put("orderAmount", flight.getFlightPrice());
+//                va.put("previewImages", flight.getFlightImages());
+//                va.put("productName",flight.getFlightName());
+//                order.setOrderContent(JSON.toJSONString(flight));
+//            }
             if(SystemConstant.ProductType.spots.equals(order.getProductType())){
                 Spots spots = spotsService.findById(order.getProductId());
                 va.put("orderAmount", spots.getSpotsPrice());

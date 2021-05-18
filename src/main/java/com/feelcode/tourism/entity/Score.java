@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="tourism_score")
+@Table(name="cars_score")
 @Data
 public class Score extends BaseEntity{
 

@@ -287,7 +287,7 @@
                 "iDisplayLength": 10,
                 "bInfo": true, //开关，是否显示表格的一些信息(当前显示XX-XX条数据，共XX条)
                 "ajax": {
-                    url: base_url + "/hotel/list",
+                    url: base_url + "/car/list",
                     type:"post",
                     dataType: "json",
                     async:false,
@@ -467,7 +467,7 @@
                         $.ajax({
                         type:'post',
                         async:false,
-                        url:base_url+'/hotel/deleteHotel',
+                        url:base_url+'/car/deleteHotel',
                         contentType:'application/json;chart=utf-8',
                         dataType:'json',
                         data:deleteData,
@@ -646,7 +646,7 @@
                                 $.ajax({
                                     type:'post',
                                     async:false,
-                                    url:base_url+'/hotel/addHotel',
+                                    url:base_url+'/car/addHotel',
                                     contentType:'application/json;chart=utf-8',
                                     dataType:'json',
                                     data:JSON.stringify(obj),
@@ -719,7 +719,7 @@
                 $.ajax({
                     type:'post',
                     async:false,
-                    url:base_url+'/hotel/detail',
+                    url:base_url+'/car/detail',
                     contentType:'application/json;chart=utf-8',
                     dataType:'json',
                     data:requestData,
@@ -874,7 +874,7 @@
                                 $.ajax({
                                     type:'post',
                                     async:false,
-                                    url:base_url+'/hotel/addHotel',
+                                    url:base_url+'/car/addHotel',
                                     contentType:'application/json;chart=utf-8',
                                     dataType:'json',
                                     data:JSON.stringify(obj),

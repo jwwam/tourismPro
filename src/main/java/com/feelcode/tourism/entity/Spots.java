@@ -15,7 +15,7 @@ import java.io.Serializable;
  * @Modified By:
  */
 @Entity
-@Table(name = "tourism_spots")
+@Table(name = "cars_spots")
 @Data
 public class Spots extends BaseEntity{
     @Column(name = "spots_name", length = 100)

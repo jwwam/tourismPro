@@ -16,7 +16,7 @@ import java.util.Date;
  * @Modified By:
  */
 @Entity
-@Table(name = "tourism_order")
+@Table(name = "cars_order")
 @Data
 public class Order extends BaseEntity{
     @Column(name = "order_no", length = 100)

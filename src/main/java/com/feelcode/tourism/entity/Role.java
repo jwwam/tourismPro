@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * @Modified By:
  */
 @Entity
-@Table(name = "tourism_role")
+@Table(name = "cars_role")
 @Data
 public class Role extends BaseEntity{
 

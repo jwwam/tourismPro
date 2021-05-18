@@ -19,7 +19,7 @@ import java.util.Date;
  * @Modified By:
  */
 @Entity
-@Table(name = "tourism_comment")
+@Table(name = "cars_comment")
 @Data
 public class Comment extends BaseEntity{
 

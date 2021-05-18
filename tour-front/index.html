@@ -95,7 +95,7 @@
 							<li><a href="browse-detail.html">Browse Detail</a></li>
 						</ul> -->
 					</li>
-					<li><a href="hotel.html">酒店</a></li>
+					<li><a href="car.html">酒店</a></li>
 					<!-- <li><a href="flight.html">航班</a></li> -->
 					<li><a href="line.html">旅线</a></li>
 					<li><a href="order.html">我的订单</a></li>
@@ -111,7 +111,7 @@
 				<div id="searchmodule" class="tabs">
 					<ul class="tab-control">
 						<!-- <li><a href="#flight-search">机票预定</a></li> -->
-						<li><a href="#hotel-search">酒店预定</a></li>
+						<li><a href="#car-search">酒店预定</a></li>
 						<!-- <li><a href="#travel-search"></a></li> -->
 					</ul>
 					<!-- <div id="flight-search" class="tab-content">
@@ -156,33 +156,33 @@
 					</div> -->
 					<!--flight search -->
 					
-					<div id="hotel-search" class="tab-content">
+					<div id="car-search" class="tab-content">
 						<form action="#">
 							<div class="field">
-								<label for="hotel-to">城市:</label>
-								<input type="text" id="hotel-to" class="input-text" placeholder="输入地址" autocomplete="off" />
+								<label for="car-to">城市:</label>
+								<input type="text" id="car-to" class="input-text" placeholder="输入地址" autocomplete="off" />
 							</div>
 							<div class="field half">
-								<label for="hotel-depart">入住日期:</label>
-								<input type="text" id="hotel-depart" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+								<label for="car-depart">入住日期:</label>
+								<input type="text" id="car-depart" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
 							</div>
 							<div class="field half even">
-								<label for="hotel-return">离店日期:</label>
-								<input type="text" id="hotel-return" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
+								<label for="car-return">离店日期:</label>
+								<input type="text" id="car-return" class="input-text input-cal" placeholder="点击选择" autocomplete="off" />
 							</div>
 							<div class="field half even">
-								<label for="hotel-room">人数:</label>
-								<select id="hotel-room">
+								<label for="car-room">人数:</label>
+								<select id="car-room">
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
 								</select>
 							</div>
-							<button type="submit" class="submit hotel-search-button">查询</button>
+							<button type="submit" class="submit car-search-button">查询</button>
 							<br class="clear" />
 						</form>
 					</div>
-					<!--hotel search -->
+					<!--car search -->
 					
 					<!--travel search -->
 				</div>
@@ -489,8 +489,8 @@
 				window.location.href = "flight.html";
 			})
 
-			$(".hotel-search-button").on("click",function(){
-				window.location.href = "hotel.html";
+			$(".car-search-button").on("click",function(){
+				window.location.href = "car.html";
 			})
 
 			});

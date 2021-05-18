@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * @Modified By:
  */
 @Entity
-@Table(name = "tourism_news")
+@Table(name = "cars_news")
 @Data
 public class News extends BaseEntity{
     @Column(name = "news_title", length = 100)

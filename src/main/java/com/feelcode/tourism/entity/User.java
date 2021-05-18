@@ -15,12 +15,12 @@ import java.util.List;
 /**
  * @ClassName: User
  * @Auther: 朱利尔
- * @Date: 2020/4/30 17:17
+ * @Date: 2021/4/30 17:17
  * @Description:
  */
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "tourism_user")
+@Table(name = "cars_user")
 @Data
 @JsonIgnoreProperties(value = { "hibernateLazyInitializer","handler"})
 public class User extends BaseEntity implements Serializable {
